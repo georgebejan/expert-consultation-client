@@ -1,58 +1,22 @@
-<div class="mat-elevation-z8 table-wrapper">
-  <mat-table #table [dataSource]="users" fxFlex matSort matSortActive="lastName"
-             matSortDirection="asc">
-
-    <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{'users.table.column.lastName' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{ user.lastName }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="firstName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{'users.table.column.firstName' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{ user.firstName }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{'users.table.column.email' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{ user.email }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="phoneNumber">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{'users.table.column.phoneNumber' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{ user.phoneNumber }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="district">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{'users.table.column.district' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{ user.district }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="organisation">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{'users.table.column.organisation' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{ user.organisation}}</mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="tableConfig.displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: tableConfig.displayedColumns;"></mat-row>
-  </mat-table>
-  <div class="table-footer">
-    <mat-paginator #paginator
-                   [hidePageSize]="true"
-                   [length]="pageData.totalElements"
-                   [pageIndex]="pageData.number"
-                   [pageSize]="pageData.size"
-                   [showFirstLastButtons]="true"></mat-paginator>
-  </div>
-</div>
+<table class="table align-items-center table-flush">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col">{{'users.table.column.lastName' | translate}}</th>
+    <th scope="col">{{'users.table.column.firstName' | translate}}</th>
+    <th scope="col">{{'users.table.column.email' | translate}}</th>
+    <th scope="col">{{'users.table.column.phoneNumber' | translate}}</th>
+    <th scope="col">{{'users.table.column.district' | translate}}</th>
+    <th scope="col">{{'users.table.column.organisation' | translate}}</th>
+  </tr>
+  </thead>
+  <tbody class="list">
+  <tr *ngFor="let user of users">
+    <td>{{ user.lastName }}</td>
+    <td>{{ user.firstName }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.phoneNumber }}</td>
+    <td>{{ user.district }}</td>
+    <td>{{ user.organisation }}</td>
+  </tr>
+  </tbody>
+</table>

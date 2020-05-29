@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import * as fromStore from '@app/core/store';
 import { CoreState } from '@app/core/store';
 import { Store } from '@ngrx/store';
-import * as fromStore from '@app/core/store';
 
 @Component({
   selector: 'app-add-user',
@@ -10,9 +10,9 @@ import * as fromStore from '@app/core/store';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent {
-  private csv: boolean;
-  private excel: boolean;
-  private optionSelected: boolean;
+  csv: boolean;
+  excel: boolean;
+  optionSelected: boolean;
 
   constructor(private router: Router,
               private store: Store<CoreState>) {

@@ -4,25 +4,20 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
-// not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
-// modules
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from '@app/core/core.module';
 import { SharedModule } from './shared/shared.module';
-// guards
-import * as fromGuards from './guards';
-// page components
 import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { JwtInterceptor } from '@app/authentication/jwt.interceptor';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HeaderInterceptor } from '@app/interceptors/header.interceptor';
 import { AuthenticatedHttpInterceptor } from '@app/authentication/authenticated-http.interceptor';
 import { AuthenticationService } from '@app/core';
+import { HeaderInterceptor } from './shared/interceptors/header.interceptor';
 
 export const metaReducers: any[] = !environment.production ? [storeFreeze] : [];
 
@@ -75,7 +70,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppComponent,
   ],
   providers: [
-    ...fromGuards.guards,
     ...httpInterceptorProviders,
   ],
 })

@@ -11,6 +11,7 @@ import * as fromComponents from './components';
 import * as fromContainers from './containers';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import * as fromGuards from './guards';
 
 const modules = [
   CommonModule,
@@ -39,6 +40,9 @@ const modules = [
     modules,
     BsDatepickerModule,
     BsDropdownModule,
+  ],
+  providers: [
+    ...fromGuards.guards,
   ],
 })
 export class SharedModule {

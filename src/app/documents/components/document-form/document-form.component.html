@@ -1,82 +1,91 @@
-<form [formGroup]="documentForm" class="container" name="documentForm">
-  <div class="row">
-    <div class="column">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ 'document.add.title' | translate }}</mat-label>
-        <input formControlName="documentTitle" matInput/>
-      </mat-form-field>
+<form [formGroup]="documentForm" name="documentForm">
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="documentTitle">
+      {{ 'document.add.title' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="documentTitle" id="documentTitle" name="documentTitle" type="text"/>
     </div>
   </div>
-
-  <div class="row">
-    <div class="column">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ 'document.add.number' | translate }}</mat-label>
-        <input formControlName="documentNumber" matInput type="number"/>
-      </mat-form-field>
-    </div>
-    <div class="column">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ 'document.add.initiator' | translate }}</mat-label>
-        <input formControlName="documentInitializer" matInput/>
-      </mat-form-field>
-    </div>
-    <div class="column">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ 'document.add.type.name' | translate }}</mat-label>
-        <mat-select formControlName="documentType">
-          <mat-option *ngFor="let type of documentTypeKeys()" [value]="type">
-            {{ 'document.add.type.' + type | translate }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="documentNumber">
+      {{ 'document.add.number' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="documentNumber" id="documentNumber" name="documentNumber"/>
     </div>
   </div>
-
-  <div class="row">
-    <div class="column">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ 'document.add.release' | translate }}</mat-label>
-        <input [matDatepicker]="releaseDatePicker"
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="documentInitializer">
+      {{ 'document.add.initiator' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="documentInitializer" id="documentInitializer"
+             name="documentInitializer"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="documentType">
+      {{ 'document.add.type.name' | translate }}
+    </label>
+    <div class="col-md-10">
+      <select class="form-control" formControlName="documentType" id="documentType" name="documentType">
+        <option *ngFor="let type of documentTypeKeys()" [value]="type">
+          {{ 'document.add.type.' + type | translate }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="dateOfDevelopment">
+      {{ 'document.add.release' | translate }}
+    </label>
+    <div class="col-md-10">
+      <div class="input-group input-group-merge">
+        <input [bsConfig]="{ isAnimated: true, adaptivePosition: true, containerClass: 'theme-default' }"
+               bsDatepicker
+               class="form-control"
                formControlName="dateOfDevelopment"
-               matInput/>
-        <mat-datepicker-toggle [for]="releaseDatePicker"
-                               matSuffix>
-        </mat-datepicker-toggle>
-        <mat-datepicker #releaseDatePicker></mat-datepicker>
-      </mat-form-field>
+               id="dateOfDevelopment"
+               name="dateOfDevelopment"
+               type="text">
+        <div class="input-group-prepend input-icon">
+          <span class="input-group-text">
+            <i class="ni ni-calendar-grid-58"></i>
+          </span>
+        </div>
+      </div>
     </div>
-    <div class="column">
-      <mat-form-field appearance="outline">
-        <mat-label>{{ 'document.add.receiving' | translate }}</mat-label>
-        <input [matDatepicker]="receivingDatePicker"
-               formControlName="dateOfReceipt"
-               matInput/>
-        <mat-datepicker-toggle
-          [for]="receivingDatePicker"
-          matSuffix
-        ></mat-datepicker-toggle>
-        <mat-datepicker #receivingDatePicker></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <div class="column"></div>
   </div>
-
-  <div class="row">
-    <div class="column">
-      <label class="file-uploader-label">{{
-          'document.add.file' | translate
-        }}</label>
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="dateOfReceipt">
+      {{ 'document.add.receiving' | translate }}
+    </label>
+    <div class="col-md-10">
+      <div class="input-group input-group-merge">
+        <input [bsConfig]="{ isAnimated: true, adaptivePosition: true, containerClass: 'theme-default' }"
+               bsDatepicker
+               class="form-control"
+               formControlName="dateOfReceipt"
+               id="dateOfReceipt"
+               name="dateOfReceipt"
+               type="text">
+        <div class="input-group-prepend input-icon">
+          <span class="input-group-text">
+            <i class="ni ni-calendar-grid-58"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label">{{ 'document.add.file' | translate }}</label>
+    <div class="col-md-10 custom-file">
       <app-file-uploader [url]="url"></app-file-uploader>
     </div>
   </div>
-
-  <div class="row buttons-wrapper">
-    <button (click)="onSave()"
-            [class.button-disabled]="documentForm.invalid"
-            [disabled]="documentForm.invalid"
-            class="save-button"
-            mat-flat-button>
+  <div class="row justify-content-end">
+    <button (click)="onSave()" class="btn btn-success mt-4" type="button">
       {{ 'button.save' | translate }}
     </button>
   </div>
