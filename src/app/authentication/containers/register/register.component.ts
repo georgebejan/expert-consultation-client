@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserRequest } from '@app/core/models';
 import { AuthenticationApiService } from '@app/core/http';
 import { Tools } from '@app/shared/utils/tools';
+import { I18nError } from '@app/core/http/errors/i18n-error';
 
 @Component({
   selector: 'app-register',
@@ -13,8 +14,11 @@ import { Tools } from '@app/shared/utils/tools';
 })
 export class RegisterComponent implements OnInit {
   aUser: UserRequest;
+  isSubmitted = false;
+  wasValidated = false;
+  generalErrors: I18nError[];
 
-  public signUpForm = new FormGroup({
+  signUpForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -23,8 +27,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private authenticationApiService: AuthenticationApiService
-  ) { }
+              private authenticationApiService: AuthenticationApiService) {
+  }
 
   ngOnInit() {
     this.signUpForm.valueChanges.subscribe((aValue) => {
@@ -35,37 +39,45 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    const errorFields = {
-      NAME_NOT_EMPTY: 'name',
-      NAME_MAX_LENGTH_40: 'name',
-      USERNAME_NOT_EMPTY: 'username',
-      USERNAME_MAX_LENGTH_15: 'username',
-      PASSWORD_NOT_EMPTY: 'password',
-      PASSWORD_MAX_LENGTH_100: 'password',
-    };
-
-    for (const control in this.signUpForm.controls) {
-      if (this.signUpForm.controls.hasOwnProperty(control)) {
-        this.signUpForm.controls[control].markAsUntouched();
-        this.signUpForm.controls[control].setErrors({});
-      }
+    this.isSubmitted = true;
+    if (this.signUpForm.invalid) {
+      return;
     }
 
     const aSignUp = this.aUser;
     this.authenticationApiService.signup(aSignUp)
-      .subscribe({
-        next: signup => this.router.navigate(['authentication/login']),
-        error: errors => {
-          for (const error of errors) {
-            this.signUpForm.controls[errorFields[error]].markAsTouched();
-            this.signUpForm.controls[errorFields[error]].setErrors({[error]: true});
+        .subscribe({
+          next: signup => this.router.navigate(['login']),
+          error: errors => {
+            this.wasValidated = true;
+            this.generalErrors = Tools.safeGet(() => errors.error.i18nErrors);
+            const i18nFieldErrors: Map<string, I18nError> = Tools.safeGet(() => errors.error.i18nFieldErrors);
+            if (!i18nFieldErrors) {
+              return;
+            }
+            Object.keys(i18nFieldErrors).forEach((field: string) => {
+              const control: AbstractControl = Tools.safeGet(() => this.signUpForm.controls[field]);
+              if (!control) {
+                return;
+              }
+              control.markAsTouched();
+              control.setErrors({
+                [i18nFieldErrors[field].i18nErrorKey]: i18nFieldErrors[field].i18nErrorArguments
+              });
+            });
           }
-        }
-      });
+        });
   }
 
-  onCancel() {
-    this.router.navigate(['authentication/login']);
+  hasErrors(control: AbstractControl) {
+    return this.isSubmitted && control.errors;
   }
 
+  isValidClass(control: AbstractControl) {
+    if (this.isSubmitted) {
+      return control.errors ? 'is-invalid' : 'is-valid';
+    }
+
+    return '';
+  }
 }

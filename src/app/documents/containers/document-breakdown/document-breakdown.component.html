@@ -1,4 +1,8 @@
-<app-document-view [document]="document$ | async"
-                   [addCommentModeForNode]="addCommentModeForNode"
-                   (toggleCommentAdding)="addComment($event)">
-</app-document-view>
+<div class="card">
+  <div class="card-body">
+    <app-document-view (toggleCommentAdding)="addComment($event)"
+                       [addCommentModeForNode]="addCommentModeForNode"
+                       [document]="document$ | async">
+    </app-document-view>
+  </div>
+</div>

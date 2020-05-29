@@ -20,9 +20,7 @@
   "button": {
     "save": "Save",
     "cancel": "Cancel",
-    "confirm": "Confirm",
-    "add-comment": "Add a comment",
-    "save-comment": "Comment"
+    "confirm": "Confirm"
   },
   "search": {
     "label": "Search"
@@ -46,11 +44,6 @@
         "initiator": "Initiator"
       }
     }
-  },
-  "comments": {
-    "placeholder": "Your comment here...",
-    "all": "All comments",
-    "number": "comments"
   },
   "users": {
     "table": {
@@ -111,12 +104,6 @@
       "release": "Release date",
       "receiving": "Receive date",
       "file": "Upload file"
-    },
-    "pdf": {
-      "already_exists": "This PDF document has already been uploaded.",
-      "upload": {
-        "failed": "Failed to upload the PDF file."
-      }
     }
   },
   "table": {

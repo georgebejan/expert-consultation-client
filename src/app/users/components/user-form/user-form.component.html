@@ -1,54 +1,64 @@
-<mat-card>
-  <mat-card-title>
-    {{"users.form.title" | translate}}
-  </mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="userForm" class="column" name="userForm">
-      <mat-form-field>
-        <input formControlName="lastName" matInput placeholder="{{'users.table.column.lastName' | translate}}" required>
-        <mat-error
-          *ngIf="userForm.controls.lastName.invalid">{{generateErrorMessage('lastName') | translate}}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input formControlName="firstName" matInput placeholder="{{'users.table.column.firstName' | translate}}"
-               required>
-        <mat-error
-          *ngIf="userForm.controls.firstName.invalid">{{generateErrorMessage('firstName') | translate}}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input formControlName="email" matInput placeholder="{{'users.table.column.email' | translate}}" required>
-        <mat-error *ngIf="userForm.controls.email.invalid">{{generateErrorMessage('email') | translate}}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input formControlName="phoneNumber" matInput placeholder="{{'users.table.column.phoneNumber' | translate}}"
-               required>
-        <mat-error
-          *ngIf="userForm.controls.phoneNumber.invalid">{{generateErrorMessage('phoneNumber') | translate}}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input formControlName="district" matInput placeholder="{{'users.table.column.district' | translate}}" required>
-        <mat-error
-          *ngIf="userForm.controls.district.invalid">{{generateErrorMessage('district') | translate}}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input formControlName="organisation" matInput placeholder="{{'users.table.column.organisation' | translate}}"
-               required>
-        <mat-error
-          *ngIf="userForm.controls.organisation.invalid">{{generateErrorMessage('organisation') | translate}}</mat-error>
-      </mat-form-field>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <div class="buttons-wrapper">
-      <button (click)="onCancel()" class="cancel-button" mat-flat-button>{{"button.cancel" | translate}}</button>
-      <button (click)="onSave()" [class.button-disabled]="userForm.invalid" [disabled]="userForm.invalid"
-              class="save-button"
-              mat-flat-button>{{"button.save" | translate}}</button>
+<form [formGroup]="userForm" class="column" name="userForm">
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="lastName">
+      {{ 'users.table.column.lastName' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="lastName" id="lastName" name="lastName" type="text"/>
     </div>
-  </mat-card-actions>
-</mat-card>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="firstName">
+      {{ 'users.table.column.firstName' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="firstName" id="firstName" name="firstName" type="text"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="email">
+      {{ 'users.table.column.email' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="email" id="email" name="email" type="email"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="phoneNumber">
+      {{ 'users.table.column.phoneNumber' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="phoneNumber" id="phoneNumber" name="phoneNumber" type="text"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="district">
+      {{ 'users.table.column.district' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="district" id="district" name="district" type="text"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="organisation">
+      {{ 'users.table.column.organisation' | translate }}
+    </label>
+    <div class="col-md-10">
+      <input class="form-control" formControlName="organisation" id="organisation" name="organisation" type="text"/>
+    </div>
+  </div>
+
+  <div class="row justify-content-end">
+    <button (click)="onCancel()" class="btn btn-secondary mt-4" type="button">
+      {{"button.cancel" | translate}}
+    </button>
+    <button (click)="onSave()" class="btn btn-success mt-4" type="button">
+      {{ 'button.save' | translate }}
+    </button>
+  </div>
+</form>

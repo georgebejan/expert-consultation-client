@@ -1,0 +1,8 @@
+@import "variables.scss";
+
+.auth-header {
+  height: $lc-header-height;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

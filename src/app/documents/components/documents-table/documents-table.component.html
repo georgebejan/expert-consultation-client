@@ -1,56 +1,22 @@
-<div class="mat-elevation-z8 table-wrapper">
-  <mat-table #table [dataSource]="documents" fxFlex>
-
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>
-        {{'documents.table.column.name' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let document">
-        <mat-icon class="document-item-arrow">play_arrow</mat-icon>
-        {{ document.documentTitle }}
-      </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="date">
-      <mat-header-cell *matHeaderCellDef>
-        {{'documents.table.column.date' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let document">{{ document.dateOfDevelopment | date}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef>
-        {{'documents.table.column.type' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let document">{{ document.documentType }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="initiator">
-      <mat-header-cell *matHeaderCellDef>
-        {{'documents.table.column.initiator' | translate}}
-      </mat-header-cell>
-      <mat-cell *matCellDef="let document">{{ document.documentInitializer }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let document">
-        <span class="document-item-status">TEST</span>
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="tableConfig.displayedColumns"></mat-header-row>
-    <mat-row class="document-row"
-             (click)="rowClick.emit(document.id)"
-             *matRowDef="let row; let document; columns: tableConfig.displayedColumns;"></mat-row>
-
-  </mat-table>
-  <div class="table-footer">
-    <mat-paginator #paginator
-                   [hidePageSize]="true"
-                   [length]="pageData.totalElements"
-                   [pageIndex]="pageData.pageable.pageNumber"
-                   [pageSize]="pageData.pageable.pageSize"
-                   [showFirstLastButtons]="true"></mat-paginator>
-  </div>
-</div>
+<table class="table align-items-center table-flush">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">{{'documents.table.column.name' | translate}}</th>
+    <th scope="col">{{'documents.table.column.date' | translate}}</th>
+    <th scope="col">{{'documents.table.column.type' | translate}}</th>
+    <th scope="col">{{'documents.table.column.initiator' | translate}}</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody class="list">
+  <tr *ngFor="let document of documents">
+    <td><i class="fa fa-angle-right"></i></td>
+    <td (click)="onRowClick(document.id)">{{ document.documentTitle }}</td>
+    <td (click)="onRowClick(document.id)">{{ document.dateOfDevelopment | date }}</td>
+    <td (click)="onRowClick(document.id)">{{ document.documentType }}</td>
+    <td (click)="onRowClick(document.id)">{{ document.documentInitializer }}</td>
+    <td>TEST</td>
+  </tr>
+  </tbody>
+</table>

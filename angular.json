@@ -23,7 +23,8 @@
             "polyfills": "src/polyfills.ts",
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/sass"
+                "src/sass",
+                "src/assets/scss"
               ]
             },
             "tsConfig": "tsconfig.app.json",
@@ -33,12 +34,26 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/fullcalendar/dist/fullcalendar.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "node_modules/mobius1-selectr/dist/selectr.min.css",
+              "node_modules/@swimlane/ngx-datatable/index.css",
+              "node_modules/@swimlane/ngx-datatable/assets/icons.css",
+              "node_modules/@swimlane/ngx-datatable/themes/bootstrap.css",
               "node_modules/flag-icon-css/css/flag-icon.min.css",
               "src/sass/styles.scss",
-              "src/sass/theme.scss"
+              "src/sass/theme.scss",
+              "src/assets/argon/vendor/nucleo/css/nucleo.css",
+              "src/assets/argon/scss/argon.scss"
             ],
             "scripts": [
-              "node_modules/hammerjs/hammer.min.js"
+              "node_modules/hammerjs/hammer.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/js-cookie/src/js.cookie.js",
+              "node_modules/jquery.scrollbar/jquery.scrollbar.min.js",
+              "node_modules/jquery-scroll-lock/dist/jquery-scrollLock.min.js"
             ]
           },
           "configurations": {
@@ -63,14 +78,6 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                }
-              ]
-            },
-            "staging": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.staging.ts"
                 }
               ]
             }
@@ -137,6 +144,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "expert-consultation-client"
 }

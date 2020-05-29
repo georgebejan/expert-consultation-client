@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// pages
 import { UsersComponent } from './containers';
 import { UsersGuard } from '@app/users/guards';
 import { AddUserComponent } from '@app/users/containers/add-user/add-user.component';

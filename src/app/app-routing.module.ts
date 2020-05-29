@@ -1,61 +1,54 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from '@app/shared/shared.module';
+import { AuthenticationLayoutComponent } from '@app/shared/containers/authentication-layout/authentication-layout.component';
+import { ApplicationLayoutComponent } from '@app/shared/containers/application-layout/application-layout.component';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    component: AuthenticationLayoutComponent,
     children: [
       {
         path: '',
-        redirectTo: '/home',
-        pathMatch: 'full',
-      },
+        loadChildren: './authentication/authentication.module#AuthenticationModule',
+      }
+    ]
+  },
+  {
+    path: '',
+    component: ApplicationLayoutComponent,
+    children: [
       {
-        path: 'home',
-        loadChildren: './home/home.module#HomeModule',
-      },
-      {
-        path: 'about',
-        loadChildren: './about/about.module#AboutModule',
-      },
-      {
-        path: 'in-consultation',
-        loadChildren: './in-consultation/in-consultation.module#InConsultationModule',
-      },
-      {
-        path: 'archive',
-        loadChildren: './archive/archive.module#ArchiveModule',
+        path: 'dashboard',
+        loadChildren: './dashboard/dashboard.module#DashboardModule',
       },
       {
         path: 'users',
         loadChildren: './users/users.module#UsersModule',
       },
       {
-        path: 'authentication',
-        loadChildren: './authentication/authentication.module#AuthenticationModule',
-      },
-      {
-        path: 'dictionary',
-        loadChildren: './dictionary/dictionary.module#DictionaryModule',
-      },
-      {
         path: 'documents',
         loadChildren: './documents/documents.module#DocumentsModule',
       },
-      {
-        path: 'help',
-        loadChildren: './help/help.module#HelpModule',
-      },
-      {
-        path: '**',
-        redirectTo: '/home',
-      }
-  ],
+    ]
   },
+  {
+    path: '**/**',
+    redirectTo: '/dashboard',
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    SharedModule,
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

@@ -1,3 +1,12 @@
-<section class="page-view" id="add-single-user-page">
-  <app-user-form (cancel)="onCancel()" (save)="onSave($event)" [user]="user" [error]="error$ | async"></app-user-form>
-</section>
+<div class="card">
+  <div class="card-header">
+    <h5 class="h3 mb-0">{{'user.form.header' | translate}}</h5>
+  </div>
+  <div class="card-body">
+    <app-user-form (cancel)="onCancel()"
+                   (save)="onSave($event)"
+                   [error]="error$ | async"
+                   [user]="user">
+    </app-user-form>
+  </div>
+</div>

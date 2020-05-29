@@ -1,14 +1,13 @@
-<section id="documents-page">
-  <div class="row documents-header-wrapper">
-    <app-table-sort (sortChange)="onSortChange($event)"
-                    [sortFields]="tableSortConfig"
-                    [tableContentType]="'documents.table.type'"
-                    [totalCount]="126">
-    </app-table-sort>
-    <app-add-button (buttonClick)="onAddButtonClick()" [text]="'documents.add.title'"></app-add-button>
+<div class="card">
+  <div class="card-header">
+    <h5 class="h3 mb-0">Documente</h5>
   </div>
-  <app-documents-table [documents]="documents$ | async"
-                       [pageData]="documentsPageData$ | async"
-                       (rowClick)="onRowClick($event)">
-  </app-documents-table>
-</section>
+  <div class="table-responsive">
+    <app-documents-table (rowClick)="onRowClick($event)"
+                         [documents]="documents$ | async">
+    </app-documents-table>
+  </div>
+  <div class="card-footer">
+    <app-pagination [pageData]="documentsPageData$ | async"></app-pagination>
+  </div>
+</div>

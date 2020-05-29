@@ -4,15 +4,35 @@
   "phoneNumber": "Număr de telefon incorect.",
   "validation.Resource.not.found": "Resursa nu a fost găsită.",
   "register": {
+    "form": {
+      "fullName": "Nume complet",
+      "username": "Nume utilizator",
+      "email": "Email",
+      "password": "Parolă"
+    },
+    "createButton": "Finalizează înregistrarea",
+    "header": "Înregistrează cont nou",
+    "toLoginMessage": "Ai deja cont?",
+    "toLoginAction": "Conecteză-te",
     "Success": "Utilizatorul a fost înregistrat cu succes.",
     "Duplicate.username": "Numele de utilizator este deja folosit.",
     "Duplicate.email": "Adresa de mail este deja folosită."
   },
+  "comments": {
+    "placeholder": "Scrie comentariul tău aici...",
+    "all": "Toate comentariile",
+    "number": "comentarii"
+  },
   "login": {
-    "label": {
-      "Username.or.email": "Numele de utilizator sau mailul",
-      "Password": "Parola"
+    "welcome": "Bine ai venit",
+    "enterAccount": "Intră în cont",
+    "placeholder": {
+      "email": "Email sau nume utilizator",
+      "password": "Parolă"
     },
+    "forgotPassword": "Ai uitat parola?",
+    "createAccount": "Creează cont nou",
+    "doLogin": "Login",
     "Bad.credentials": "Numele de utilizator, mailul sau parola nu sunt corecte.",
     "UsernameOrEmail.not.empty": "Numele de utilizator sau mailul este obligatoriu.",
     "Password.not.empty": "Parola este obligatorie."
@@ -47,11 +67,6 @@
       }
     }
   },
-  "comments": {
-    "placeholder": "Scrie comentariul tău aici...",
-    "all": "Toate comentariile",
-    "number": "comentarii"
-  },
   "users": {
     "table": {
       "column": {
@@ -84,6 +99,9 @@
     }
   },
   "user": {
+    "form": {
+      "header": "Adaugă membru nou"
+    },
     "save": {
       "duplicatedEmail": "Adresa de email este deja folosită."
     }
@@ -98,19 +116,23 @@
     }
   },
   "document": {
+    "header": "Adaugă document nou",
+    "details":{
+      "header": "Detalii document"
+    },
     "add": {
       "title": "Titlu document",
       "number": "Numărul documentului",
       "initiator": "Inițiator",
       "type": {
-        "name": "Tip de document",
+        "name": "Tip document",
         "OUG": "Ordonanță de urgență",
         "HG": "Hotărâre de guvern",
         "LEGE": "Lege"
       },
       "release": "Data eliberării",
       "receiving": "Data primirii",
-      "file": "Incarcă documentul"
+      "file": "Încarcă documentul"
     },
     "view": {
       "name": "Nume document",
@@ -146,12 +168,6 @@
       },
       "view": "Vezi document",
       "save": "Salvează"
-    },
-    "pdf": {
-      "already_exists": "Acest fișier PDF a fost încărcat deja.",
-      "upload": {
-        "failed": "Încărcarea fișierului PDF a eșuat."
-      }
     }
   },
   "table": {
@@ -167,5 +183,16 @@
     "consultation": "In consultare",
     "archive": "Arhiva",
     "members": "Membri"
+  },
+  "sideNav": {
+    "dashboard": "Dashboard",
+    "addDocument": "Adaugă document nou",
+    "documentArchive": "Arhivă documente",
+    "userManagement": "Management utilizatori",
+    "dictionary": "Dicționar",
+    "settings": "Setări"
+  },
+  "topNav": {
+    "logout": "Deconectare"
   }
 }

@@ -15,12 +15,14 @@ import { AuthenticationService } from '@app/core';
 export class LoginComponent implements OnInit {
   loginRequest: LoginRequest;
   returnUrl: string;
+  wasValidated = false;
+  isSubmitted = false;
+  generalErrors: I18nError[];
 
-  public logInForm = new FormGroup({
-    usernameOrEmail: new FormControl('', ),
+  logInForm = new FormGroup({
+    usernameOrEmail: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
-  generalErrors: I18nError[];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -44,37 +46,44 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    for (const control in this.logInForm.controls) {
-      if (this.logInForm.controls.hasOwnProperty(control)) {
-        this.logInForm.controls[control].markAsUntouched();
-        this.logInForm.controls[control].setErrors({});
-      }
+    this.isSubmitted = true;
+    if (this.logInForm.invalid) {
+      return;
     }
 
     this.authenticationApiService.login(this.loginRequest)
-      .subscribe({
-        next: login => this.router.navigate([this.returnUrl]),
-        error: errors => {
-          this.generalErrors = Tools.safeGet(() => errors.error.i18nErrors);
-          const i18nFieldErrors: Map<string, I18nError> = Tools.safeGet(() => errors.error.i18nFieldErrors);
-          if (!i18nFieldErrors) {
-            return;
-          }
-          Object.keys(i18nFieldErrors).forEach((field: string) => {
-            const control: AbstractControl = Tools.safeGet(() => this.logInForm.controls[field]);
-            if (!control) {
+        .subscribe({
+          next: login => this.router.navigate([this.returnUrl]),
+          error: errors => {
+            this.wasValidated = true;
+            this.generalErrors = Tools.safeGet(() => errors.error.i18nErrors);
+            const i18nFieldErrors: Map<string, I18nError> = Tools.safeGet(() => errors.error.i18nFieldErrors);
+            if (!i18nFieldErrors) {
               return;
             }
-            control.markAsTouched();
-            control.setErrors({
-              [i18nFieldErrors[field].i18nErrorKey]: i18nFieldErrors[field].i18nErrorArguments
+            Object.keys(i18nFieldErrors).forEach((field: string) => {
+              const control: AbstractControl = Tools.safeGet(() => this.logInForm.controls[field]);
+              if (!control) {
+                return;
+              }
+              control.markAsTouched();
+              control.setErrors({
+                [i18nFieldErrors[field].i18nErrorKey]: i18nFieldErrors[field].i18nErrorArguments
+              });
             });
-          });
-        }});
+          }
+        });
   }
 
-  signUp() {
-    this.router.navigate(['authentication/register']);
+  hasErrors(control: AbstractControl) {
+    return this.isSubmitted && control.errors;
   }
 
+  isValidClass(control: AbstractControl) {
+    if (this.isSubmitted) {
+      return control.errors ? 'is-invalid' : 'is-valid';
+    }
+
+    return '';
+  }
 }

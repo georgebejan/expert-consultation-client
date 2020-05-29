@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.authService.hasExpired.subscribe((expired) => {
       if (expired) {
         this.authService.removeAuthenticationData();
-        this.router.navigate(['/authentication/login']);
+        this.router.navigate(['/login']);
       }
     }));
   }

@@ -1,0 +1,32 @@
+<div class="row mb-2">
+  <div class="col-md-2 text-muted">
+    {{ 'document.add.number' | translate }}
+  </div>
+  <div class="col-md-10">
+    <span>{{metadata.documentNumber}}</span>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col-md-2 text-muted">
+    {{ 'document.add.type.name' | translate }}
+  </div>
+  <div class="col-md-10">
+    <span>{{metadata.documentType}}</span>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col-md-2 text-muted">
+    {{ 'document.add.initiator' | translate }}
+  </div>
+  <div class="col-md-10">
+    <span>{{metadata.documentInitializer}}</span>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col-md-2 text-muted">
+    {{ 'document.add.receiving' | translate }}
+  </div>
+  <div class="col-md-10">
+    <span>{{metadata.dateOfReceipt | date}}</span>
+  </div>
+</div>

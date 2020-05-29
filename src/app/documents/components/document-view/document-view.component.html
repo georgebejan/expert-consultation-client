@@ -1,48 +1,31 @@
-<div *ngIf="document;" class="document-view-container">
-  <div class="row">
-    <div class="document-empty-region column"></div>
-    <div class="document-header-content column">
-      <div class="row search-content-wrapper">
-        <input #searchContent class="search-content mat-elevation-z2" placeholder="{{'document.view.search' | translate}}" type="text">
-      </div>
-      <div class="row">
-        <span class="document-title">{{documentMetadata.documentTitle}}</span>
-      </div>
-      <div class="row">
-        <div class="document-items column">
-          <div class="row">
-            <div class="column">{{'document.view.initiator' | translate | uppercase}}</div>
-            <div class="column">{{documentMetadata.documentInitializer}}</div>
-          </div>
-          <div class="row">
-            <div class="column">{{'document.view.date' | translate | uppercase}}</div>
-            <div class="column">{{documentMetadata.dateOfDevelopment | date}}</div>
-          </div>
-          <div class="row">
-            <div class="column">{{'document.view.type' | translate | uppercase}}</div>
-            <div class="column">{{documentMetadata.documentType}}</div>
-          </div>
-          <div class="row">
-            <div class="column">{{'document.view.status' | translate | uppercase}}</div>
-            <div class="column"><span class="document-item-status">TEST</span></div>
-          </div>
-        </div>
-        <div class="column download-button-wrapper">
-          <button mat-button>{{'document.view.download' | translate}}</button>
-        </div>
-      </div>
+<div *ngIf="document">
+  <h5 class="h2 mb-3">{{documentMetadata.documentTitle}}</h5>
+  <div class="card">
+    <div class="card-header">
+      {{'document.details.header' | translate}}
+    </div>
+    <div class="card-body">
+      <app-document-metadata [metadata]="documentMetadata"></app-document-metadata>
     </div>
   </div>
   <div class="row">
-    <div class="document-view-menu column">
-      <app-document-menu [documentNodes]="documentNode.children"></app-document-menu>
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-body">
+          <app-document-menu [documentNodes]="documentNode.children"></app-document-menu>
+        </div>
+      </div>
     </div>
-    <div class="document-view-content column">
-      <h2>{{documentNode.title}}</h2>
-      <p>{{documentNode.content}}</p>
-      <app-document-content [documentNodes]="documentNode.children"
-                            [addCommentModeForNode]="addCommentModeForNode"
-                            (toggleCommentAdding)="clickedAddComment($event)"></app-document-content>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h2>{{documentNode.title}}</h2>
+          <p>{{documentNode.content}}</p>
+          <app-document-content [documentNodes]="documentNode.children"
+                                [addCommentModeForNode]="addCommentModeForNode"
+                                (toggleCommentAdding)="clickedAddComment($event)"></app-document-content>
+        </div>
+      </div>
     </div>
   </div>
 </div>

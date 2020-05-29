@@ -1,0 +1,19 @@
+@import "variables";
+
+.sidenav-margin {
+  margin-top: $lc-header-height;
+}
+
+.active {
+  a {
+    i {
+      color: $lc-blue;
+    }
+  }
+}
+
+a {
+  i {
+    color: $lc-teal;
+  }
+}

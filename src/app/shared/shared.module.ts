@@ -6,8 +6,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
-import {TranslateModule} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import * as fromComponents from './components';
+import * as fromContainers from './containers';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 const modules = [
   CommonModule,
@@ -23,13 +26,20 @@ const modules = [
 @NgModule({
   declarations: [
     ...fromComponents.components,
+    ...fromContainers.components,
   ],
   imports: [
+    BsDatepickerModule.forRoot(),
+    BsDropdownModule.forRoot(),
     modules,
   ],
   exports: [
     ...fromComponents.components,
+    ...fromContainers.components,
     modules,
+    BsDatepickerModule,
+    BsDropdownModule,
   ],
 })
-export class SharedModule {}
+export class SharedModule {
+}

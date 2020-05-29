@@ -12,13 +12,7 @@ export class DocumentsTableComponent extends BaseComponent {
   @Input() pageData: PageData;
   @Output() rowClick: EventEmitter<string> = new EventEmitter<string>();
 
-  public tableConfig = {
-    displayedColumns: [
-      'name',
-      'date',
-      'type',
-      'initiator',
-      'status'
-    ]
-  };
+  onRowClick(documentId: string) {
+    this.rowClick.emit(documentId);
+  }
 }

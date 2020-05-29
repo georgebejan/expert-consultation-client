@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '@app/core/store';
+import { Router } from '@angular/router';
+import { Page, User } from '@app/core';
 import { BaseComponent } from '@app/shared/components/base-component';
 import { takeUntil } from 'rxjs/operators';
 

@@ -1,0 +1,26 @@
+<div class="row justify-content-between">
+  <div>
+  </div>
+  <div>
+    <nav aria-label="pagination">
+      <ul class="pagination">
+        <li [class.d-none]="currentPage === 1" class="page-item">
+          <a (click)="selectPage(currentPage - 1)" aria-label="previous" class="page-link">
+            <i class="fa fa-angle-left"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li *ngFor="let pageNumber of pageNumberArray" [class.active]="currentPage === pageNumber + 1"
+            class="page-item">
+          <a (click)="selectPage(pageNumber + 1)" class="page-link">{{pageNumber + 1}}</a>
+        </li>
+        <li [class.d-none]="currentPage === pageData.totalPages" class="page-item">
+          <a (click)="selectPage(currentPage + 1)" aria-label="next" class="page-link">
+            <i class="fa fa-angle-right"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

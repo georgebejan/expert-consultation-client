@@ -3,7 +3,7 @@ import { RegisterComponent } from './register/register.component';
 
 export const components: any[] = [
   LoginComponent,
-  RegisterComponent
+  RegisterComponent,
 ];
 
 export * from './login/login.component';

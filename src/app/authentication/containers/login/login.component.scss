@@ -1,10 +1,10 @@
-@import "mixins.scss";
 @import "variables.scss";
 
-#login {
-  height: calc(100% - #{$legal-consult-header-height});
 
-  form {
-    width: 30%;
-  }
+.bg-gradient-auth-top {
+  background: linear-gradient(90deg, $lc-login-top-gradient-start 0%, $lc-login-top-gradient-end 100%);
+}
+
+.login-header {
+  height: $lc-header-height;
 }

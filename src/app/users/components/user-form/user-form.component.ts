@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '@app/core';
 import { Error } from '@app/core/models/error.model';
-import 'rxjs-compat/add/observable/of';
 
 @Component({
   selector: 'app-user-form',
@@ -10,7 +9,6 @@ import 'rxjs-compat/add/observable/of';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit, OnChanges {
-
   @Input()
   public user: User;
   @Input()
@@ -65,6 +63,10 @@ export class UserFormComponent implements OnInit, OnChanges {
     return this.userForm.controls[field];
   }
 
+  public onCancel() {
+    this.cancel.emit();
+  }
+
   private generateError(field) {
     const errorKey = {};
     errorKey[this.getErrorKey(field)] = true;
@@ -75,9 +77,5 @@ export class UserFormComponent implements OnInit, OnChanges {
     if (this.error[field]) {
       return this.error[field]['i18nErrorKey'];
     }
-  }
-
-  public onCancel() {
-    this.cancel.emit();
   }
 }

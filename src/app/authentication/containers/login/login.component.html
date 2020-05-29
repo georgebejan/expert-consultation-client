@@ -1,51 +1,93 @@
-<section id="login" fxLayout="column" fxLayoutAlign="center center">
-  <form [formGroup]="logInForm" fxLayout="column">
-    <mat-form-field>
-      <input
-        matInput
-        #usernameOrEmail
-        name="usernameOrEmail"
-        maxlength="40"
-        placeholder="{{'login.label.Username.or.email' | translate}}"
-        required
-        formControlName="usernameOrEmail"
-      />
-      <mat-hint align="end">{{ usernameOrEmail.value.length }} / 40</mat-hint>
-      <ng-container *ngIf="logInForm.controls.usernameOrEmail.errors">
-        <mat-error *ngFor="let error of logInForm.controls.usernameOrEmail.errors | keyvalue">
-          {{error.key | translate}}
-        </mat-error>
-      </ng-container>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input
-        matInput
-        #password
-        name="password"
-        maxlength="100"
-        placeholder="{{'login.label.Password' | translate}}"
-        required
-        formControlName="password"
-        type="password"
-      />
-      <mat-hint align="end">{{ password.value.length }} / 100</mat-hint>
-      <ng-container *ngIf="logInForm.controls.password.errors">
-        <mat-error *ngFor="let error of logInForm.controls.password.errors | keyvalue">
-          {{error.key | translate : error.value}}
-        </mat-error>
-      </ng-container>
-    </mat-form-field>
-
-    <section class="buttons">
-      <button mat-raised-button [disabled]="!logInForm.valid" color="primary" (click)="onSubmit()">Log in</button>
-      <button mat-button (click)="signUp()">Sign up</button>
-    </section>
-
-  </form>
-  <ng-container *ngIf="generalErrors">
-    <mat-error *ngFor="let error of generalErrors">
-      {{error.i18nErrorKey | translate : error.i18nErrorArguments}}
-    </mat-error>
-  </ng-container>
-</section>
+<div class="main-content">
+  <div class="header bg-gradient-auth-top py-7">
+    <div class="container">
+      <div class="header-body text-center mb-7">
+        <div class="row justify-content-center">
+          <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+            <h1 class="text-white">{{'login.welcome' | translate}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="separator separator-bottom separator-skew zindex-100">
+      <svg preserveAspectRatio="none"
+           version="1.1"
+           viewBox="0 0 2560 100" x="0"
+           xmlns="http://www.w3.org/2000/svg"
+           y="0">
+        <polygon class="fill-default" points="3560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </div>
+  <div class="container mt--8 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7">
+        <div class="card bg-secondary border-0 mb-0">
+          <div class="card-body px-lg-5 py-lg-5">
+            <div class="text-muted text-center mt-2 mb-3">
+              <small>{{'login.enterAccount' | translate}}</small>
+            </div>
+            <ng-container *ngIf="generalErrors">
+              <div class="alert alert-danger">
+                <div *ngFor="let error of generalErrors">
+                  {{error.i18nErrorKey | translate : error.i18nErrorArguments}}
+                </div>
+              </div>
+            </ng-container>
+            <form [formGroup]="logInForm" [ngClass]="wasValidated ? 'wasValidated':''" novalidate>
+              <div class="form-group mb-3">
+                <div class="input-group input-group-merge">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                  </div>
+                  <input [ngClass]="isValidClass(logInForm.controls.usernameOrEmail)"
+                         class="form-control"
+                         formControlName="usernameOrEmail"
+                         name="usernameOrEmail" placeholder="{{'login.placeholder.email' | translate}}" required>
+                  <ng-container *ngIf="hasErrors(logInForm.controls.usernameOrEmail)">
+                    <div *ngFor="let error of logInForm.controls.usernameOrEmail.errors | keyvalue"
+                         class="invalid-feedback">
+                      {{error.key | translate}}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-merge">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <input [ngClass]="isValidClass(logInForm.controls.password)"
+                         class="form-control"
+                         formControlName="password" maxlength="100"
+                         name="password"
+                         placeholder="{{'login.placeholder.password' | translate}}" required
+                         type="password">
+                  <ng-container *ngIf="hasErrors(logInForm.controls.password)">
+                    <div *ngFor="let error of logInForm.controls.password.errors | keyvalue"
+                         class="invalid-feedback">
+                      {{error.key | translate}}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="text-center">
+                <button (click)="onSubmit()" class="btn btn-success my-4"
+                        type="button">{{'login.doLogin' | translate}}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-6">
+            <small class="text-light">{{'login.forgotPassword' | translate}}</small>
+          </div>
+          <div class="col-6 text-right">
+            <a class="text-light" routerLink="/register"><small>{{'login.createAccount' | translate}}</small></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
