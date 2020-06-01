@@ -1,18 +1,6 @@
-.menu-container {
-  padding-left: 15px;
-  color: blue;
-}
+@import "variables";
 
-.chapter {
-  padding-top: 10px;
-}
-
-.section {
-  padding-top: 5px;
-}
-
-.chapter:hover, .section:hover, .article:hover {
-  color: white;
+.document-menu-item {
   cursor: pointer;
+  color: $lc-blue;
 }
-

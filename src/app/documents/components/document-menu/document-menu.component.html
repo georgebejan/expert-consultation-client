@@ -1,26 +1,11 @@
 <ng-template [ngIf]="documentNodes.length > 0">
-  <div *ngFor="let documentNode of documentNodes" class="menu-container">
-    <div [ngSwitch]="documentNode.documentNodeType">
-      <div *ngSwitchCase="documentNodeTypeEnum.CHAPTER">
-        <div class="chapter" (click)="scroll(documentNode.id)">
-          {{'document.view.section.type.chapter' | translate }}
-          {{documentNode.identifier}}
-        </div>
-        <app-document-menu [documentNodes]="documentNode.children"></app-document-menu>
-      </div>
-      <div *ngSwitchCase="documentNodeTypeEnum.SECTION">
-        <div class="section" (click)="scroll(documentNode.id)">
-          {{'document.view.section.type.section' | translate }}
-          {{documentNode.identifier}}
-        </div>
-        <app-document-menu [documentNodes]="documentNode.children"></app-document-menu>
-      </div>
-      <div *ngSwitchCase="documentNodeTypeEnum.ARTICLE">
-        <div class="article" (click)="scroll(documentNode.id)">
-          {{'document.view.section.type.article' | translate}}
-          {{documentNode.identifier}}
-        </div>
-      </div>
+  <div *ngFor="let documentNode of documentNodes">
+    <div (click)="scroll(documentNode.id)" *ngIf="documentNode.displayedInMenu()" class="document-menu-item opacity-5">
+      {{'document.view.section.type.' + documentNode.documentNodeType.toLowerCase() | translate }}
+      {{documentNode.identifier}}
+    </div>
+    <div class="ml-3">
+      <app-document-menu [documentNodes]="documentNode.children"></app-document-menu>
     </div>
   </div>
 </ng-template>
