@@ -1,6 +1,6 @@
 <div *ngIf="document">
   <h5 class="h2 mb-3">{{documentMetadata.documentTitle}}</h5>
-  <div class="card">
+  <div class="card shadow mb-5">
     <div class="card-header">
       {{'document.details.header' | translate}}
     </div>
@@ -10,20 +10,20 @@
   </div>
   <div class="row">
     <div class="col-md-2">
-      <div class="card">
+      <div class="card shadow">
         <div class="card-body">
           <app-document-menu [documentNodes]="documentNode.children"></app-document-menu>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card">
+      <div class="card shadow">
         <div class="card-body">
           <h2>{{documentNode.title}}</h2>
           <p>{{documentNode.content}}</p>
-          <app-document-content [documentNodes]="documentNode.children"
+          <app-document-content (toggleCommentAdding)="clickedAddComment($event)"
                                 [addCommentModeForNode]="addCommentModeForNode"
-                                (toggleCommentAdding)="clickedAddComment($event)"></app-document-content>
+                                [documentNodes]="documentNode.children"></app-document-content>
         </div>
       </div>
     </div>

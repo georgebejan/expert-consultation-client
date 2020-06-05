@@ -1,117 +1,114 @@
-<div class="main-content mw-100">
-  <!-- Header -->
-  <div class="header bg-gradient-auth-top py-7">
-    <div class="container">
-      <div class="header-body text-center mb-7">
-        <div class="row justify-content-center">
-          <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-            <h1 class="text-white">{{'register.header' | translate}}</h1>
-          </div>
+<div class="header bg-gradient-auth-top py-7">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+          <h1 class="text-white">{{'register.header' | translate}}</h1>
         </div>
       </div>
     </div>
-    <div class="separator separator-bottom separator-skew zindex-100">
-      <svg preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" xmlns="http://www.w3.org/2000/svg"
-           y="0">
-        <polygon class="fill-default" points="3560 0 2560 100 0 100"></polygon>
-      </svg>
-    </div>
   </div>
-  <div class="container mt--8 pb-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-8">
-        <div class="card bg-secondary border-0">
-          <div class="card-body px-lg-5 py-lg-5">
-            <div class="text-center text-muted mb-4">
-              <small>Sign up</small>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" xmlns="http://www.w3.org/2000/svg"
+         y="0">
+      <polygon class="fill-default" points="3560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<div class="container mt--8 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-secondary border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <small>Sign up</small>
+          </div>
+          <ng-container *ngIf="generalErrors">
+            <div class="alert alert-danger">
+              <div *ngFor="let error of generalErrors">
+                {{error.i18nErrorKey | translate : error.i18nErrorArguments}}
+              </div>
             </div>
-            <ng-container *ngIf="generalErrors">
-              <div class="alert alert-danger">
-                <div *ngFor="let error of generalErrors">
-                  {{error.i18nErrorKey | translate : error.i18nErrorArguments}}
+          </ng-container>
+          <form [formGroup]="signUpForm" [ngClass]="wasValidated ? 'wasValidated':''" novalidate>
+            <div class="form-group">
+              <div class="input-group input-group-alternative  mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-              </div>
-            </ng-container>
-            <form [formGroup]="signUpForm" [ngClass]="wasValidated ? 'wasValidated':''" novalidate>
-              <div class="form-group">
-                <div class="input-group input-group-merge  mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                <input [ngClass]="isValidClass(signUpForm.controls.name)"
+                       class="form-control" formControlName="name" name="name"
+                       placeholder="{{'register.form.fullName' | translate}}" required type="text">
+                <ng-container *ngIf="hasErrors(signUpForm.controls.name)">
+                  <div *ngFor="let error of signUpForm.controls.name.errors | keyvalue"
+                       class="invalid-feedback">
+                    {{error.key | translate}}
                   </div>
-                  <input [ngClass]="isValidClass(signUpForm.controls.name)"
-                         class="form-control" formControlName="name" name="name"
-                         placeholder="{{'register.form.fullName' | translate}}" required type="text">
-                  <ng-container *ngIf="hasErrors(signUpForm.controls.name)">
-                    <div *ngFor="let error of signUpForm.controls.name.errors | keyvalue"
-                         class="invalid-feedback">
-                      {{error.key | translate}}
-                    </div>
-                  </ng-container>
-                </div>
+                </ng-container>
               </div>
-              <div class="form-group">
-                <div class="input-group input-group-merge  mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                </div>
+                <input [ngClass]="isValidClass(signUpForm.controls.username)"
+                       class="form-control" formControlName="username" name="username"
+                       placeholder="{{'register.form.username' | translate}}" required type="text">
+                <ng-container *ngIf="hasErrors(signUpForm.controls.username)">
+                  <div *ngFor="let error of signUpForm.controls.username.errors | keyvalue"
+                       class="invalid-feedback">
+                    {{error.key | translate}}
                   </div>
-                  <input [ngClass]="isValidClass(signUpForm.controls.username)"
-                         class="form-control" formControlName="username" name="username"
-                         placeholder="{{'register.form.username' | translate}}" required type="text">
-                  <ng-container *ngIf="hasErrors(signUpForm.controls.username)">
-                    <div *ngFor="let error of signUpForm.controls.username.errors | keyvalue"
-                         class="invalid-feedback">
-                      {{error.key | translate}}
-                    </div>
-                  </ng-container>
-                </div>
+                </ng-container>
               </div>
-              <div class="form-group">
-                <div class="input-group input-group-merge  mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative  mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                </div>
+                <input [ngClass]="isValidClass(signUpForm.controls.email)"
+                       class="form-control" formControlName="email" name="email"
+                       placeholder="{{'register.form.email' | translate}}" required type="email">
+                <ng-container *ngIf="hasErrors(signUpForm.controls.email)">
+                  <div *ngFor="let error of signUpForm.controls.email.errors | keyvalue"
+                       class="invalid-feedback">
+                    {{error.key | translate}}
                   </div>
-                  <input [ngClass]="isValidClass(signUpForm.controls.email)"
-                         class="form-control" formControlName="email" name="email"
-                         placeholder="{{'register.form.email' | translate}}" required type="email">
-                  <ng-container *ngIf="hasErrors(signUpForm.controls.email)">
-                    <div *ngFor="let error of signUpForm.controls.email.errors | keyvalue"
-                         class="invalid-feedback">
-                      {{error.key | translate}}
-                    </div>
-                  </ng-container>
-                </div>
+                </ng-container>
               </div>
-              <div class="form-group">
-                <div class="input-group input-group-merge">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                <input [ngClass]="isValidClass(signUpForm.controls.password)"
+                       class="form-control" formControlName="password" name="password"
+                       placeholder="{{'register.form.password' | translate}}" required type="password">
+                <ng-container *ngIf="hasErrors(signUpForm.controls.password)">
+                  <div *ngFor="let error of signUpForm.controls.password.errors | keyvalue"
+                       class="invalid-feedback">
+                    {{error.key | translate}}
                   </div>
-                  <input [ngClass]="isValidClass(signUpForm.controls.password)"
-                         class="form-control" formControlName="password" name="password"
-                         placeholder="{{'register.form.password' | translate}}" required type="password">
-                  <ng-container *ngIf="hasErrors(signUpForm.controls.password)">
-                    <div *ngFor="let error of signUpForm.controls.password.errors | keyvalue"
-                         class="invalid-feedback">
-                      {{error.key | translate}}
-                    </div>
-                  </ng-container>
-                </div>
+                </ng-container>
               </div>
-              <div class="text-center">
-                <button (click)="onSubmit()" class="btn btn-success mt-4"
-                        type="button">{{'register.createButton' | translate}}
-                </button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="text-center">
+              <button (click)="onSubmit()" class="btn btn-success mt-4"
+                      type="button">{{'register.createButton' | translate}}
+              </button>
+            </div>
+          </form>
         </div>
-        <div class="row mt-3">
-          <div class="col">
-            <small>{{'register.toLoginMessage' | translate}} &nbsp;</small>
-            <a class="text-light" routerLink="/login">
-              <small>{{'register.toLoginAction' | translate}}</small>
-            </a>
-          </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <small>{{'register.toLoginMessage' | translate}} &nbsp;</small>
+          <a class="text-light" routerLink="/login">
+            <small>{{'register.toLoginAction' | translate}}</small>
+          </a>
         </div>
       </div>
     </div>

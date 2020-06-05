@@ -1,5 +1,5 @@
-<div class="app-header">
-  <nav class="navbar navbar-top navbar-expand navbar-dark border-bottom">
+<div class="app-header d-none d-sm-block">
+  <nav class="navbar navbar-top navbar-expand navbar-dark">
     <div class="container-fluid">
       <div class="collapse navbar-collapse justify-content-between row mr-0" id="navbarSupportedContent">
         <ul class="navbar-nav align-items-center">
@@ -15,15 +15,14 @@
           </li>
         </ul>
         <ul class="navbar-nav align-items-center">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
             <div class="media align-items-center">
-              <a aria-expanded="false" aria-haspopup="true" class="nav-link pr-0" data-toggle="dropdown"
-                 href="#" role="button">
+              <a class="pointer" ngbDropdownToggle role="button">
                 <div class="media-body ml-2 d-lg-block">
                   <span class="mb-0 text-sm font-weight-bold text-black-50">John Snow</span>
                 </div>
               </a>
-              <div class="dropdown-menu dropdown-menu-right ">
+              <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
                 <a (click)="logout()" class="dropdown-item pointer">
                   <i class="ni ni-user-run"></i>
                   <span>{{'topNav.logout' | translate}}</span>

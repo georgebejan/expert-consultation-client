@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -9,8 +9,6 @@ import { MaterialModule } from '../material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import * as fromComponents from './components';
 import * as fromContainers from './containers';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import * as fromGuards from './guards';
 
 const modules = [
@@ -22,6 +20,7 @@ const modules = [
   ReactiveFormsModule,
   RouterModule,
   TranslateModule,
+  NgbModule,
 ];
 
 @NgModule({
@@ -30,16 +29,12 @@ const modules = [
     ...fromContainers.components,
   ],
   imports: [
-    BsDatepickerModule.forRoot(),
-    BsDropdownModule.forRoot(),
     modules,
   ],
   exports: [
     ...fromComponents.components,
     ...fromContainers.components,
     modules,
-    BsDatepickerModule,
-    BsDropdownModule,
   ],
   providers: [
     ...fromGuards.guards,

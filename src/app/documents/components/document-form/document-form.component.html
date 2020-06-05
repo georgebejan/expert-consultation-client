@@ -3,7 +3,7 @@
     <label class="col-md-2 col-form-label form-control-label" for="documentTitle">
       {{ 'document.add.title' | translate }}
     </label>
-    <div class="col-md-10">
+    <div class="col-md-10 input-group input-group-alternative">
       <input class="form-control" formControlName="documentTitle" id="documentTitle" name="documentTitle" type="text"/>
     </div>
   </div>
@@ -11,7 +11,7 @@
     <label class="col-md-2 col-form-label form-control-label" for="documentNumber">
       {{ 'document.add.number' | translate }}
     </label>
-    <div class="col-md-10">
+    <div class="col-md-10 input-group input-group-alternative">
       <input class="form-control" formControlName="documentNumber" id="documentNumber" name="documentNumber"/>
     </div>
   </div>
@@ -19,7 +19,7 @@
     <label class="col-md-2 col-form-label form-control-label" for="documentInitializer">
       {{ 'document.add.initiator' | translate }}
     </label>
-    <div class="col-md-10">
+    <div class="col-md-10 input-group input-group-alternative">
       <input class="form-control" formControlName="documentInitializer" id="documentInitializer"
              name="documentInitializer"/>
     </div>
@@ -28,7 +28,7 @@
     <label class="col-md-2 col-form-label form-control-label" for="documentType">
       {{ 'document.add.type.name' | translate }}
     </label>
-    <div class="col-md-10">
+    <div class="col-md-10 input-group input-group-alternative">
       <select class="form-control" formControlName="documentType" id="documentType" name="documentType">
         <option *ngFor="let type of documentTypeKeys()" [value]="type">
           {{ 'document.add.type.' + type | translate }}
@@ -40,20 +40,12 @@
     <label class="col-md-2 col-form-label form-control-label" for="dateOfDevelopment">
       {{ 'document.add.release' | translate }}
     </label>
-    <div class="col-md-10">
-      <div class="input-group input-group-merge">
-        <input [bsConfig]="{ isAnimated: true, adaptivePosition: true, containerClass: 'theme-default' }"
-               bsDatepicker
-               class="form-control"
-               formControlName="dateOfDevelopment"
-               id="dateOfDevelopment"
-               name="dateOfDevelopment"
-               type="text">
-        <div class="input-group-prepend input-icon">
-          <span class="input-group-text">
-            <i class="ni ni-calendar-grid-58"></i>
-          </span>
-        </div>
+    <div class="col-md-10 input-group input-group-alternative">
+      <input #dd="ngbDatepicker" (click)="dd.toggle()" class="form-control datepicker"
+             formControlName="dateOfDevelopment" id="dateOfDevelopment" name="dateOfDevelopment" name="dp"
+             ngbDatepicker type="text"/>
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
       </div>
     </div>
   </div>
@@ -61,20 +53,12 @@
     <label class="col-md-2 col-form-label form-control-label" for="dateOfReceipt">
       {{ 'document.add.receiving' | translate }}
     </label>
-    <div class="col-md-10">
-      <div class="input-group input-group-merge">
-        <input [bsConfig]="{ isAnimated: true, adaptivePosition: true, containerClass: 'theme-default' }"
-               bsDatepicker
-               class="form-control"
-               formControlName="dateOfReceipt"
-               id="dateOfReceipt"
-               name="dateOfReceipt"
-               type="text">
-        <div class="input-group-prepend input-icon">
-          <span class="input-group-text">
-            <i class="ni ni-calendar-grid-58"></i>
-          </span>
-        </div>
+    <div class="col-md-10 input-group input-group-alternative">
+      <input #dr="ngbDatepicker" (click)="dr.toggle()" class="form-control datepicker"
+             formControlName="dateOfReceipt" id="dateOfReceipt" name="dateOfReceipt" name="dp"
+             ngbDatepicker type="text"/>
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
       </div>
     </div>
   </div>

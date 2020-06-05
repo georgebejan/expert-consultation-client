@@ -1,77 +1,54 @@
-<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white sidenav-margin"
-     id="sidenav-main">
-  <div class="scroll-wrapper scrollbar-inner">
-    <div class="scrollbar-inner scroll-content scroll-scrollx_visible">
-      <div class="sidenav-header d-flex align-items-center">
-        <a class="navbar-brand" routerLink="/">
-          <img alt="..." class="navbar-brand-img" src="assets/img/logo.png">
-        </a>
-        <div class="ml-auto">
-          <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
-            <div class="sidenav-toggler-inner">
-              <i class="sidenav-toggler-line"></i>
-              <i class="sidenav-toggler-line"></i>
-              <i class="sidenav-toggler-line"></i>
+<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white" id="sidenav-main">
+  <div class="container-fluid">
+    <button (click)="isCollapsed=!isCollapsed" aria-controls="sidenav-collapse-main" class="navbar-toggler"
+            type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a [routerLink]="['/dashboard']" class="navbar-brand pt-0 d-none d-sm-block" routerLinkActive="active">
+      <img alt="..." class="navbar-brand-img" src="assets/img/logo.png">
+    </a>
+    <ul class="nav align-items-center d-md-none">
+      <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+        <div class="media align-items-center">
+          <a class="pointer" ngbDropdownToggle role="button">
+            <div class="media-body ml-2 d-lg-block">
+              <span class="mb-0 text-sm font-weight-bold text-black-50">John Snow</span>
             </div>
+          </a>
+          <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+            <a (click)="logout()" class="dropdown-item pointer">
+              <i class="ni ni-user-run"></i>
+              <span>{{'topNav.logout' | translate}}</span>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="sidenav-collapse-main">
+      <div class="navbar-collapse-header d-md-none">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a [routerLink]="['/dashboard']" routerLinkActive="active">
+              <img alt="..." class="navbar-brand-img" src="assets/img/logo.png">
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button (click)="isCollapsed=!isCollapsed" class="navbar-toggler" type="button">
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
       </div>
-      <div class="navbar-inner">
-        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-          <ul class="navbar-nav">
-            <li [routerLinkActive]="['active']" class="nav-item">
-              <a class="nav-link" routerLink="/dashboard">
-                <i class="ni ni-shop"></i>
-                <span class="nav-link-text">{{'sideNav.dashboard' | translate}}</span>
-              </a>
-            </li>
-            <li [routerLinkActiveOptions]="{exact: true}" [routerLinkActive]="['active']" class="nav-item">
-              <a class="nav-link" routerLink="/documents/add">
-                <i class="ni ni-fat-add"></i>
-                <span class="nav-link-text">{{'sideNav.addDocument' | translate}}</span>
-              </a>
-            </li>
-            <li [routerLinkActiveOptions]="{exact: true}" [routerLinkActive]="['active']" class="nav-item">
-              <a class="nav-link" routerLink="/documents">
-                <i class="ni ni-single-copy-04 "></i>
-                <span class="nav-link-text">{{'sideNav.documentArchive' | translate}}</span>
-              </a>
-            </li>
-            <li [routerLinkActive]="['active']" class="nav-item">
-              <a class="nav-link" routerLink="/users">
-                <i class="ni ni-circle-08 "></i>
-                <span class="nav-link-text">{{'sideNav.userManagement' | translate}}</span>
-              </a>
-            </li>
-            <li [routerLinkActive]="['active']" class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="ni ni-books "></i>
-                <span class="nav-link-text">{{'sideNav.dictionary' | translate}}</span>
-              </a>
-            </li>
-            <li [routerLinkActive]="['active']" class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="ni ni-settings-gear-65 "></i>
-                <span class="nav-link-text">{{'sideNav.settings' | translate}}</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-element scroll-x">
-      <div class="scroll-element_outer">
-        <div class="scroll-element_size"></div>
-        <div class="scroll-element_track"></div>
-        <div class="scroll-bar" style="width: 0px; left: 0px;"></div>
-      </div>
-    </div>
-    <div class="scroll-element scroll-y scroll-scrollx_visible">
-      <div class="scroll-element_outer">
-        <div class="scroll-element_size"></div>
-        <div class="scroll-element_track"></div>
-        <div class="scroll-bar" style="height: 0px; top: 0px;"></div>
-      </div>
+      <ul class="navbar-nav">
+        <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+          <a [routerLinkActiveOptions]="menuItem.pathOptions" [routerLink]="[menuItem.path]" class="nav-link"
+             routerLinkActive="active">
+            <i class="ni {{menuItem.icon}}"></i>
+            {{menuItem.titleKey | translate }}
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

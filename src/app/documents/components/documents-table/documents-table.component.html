@@ -6,7 +6,6 @@
     <th scope="col">{{'documents.table.column.date' | translate}}</th>
     <th scope="col">{{'documents.table.column.type' | translate}}</th>
     <th scope="col">{{'documents.table.column.initiator' | translate}}</th>
-    <th scope="col"></th>
   </tr>
   </thead>
   <tbody class="list">
@@ -16,7 +15,6 @@
     <td (click)="onRowClick(document.id)">{{ document.dateOfDevelopment | date }}</td>
     <td (click)="onRowClick(document.id)">{{ document.documentType }}</td>
     <td (click)="onRowClick(document.id)">{{ document.documentInitializer }}</td>
-    <td>TEST</td>
   </tr>
   </tbody>
 </table>

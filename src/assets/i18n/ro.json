@@ -52,6 +52,7 @@
       "title": "Adaugă document"
     },
     "table": {
+      "title": "Documente",
       "type": "documente",
       "sort": {
         "year": "An",
@@ -69,6 +70,7 @@
   },
   "users": {
     "table": {
+      "title": "Membri",
       "column": {
         "firstName": "Prenume",
         "lastName": "Nume",
