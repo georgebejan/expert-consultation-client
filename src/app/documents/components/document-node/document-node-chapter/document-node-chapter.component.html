@@ -1,0 +1,8 @@
+<div [id]="chapter.id">
+  <strong>
+    {{'document.view.section.type.chapter' | translate | uppercase }}
+    {{chapter.identifier + ': ' + chapter.title}}
+  </strong>
+  <p>{{chapter.content}}</p>
+</div>
+<app-document-content [documentNodes]="chapter.children"></app-document-content>

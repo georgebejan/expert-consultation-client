@@ -1,0 +1,21 @@
+<div [class.bg-lighter]="isCollapsed" [class.p-2]="isCollapsed">
+  <div [id]="article.id">
+    <strong>
+      {{'document.view.section.type.article' | translate}}
+      {{article.identifier}}
+    </strong>
+    <p>{{article.content}}</p>
+  </div>
+  <app-document-content [documentNodes]="article.children"></app-document-content>
+  <div class="row justify-content-between mx-0 mt-2 mb-5">
+    <div>
+      <span (click)="expandComments()" class="comment-link">{{'button.add-comment' | translate}}</span>
+    </div>
+    <div>
+      <span (click)="expandComments()"
+            class="comment-link">{{article.numberOfComments}} {{'comments.number' | translate}}</span>
+    </div>
+  </div>
+  <app-comments (commentsCollapsed)="collapseComments()" *ngIf=isCollapsed [nodeId]="article.id">
+  </app-comments>
+</div>

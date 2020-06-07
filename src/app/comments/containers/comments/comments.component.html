@@ -1,0 +1,29 @@
+<div class=" card">
+  <div class=" card-header">
+    <h5 class=" h3 mb-0">{{'comments.all' | translate}}</h5>
+  </div>
+  <div class=" card-body p-0">
+    <div class=" list-group list-group-flush">
+      <a *ngFor="let comment of comments$ | async"
+         class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
+        <div class=" d-flex w-100 justify-content-between">
+          <div>
+            <div class="d-flex w-100 align-items-center">
+              <h5 class="mb-1">{{comment.user}}</h5>
+            </div>
+          </div>
+          <small> {{comment.lastEditDateTime | date}} </small></div>
+        <p class="text-sm mb-0">{{comment.text}}</p>
+      </a>
+      <div [id]="nodeId + '_new_comment'"
+           class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
+        <app-new-comment (commentAdded)="onCommentAdded($event)" [nodeId]="nodeId"></app-new-comment>
+      </div>
+    </div>
+  </div>
+  <div (click)="commentsCollapsed.emit()" class="card-footer p-0 pointer">
+    <div class="row justify-content-center">
+      <i class="ni ni-bold-up"></i>
+    </div>
+  </div>
+</div>

@@ -21,9 +21,8 @@
         <div class="card-body">
           <h2>{{documentNode.title}}</h2>
           <p>{{documentNode.content}}</p>
-          <app-document-content [documentNodes]="documentNode.children"
-                                [addCommentModeForNode]="addCommentModeForNode"
-                                (toggleCommentAdding)="clickedAddComment($event)"></app-document-content>
+          <app-document-content (toggleCommentAdding)="clickedAddComment($event)"
+                                [documentNodes]="documentNode.children"></app-document-content>
         </div>
       </div>
     </div>

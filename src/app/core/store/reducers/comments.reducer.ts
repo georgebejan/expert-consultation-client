@@ -97,5 +97,6 @@ export function reducer(state = initialState, action: fromComments.CommentsActio
   }
 }
 
-export const getCommentsEntitiesByDocumentNode = (state: CommentsState, nodeId: string) => state[nodeId].entities || [];
+export const getCommentsEntitiesByDocumentNode = (state: CommentsState, nodeId: string) =>
+    state[nodeId] && state[nodeId].entities ? state[nodeId].entities : [];
 export const getCommentsLoading = (state: CommentsState, nodeId: string) => state[nodeId].loading;

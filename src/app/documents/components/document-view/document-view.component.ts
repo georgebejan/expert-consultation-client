@@ -10,7 +10,6 @@ import { DocumentConsolidate, DocumentMetadata, DocumentNode } from '@app/core';
 })
 export class DocumentViewComponent extends BaseComponent implements OnInit {
   @Input() document: DocumentConsolidate;
-  @Input() addCommentModeForNode: Map<string, boolean>;
   @Output() toggleCommentAdding: EventEmitter<string> = new EventEmitter<string>();
   documentNode: DocumentNode;
   documentMetadata: DocumentMetadata;

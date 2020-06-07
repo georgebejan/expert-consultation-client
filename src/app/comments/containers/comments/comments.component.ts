@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as fromStore from '@app/core/store';
 import { CoreState } from '@app/core/store';
@@ -6,13 +6,14 @@ import { Observable } from 'rxjs';
 import { Comment } from '@app/core';
 
 @Component({
-  selector: 'app-node-comments',
-  templateUrl: './node-comments.component.html',
-  styleUrls: ['./node-comments.component.scss']
+  selector: 'app-comments',
+  templateUrl: './comments.component.html',
+  styleUrls: ['./comments.component.scss']
 })
-export class NodeCommentsComponent implements OnInit {
-
+export class CommentsComponent implements OnInit {
   @Input() public nodeId: string;
+  @Output() public commentsCollapsed: EventEmitter<void> = new EventEmitter<void>();
+
   public comments$: Observable<Comment[]>;
 
   constructor(private store: Store<CoreState>) {
@@ -22,4 +23,7 @@ export class NodeCommentsComponent implements OnInit {
     this.comments$ = this.store.pipe(select(fromStore.getCommentsEntitiesByNodeId(this.nodeId)));
   }
 
+  onCommentAdded(comment: string) {
+    this.store.dispatch(new fromStore.AddComment(this.nodeId, comment));
+  }
 }

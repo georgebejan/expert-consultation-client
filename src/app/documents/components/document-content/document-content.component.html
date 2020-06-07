@@ -1,59 +1,20 @@
 <ng-template [ngIf]="documentNodes.length > 0">
   <div *ngFor="let documentNode of documentNodes">
-
     <div [ngSwitch]="documentNode.documentNodeType">
       <div *ngSwitchCase="documentNodeTypeEnum.CHAPTER">
-        <div [id]="documentNode.id" class="chapter">
-          <b>
-            {{'document.view.section.type.chapter' | translate |uppercase }}
-            {{documentNode.identifier + ': ' + documentNode.title}}
-          </b>
-          <p>{{documentNode.content}}</p>
-        </div>
-        <app-document-content [documentNodes]="documentNode.children"
-                              [addCommentModeForNode]="addCommentModeForNode"
-                              (toggleCommentAdding)="clickedAddComment($event)">
-        </app-document-content>
+        <app-document-node-chapter [chapter]="documentNode"></app-document-node-chapter>
       </div>
       <div *ngSwitchCase=" documentNodeTypeEnum.SECTION">
-        <div [id]="documentNode.id">
-          <b>
-            {{'document.view.section.type.section' | translate |uppercase }}
-            {{documentNode.identifier + ': ' + documentNode.title}}
-          </b>
-          <p>{{documentNode.content}}</p>
-        </div>
-        <app-document-content [documentNodes]="documentNode.children"
-                              [addCommentModeForNode]="addCommentModeForNode"
-                              (toggleCommentAdding)="clickedAddComment($event)">
-        </app-document-content>
+        <app-document-node-section [section]="documentNode"></app-document-node-section>
       </div>
-      <div *ngSwitchCase=" documentNodeTypeEnum.ARTICLE" class="article"
-           [ngClass]="addCommentModeForNode.get(documentNode.id)?'comments-mode':''">
-        <div [id]="documentNode.id">
-          <strong>
-            {{'document.view.section.type.article' | translate}}
-            {{documentNode.identifier}}
-          </strong>
-          <p class="article">{{documentNode.content}}</p>
-          <div class="comment-row">
-            <a class="blue-link">{{documentNode.numberOfComments}} {{'comments.number'|translate}}</a>
-            <a (click)="clickedAddComment(documentNode.id)"
-               class="blue-link">{{'button.add-comment' | translate}}
-            </a>
-          </div>
-          <app-node-comments *ngIf="commentsEnabled(documentNode.id)"
-                             [nodeId]="documentNode.id"></app-node-comments>
-        </div>
-        <app-document-content [documentNodes]="documentNode.children"
-                              [addCommentModeForNode]="addCommentModeForNode"></app-document-content>
+      <div *ngSwitchCase=" documentNodeTypeEnum.ARTICLE">
+        <app-document-node-article [article]="documentNode"></app-document-node-article>
       </div>
       <div *ngSwitchCase="documentNodeTypeEnum.PARAGRAPH">
-        <p class="paragraph">{{'(' + documentNode.identifier + ')' + documentNode.content}}</p>
-        <app-document-content [documentNodes]="documentNode.children"></app-document-content>
+        <app-document-node-paragraph [paragraph]="documentNode"></app-document-node-paragraph>
       </div>
       <div *ngSwitchCase="documentNodeTypeEnum.ALIGNMENT">
-        <p class="alignment">{{documentNode.identifier + ')' + documentNode.content}}</p>
+        <app-document-node-alignment [alignment]="documentNode"></app-document-node-alignment>
       </div>
     </div>
   </div>

@@ -1,0 +1,8 @@
+<div [id]="section.id">
+  <strong>
+    {{'document.view.section.type.section' | translate | uppercase }}
+    {{section.identifier + ': ' + section.title}}
+  </strong>
+  <p>{{section.content}}</p>
+</div>
+<app-document-content [documentNodes]="section.children"></app-document-content>
