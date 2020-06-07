@@ -19,9 +19,12 @@
     "Duplicate.email": "Adresa de mail este deja folosită."
   },
   "comments": {
-    "placeholder": "Scrie comentariul tău aici...",
+    "placeholder": "Scrie comentariul tău aici",
     "all": "Toate comentariile",
-    "number": "comentarii"
+    "number": {
+      "plural": "comentarii",
+      "singular": "comentariu"
+    }
   },
   "login": {
     "welcome": "Bine ai venit",

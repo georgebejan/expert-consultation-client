@@ -1,4 +1,4 @@
-<div [class.bg-lighter]="isCollapsed" [class.p-2]="isCollapsed">
+<div [class.bg-lighter]="isExpanded" [class.p-2]="isExpanded">
   <div [id]="article.id">
     <strong>
       {{'document.view.section.type.article' | translate}}
@@ -12,10 +12,14 @@
       <span (click)="expandComments()" class="comment-link">{{'button.add-comment' | translate}}</span>
     </div>
     <div>
-      <span (click)="expandComments()"
-            class="comment-link">{{article.numberOfComments}} {{'comments.number' | translate}}</span>
+      <span (click)="expandComments()" *ngIf="article.numberOfComments != 1" class="comment-link">
+        {{article.numberOfComments}} {{'comments.number.plural' | translate}}
+      </span>
+      <span (click)="expandComments()" *ngIf="article.numberOfComments == 1" class="comment-link">
+        {{article.numberOfComments}} {{'comments.number.singular' | translate}}
+      </span>
     </div>
   </div>
-  <app-comments (commentsCollapsed)="collapseComments()" *ngIf=isCollapsed [nodeId]="article.id">
+  <app-comments (commentsCollapsed)="collapseComments()" *ngIf=isExpanded [nodeId]="article.id">
   </app-comments>
 </div>

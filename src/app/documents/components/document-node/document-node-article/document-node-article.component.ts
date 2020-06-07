@@ -10,23 +10,23 @@ import { DocumentBreakdownStore } from '@app/documents/containers/document-break
 export class DocumentNodeArticleComponent implements OnInit {
   @Input() article: DocumentNode;
 
-  public isCollapsed = true;
+  public isExpanded = true;
 
   constructor(private documentBreakdownStore: DocumentBreakdownStore) {
   }
 
   ngOnInit() {
-    this.isCollapsed = this.documentBreakdownStore.isCollapsed(this.article.id);
+    this.isExpanded = this.documentBreakdownStore.isExpanded(this.article.id);
   }
 
   expandComments() {
     this.documentBreakdownStore.expand(this.article.id);
-    this.isCollapsed = this.documentBreakdownStore.isCollapsed(this.article.id);
+    this.isExpanded = this.documentBreakdownStore.isExpanded(this.article.id);
   }
 
   collapseComments() {
     this.documentBreakdownStore.collapse(this.article.id);
-    this.isCollapsed = this.documentBreakdownStore.isCollapsed(this.article.id);
+    this.isExpanded = this.documentBreakdownStore.isExpanded(this.article.id);
     this.scrollToArticle();
   }
 

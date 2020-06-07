@@ -6,7 +6,7 @@ export class DocumentBreakdownStore {
   public expandedNodes: Subject<string> = new Subject<string>();
   private nodesExpandState: { [key: string]: boolean } = {};
 
-  public isCollapsed(nodeId: string) {
+  public isExpanded(nodeId: string) {
     return !!this.nodesExpandState[nodeId];
   }
 
