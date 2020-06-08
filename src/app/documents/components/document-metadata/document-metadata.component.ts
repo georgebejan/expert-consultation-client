@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DocumentMetadata } from '@app/core';
+import { DocumentMetadata, User } from '@app/core';
 
 @Component({
   selector: 'app-document-metadata',
@@ -7,5 +7,14 @@ import { DocumentMetadata } from '@app/core';
   styleUrls: ['./document-metadata.component.scss']
 })
 export class DocumentMetadataComponent {
-  @Input() metadata: DocumentMetadata;
+  @Input() public metadata: DocumentMetadata;
+  @Input() public assignedUsers: User[];
+
+  public getAssignedUsersListAsString() {
+    return this.assignedUsers.map(this.formatName).join(', ');
+  }
+
+  private formatName(user: User) {
+    return `${user.lastName} ${user.firstName}`;
+  }
 }

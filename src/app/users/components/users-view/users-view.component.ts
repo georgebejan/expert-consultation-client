@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Filter, PageData, User } from '@app/core';
+import { Component, Input } from '@angular/core';
+import { PageData, User } from '@app/core';
 
 @Component({
   selector: 'app-users-view',
@@ -7,14 +7,8 @@ import { Filter, PageData, User } from '@app/core';
   styleUrls: ['./users-view.component.scss']
 })
 export class UsersViewComponent {
-  @Input() users: User[];
-  @Input() pageData: PageData;
-  @Input() filter: Filter;
-  @Input() loading: boolean;
-  @Input() activeView: string;
-  @Output() filterChange: EventEmitter<Filter> = new EventEmitter();
-
-  public onFilterChange(event) {
-    this.filterChange.emit(event);
-  }
+  @Input() public users: User[];
+  @Input() public pageData: PageData;
+  @Input() public loading: boolean;
+  @Input() public activeView: string;
 }

@@ -35,7 +35,7 @@ export class DocumentsApiService {
     return this.http.get<IUser[]>(`${this.url}/${documentId}/users`);
   }
 
-  public saveAssignedUsers(documentId: string, userIds: string[]) {
-    return this.http.post(`${this.url}/${documentId}/users`, {userIds});
+  public saveAssignedUsers(documentId: string, userIds: string[]): Observable<void> {
+    return this.http.post<void>(`${this.url}/${documentId}/users`, {userIds});
   }
 }

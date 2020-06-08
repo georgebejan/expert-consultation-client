@@ -80,6 +80,18 @@ export function reducer(state = initialState, action: fromDocuments.DocumentsAct
     default: {
       return state;
     }
+
+    case fromDocuments.DocumentsActionTypes.GetDocumentAssignedUsersSuccess: {
+      const updatedDocument = {
+        ...state.entity,
+        assignedUsers: action.payload
+      };
+
+      return {
+        ...state,
+        entity: updatedDocument
+      };
+    }
   }
 }
 

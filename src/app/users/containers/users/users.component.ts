@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Filter, PageData, User } from '@app/core';
+import { PageData, User } from '@app/core';
 import * as fromStore from '@app/core/store';
 import { CoreState } from '@app/core/store';
 import { select, Store } from '@ngrx/store';
@@ -16,20 +16,16 @@ export class UsersComponent {
   public usersPageData$: Observable<PageData> = this.store.pipe(select(fromStore.getUsersPageData));
   public activeView = 'list';
   public usersLoaded$: Observable<boolean> = this.store.pipe(select(fromStore.getUsersLoaded));
-  private filter$: Observable<Filter> = this.store.pipe(select(fromStore.getUsersFilter));
 
-  constructor(private store: Store<CoreState>, private router: Router) {
-  }
-
-  public onFilterChange(filter: Filter) {
-    this.store.dispatch(new fromStore.LoadUsers(filter));
+  constructor(private store: Store<CoreState>,
+              private router: Router) {
   }
 
   public onButtonClicked() {
     this.router.navigate(['/users/add']);
   }
 
-  toggleActiveView(event) {
+  public toggleActiveView(event) {
     this.activeView = event;
   }
 }

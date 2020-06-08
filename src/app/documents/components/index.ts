@@ -11,6 +11,7 @@ import { DocumentNodeSectionComponent } from './document-node/document-node-sect
 import { DocumentNodeArticleComponent } from './document-node/document-node-article/document-node-article.component';
 import { DocumentNodeParagraphComponent } from './document-node/document-node-paragraph/document-node-paragraph.component';
 import { DocumentNodeAlignmentComponent } from './document-node/document-node-alignment/document-node-alignment.component';
+import { DocumentUsersModalComponent } from './document-users-modal/document-users-modal.component';
 
 export const components: any[] = [
   DocumentsTableComponent,
@@ -26,4 +27,5 @@ export const components: any[] = [
   DocumentNodeArticleComponent,
   DocumentNodeParagraphComponent,
   DocumentNodeAlignmentComponent,
+  DocumentUsersModalComponent,
 ];

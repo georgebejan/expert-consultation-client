@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { DocumentConsolidate, DocumentMetadata, IDocumentMetadata, Page, PageRequest } from '../../models';
+import { DocumentConsolidate, DocumentMetadata, IDocumentMetadata, Page, PageRequest, User } from '../../models';
 
 export enum DocumentsActionTypes {
   LoadDocuments = '[Documents] Load Documents',
@@ -11,6 +11,12 @@ export enum DocumentsActionTypes {
   LoadDocumentConsolidate = '[Documents] Load Document Consolidate',
   LoadDocumentConsolidateSuccess = '[Documents] Load Document Consolidate Success',
   LoadDocumentConsolidateFail = '[Documents] Load Document Consolidate Fail',
+  SaveDocumentAssignedUsers = '[Documents] Save document assigned users',
+  SaveDocumentAssignedUsersSuccess = '[Documents] Save document assigned users success',
+  SaveDocumentAssignedUsersFail = '[Documents] Save document assigned users fail',
+  GetDocumentAssignedUsers = '[Documents] Get document assigned users',
+  GetDocumentAssignedUsersSuccess = '[Documents] Get document assigned users success',
+  GetDocumentAssignedUsersFail = '[Documents] Get document assigned users fail',
 }
 
 export class LoadDocuments implements Action {
@@ -76,6 +82,45 @@ export class SaveDocumentFail implements Action {
   }
 }
 
+export class SaveDocumentAssignedUsers implements Action {
+  readonly type = DocumentsActionTypes.SaveDocumentAssignedUsers;
+
+  constructor(public documentId: string, public assignedUsers: string[]) {
+  }
+}
+
+export class SaveDocumentAssignedUsersSuccess implements Action {
+  readonly type = DocumentsActionTypes.SaveDocumentAssignedUsersSuccess;
+}
+
+export class SaveDocumentAssignedUsersFail implements Action {
+  readonly type = DocumentsActionTypes.SaveDocumentAssignedUsersFail;
+
+  constructor(public error: any) {
+  }
+}
+
+export class GetDocumentAssignedUsers implements Action {
+  readonly type = DocumentsActionTypes.GetDocumentAssignedUsers;
+
+  constructor(public documentId: string) {
+  }
+}
+
+export class GetDocumentAssignedUsersSuccess implements Action {
+  readonly type = DocumentsActionTypes.GetDocumentAssignedUsersSuccess;
+
+  constructor(public payload: User[]) {
+  }
+}
+
+export class GetDocumentAssignedUsersFail implements Action {
+  readonly type = DocumentsActionTypes.GetDocumentAssignedUsersFail;
+
+  constructor(public error: any) {
+  }
+}
+
 export type DocumentsAction =
     | LoadDocuments
     | LoadDocumentsFail
@@ -85,4 +130,10 @@ export type DocumentsAction =
     | LoadDocumentConsolidateSuccess
     | SaveDocument
     | SaveDocumentSuccess
-    | SaveDocumentFail;
+    | SaveDocumentFail
+    | SaveDocumentAssignedUsers
+    | SaveDocumentAssignedUsersSuccess
+    | SaveDocumentAssignedUsersFail
+    | GetDocumentAssignedUsers
+    | GetDocumentAssignedUsersSuccess
+    | GetDocumentAssignedUsersFail;

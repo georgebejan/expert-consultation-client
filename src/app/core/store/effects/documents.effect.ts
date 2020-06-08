@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as documentsActions from '../actions';
-import { catchError, concatMap, map, switchMap, take, tap } from 'rxjs/operators';
+import { catchError, concatMap, map, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 import { DocumentsService } from '../../services';
-import { Error, Page } from '@app/core';
+import { Error, Page, User } from '@app/core';
 import { of } from 'rxjs';
 import { DocumentConsolidate, DocumentMetadata } from '../../models/';
 import { CoreState } from '@app/core/store';
@@ -56,6 +56,32 @@ export class DocumentsEffect {
       take(1),
       tap((id: string) => this.router.navigate(['documents', id, 'users'])),
   );
+
+  @Effect()
+  saveDocumentAssignedUsers$ = this.actions$.pipe(
+      ofType(documentsActions.DocumentsActionTypes.SaveDocumentAssignedUsers),
+      concatMap((action: documentsActions.SaveDocumentAssignedUsers) => {
+        return this.documentsService.saveAssignedUsers(action.documentId, action.assignedUsers).pipe(
+            mergeMap(() => [
+              new documentsActions.SaveDocumentAssignedUsersSuccess(),
+              new documentsActions.GetDocumentAssignedUsers(action.documentId)
+            ]),
+            catchError(error => of(new documentsActions.SaveDocumentAssignedUsersFail(this.mapError(error))))
+        );
+      })
+  );
+
+  @Effect()
+  getDocumentAssignedUsers$ = this.actions$.pipe(
+      ofType(documentsActions.DocumentsActionTypes.GetDocumentAssignedUsers),
+      concatMap((action: documentsActions.GetDocumentAssignedUsers) => {
+        return this.documentsService.getAssignedUsers(action.documentId).pipe(
+            map((users: User[]) => new documentsActions.GetDocumentAssignedUsersSuccess(users)),
+            catchError(error => of(new documentsActions.GetDocumentAssignedUsersFail(this.mapError(error))))
+        );
+      })
+  );
+
 
   constructor(private store$: Store<CoreState>,
               private actions$: Actions,

@@ -31,8 +31,8 @@ export class DocumentsService {
         .pipe(map((iUsers: IUser[]) => iUsers.map(iUser => new User(iUser))));
   }
 
-  public saveAssignedUsers(id: string, assignedUsersIds: string[]) {
-    this.documentsApiService.saveAssignedUsers(id, assignedUsersIds).subscribe();
+  public saveAssignedUsers(id: string, assignedUsersIds: string[]): Observable<void> {
+    return this.documentsApiService.saveAssignedUsers(id, assignedUsersIds);
   }
 
   private mapPage(userPage: Page<IDocumentMetadata>): Page<DocumentMetadata> {

@@ -1,4 +1,4 @@
-import { Error, Filter, IFilter, IPageData, IUser, PageData, User } from '../../models';
+import { Error, IPageData, IUser, PageData, User } from '../../models';
 import * as fromUsers from '../actions/users.action';
 
 export interface UserState {
@@ -7,7 +7,6 @@ export interface UserState {
   loading: boolean;
   shouldReload: boolean;
   pageData: IPageData;
-  filter: IFilter;
   error: Error;
 }
 
@@ -17,25 +16,11 @@ export const initialState: UserState = {
   loading: false,
   shouldReload: true,
   pageData: {pageable: {}} as IPageData,
-  filter: {
-    pageNumber: 0,
-    sortField: 'lastName',
-    sortDirection: 'asc',
-  } as IFilter,
   error: {} as Error
 };
 
 export function reducer(state = initialState, action: fromUsers.UsersAction): UserState {
   switch (action.type) {
-    case fromUsers.UserActionTypes.LoadUsers: {
-      const filter: Filter = action.payload;
-      return {
-        ...state,
-        filter: filter ? filter.toJson() : initialState.filter,
-        loading: true,
-      } as UserState;
-    }
-
     case fromUsers.UserActionTypes.LoadUsersSuccess: {
       const usersPage = action.payload;
       const users: User[] = usersPage.content;
@@ -94,5 +79,4 @@ export const getUsersLoading = (state: UserState) => state.loading;
 export const getUsersLoaded = (state: UserState) => state.loaded;
 export const getUsersShouldReload = (state: UserState) => state.shouldReload;
 export const getUsersPageData = (state: UserState) => state.pageData;
-export const getUsersFilter = (state: UserState) => state.filter;
 export const getUsersErrors = (state: UserState) => state.error;

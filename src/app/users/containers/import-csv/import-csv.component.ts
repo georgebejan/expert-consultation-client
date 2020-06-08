@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { CoreState } from '../../../core/store';
 import * as fromStore from '@app/core/store';
-import { User } from '@app/core';
+import { PageRequest, User } from '@app/core';
 
 @Component({
   selector: 'app-import-csv',
@@ -15,10 +15,10 @@ export class ImportCsvComponent {
   constructor(private store: Store<CoreState>) {
   }
 
-  onCsvUploaded(result: any) {
+  public onCsvUploaded(result: any) {
     const users: User[] = result;
     this.store.dispatch(new fromStore.ImportFromCsvSuccess(users));
-    this.store.dispatch(new fromStore.LoadUsers());
+    this.store.dispatch(new fromStore.LoadUsers(new PageRequest()));
     this.store.dispatch(new fromStore.UploadResetAction());
   }
 }

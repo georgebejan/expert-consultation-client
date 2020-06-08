@@ -121,6 +121,9 @@
     }
   },
   "document": {
+    "members": {
+      "add": "Adaugă membri"
+    },
     "header": "Adaugă document nou",
     "details": {
       "header": "Detalii document"
@@ -160,7 +163,8 @@
       "initiator": "Inițiator",
       "dateOfDevelopment": "Data elaborarii",
       "type": "Tip document",
-      "status": "Status"
+      "status": "Status",
+      "assignedUsers": "Comisie"
     },
     "users": {
       "table": {
@@ -168,6 +172,7 @@
         "lastName": "Name",
         "organisation": "Organizație",
         "search": "Caută un membru după nume, specializare sau organizație",
+        "add": "Adaugă la comisie",
         "assign": "Asignează",
         "unassign": "Revocă"
       },

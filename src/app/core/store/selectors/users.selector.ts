@@ -1,22 +1,22 @@
 import { createSelector } from '@ngrx/store';
 import * as fromFeature from '../reducers';
 import * as fromUsers from '../reducers/users.reducer';
-import { Filter, IFilter, IPageData, IUser, PageData, User } from '../../models';
+import { IPageData, IUser, PageData, User } from '../../models';
 
 export const getUsersState = createSelector(fromFeature.getCoreState, (state: fromFeature.CoreState) => state.users);
 
 const getUsersEntitiesAsInterfaces = createSelector(getUsersState, fromUsers.getUsersEntities);
 export const getUsersEntities = createSelector(getUsersEntitiesAsInterfaces,
-  (users: { [id: number]: IUser }) => {
-    const userEntities: { [id: number]: User } = {};
-    const userInterfaces = {...users};
+    (users: { [id: number]: IUser }) => {
+      const userEntities: { [id: number]: User } = {};
+      const userInterfaces = {...users};
 
-    Object.keys(userInterfaces).map(key => {
-      userEntities[key] = new User(userInterfaces[key]);
-    });
+      Object.keys(userInterfaces).map(key => {
+        userEntities[key] = new User(userInterfaces[key]);
+      });
 
-    return userEntities;
-  }
+      return userEntities;
+    }
 );
 
 export const getUsers = createSelector(getUsersEntities, (entities: { [id: number]: User }) => {
@@ -29,17 +29,10 @@ export const getUsersShouldReload = createSelector(getUsersState, fromUsers.getU
 
 const getUsersPageDataEntityAsInterface = createSelector(getUsersState, fromUsers.getUsersPageData);
 export const getUsersPageData = createSelector(getUsersPageDataEntityAsInterface,
-  (iPageData: IPageData) => {
-    const pageData = new PageData();
-    pageData.fromJson(iPageData);
-    return pageData;
-  });
+    (iPageData: IPageData) => {
+      const pageData = new PageData();
+      pageData.fromJson(iPageData);
+      return pageData;
+    });
 
-const getUserFilterAsInterface = createSelector(getUsersState, fromUsers.getUsersFilter);
-export const getUsersFilter = createSelector(getUserFilterAsInterface,
-  (iFilter: IFilter) => {
-    const filter = new Filter();
-    filter.fromJson(iFilter);
-    return filter;
-  });
 export const getUsersErrors = createSelector(getUsersState, fromUsers.getUsersErrors);

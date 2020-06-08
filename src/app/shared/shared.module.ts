@@ -12,6 +12,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import * as fromGuards from './guards';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 const modules = [
   CommonModule,
@@ -32,6 +33,7 @@ const modules = [
   imports: [
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
     modules,
   ],
   exports: [
@@ -40,6 +42,7 @@ const modules = [
     modules,
     BsDatepickerModule,
     BsDropdownModule,
+    ModalModule,
   ],
   providers: [
     ...fromGuards.guards,

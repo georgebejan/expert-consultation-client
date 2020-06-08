@@ -30,3 +30,11 @@
     <span>{{metadata.dateOfReceipt | date}}</span>
   </div>
 </div>
+<div class="row mb-2">
+  <div class="col-md-2 text-muted">
+    {{ 'document.metadata.assignedUsers' | translate }}
+  </div>
+  <div class="col-md-10">
+    <span>{{ getAssignedUsersListAsString() }}</span>
+  </div>
+</div>

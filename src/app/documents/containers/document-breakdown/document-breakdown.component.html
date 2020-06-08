@@ -1,7 +1,12 @@
 <div class="card">
   <div class="card-body">
-    <app-document-view (toggleCommentAdding)="addComment($event)"
-                       [document]="document$ | async">
+    <app-document-view (assignUsers)="onAssignUsers($event)"
+                       (assignedUsersModalOpen)="loadUsers()"
+                       (usersPageChange)="onUsersPageChange($event)"
+                       (usersSearchTermChange)="onUsersSearchTermChange($event)"
+                       [availableUsers]="availableUsers$ | async"
+                       [document]="document$ | async"
+                       [usersPageData]="usersPageData$ | async">
     </app-document-view>
   </div>
 </div>

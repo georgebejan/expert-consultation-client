@@ -5,7 +5,9 @@
       {{'document.details.header' | translate}}
     </div>
     <div class="card-body">
-      <app-document-metadata [metadata]="documentMetadata"></app-document-metadata>
+      <app-document-metadata [assignedUsers]="document.assignedUsers"
+                             [metadata]="documentMetadata">
+      </app-document-metadata>
     </div>
   </div>
   <div class="row">
@@ -18,13 +20,28 @@
     </div>
     <div class="col">
       <div class="card">
+        <div class="card-header">
+          <div class="row justify-content-end">
+            <button (click)="openAssignUsersModal()" class="btn btn-icon btn-outline-success" type="button">
+              <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+              <span class="btn-inner--text">{{'document.members.add' | translate}}</span>
+            </button>
+          </div>
+        </div>
         <div class="card-body">
           <h2>{{documentNode.title}}</h2>
           <p>{{documentNode.content}}</p>
-          <app-document-content (toggleCommentAdding)="clickedAddComment($event)"
-                                [documentNodes]="documentNode.children"></app-document-content>
+          <app-document-content [documentNodes]="documentNode.children"></app-document-content>
         </div>
       </div>
     </div>
   </div>
 </div>
+<app-document-users-modal #assignUsersModal
+                          (assignUsers)="assignUsers.emit($event)"
+                          (pageChange)="usersPageChange.emit($event)"
+                          (searchTermChange)="usersSearchTermChange.emit($event)"
+                          [assignedUsers]="document.assignedUsers"
+                          [availableUsers]="availableUsers"
+                          [pageData]="usersPageData">
+</app-document-users-modal>

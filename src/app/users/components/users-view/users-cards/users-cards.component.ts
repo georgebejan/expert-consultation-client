@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Filter, PageData, User } from '@app/core';
+import { PageData, User } from '@app/core';
 
 @Component({
   selector: 'app-users-cards',
@@ -7,8 +7,7 @@ import { Filter, PageData, User } from '@app/core';
   styleUrls: ['./users-cards.component.scss']
 })
 export class UsersCardsComponent {
-  @Input() users: User[];
-  @Input() pageData: PageData;
-  @Input() filter: Filter;
-  @Input() loading: boolean;
+  @Input() public users: User[];
+  @Input() public pageData: PageData;
+  @Input() public loading: boolean;
 }

@@ -5,6 +5,7 @@ import { UserState } from '@app/core/store';
 import { Observable, of } from 'rxjs';
 import { catchError, filter, switchMap, take, tap } from 'rxjs/operators';
 import * as fromStore from '../../core/store';
+import { PageRequest } from '@app/core';
 
 @Injectable()
 export class UsersGuard implements CanActivate {
@@ -13,22 +14,22 @@ export class UsersGuard implements CanActivate {
 
   canActivate(): Observable<boolean> {
     return this.checkStore()
-      .pipe(
-        switchMap(() => of(true)),
-        catchError(() => of(false))
-      );
+        .pipe(
+            switchMap(() => of(true)),
+            catchError(() => of(false))
+        );
   }
 
   private checkStore(): Observable<boolean> {
     return this.store.pipe(select(fromStore.getUsersShouldReload))
-      .pipe(
-        tap((shouldReload) => {
-          if (shouldReload) {
-            this.store.dispatch(new fromStore.LoadUsers());
-          }
-        }),
-        filter(shouldReload => !shouldReload),
-        take(1)
-      );
+        .pipe(
+            tap((shouldReload) => {
+              if (shouldReload) {
+                this.store.dispatch(new fromStore.LoadUsers(new PageRequest()));
+              }
+            }),
+            filter(shouldReload => !shouldReload),
+            take(1)
+        );
   }
 }

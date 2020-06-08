@@ -5,12 +5,9 @@
   <div *ngIf="(usersLoaded$ | async) === false">
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
   </div>
-  <app-users-view (filterChange)="onFilterChange($event)"
-                  *ngIf="usersLoaded$ | async"
+  <app-users-view *ngIf="usersLoaded$ | async"
                   [activeView]="activeView"
-                  [filter]="filter$ | async"
                   [loading]="usersLoaded$ | async"
                   [pageData]="usersPageData$ | async"
-                  [users]="users$ | async">
-  </app-users-view>
+                  [users]="users$ | async"></app-users-view>
 </section>

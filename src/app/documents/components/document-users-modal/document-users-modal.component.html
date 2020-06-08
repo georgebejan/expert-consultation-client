@@ -1,0 +1,44 @@
+<ng-template #template>
+  <div class="modal-header">
+    <h6 class="modal-title">
+      {{'document.members.add' | translate}}
+    </h6>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="card-header p-0">
+        <form [formGroup]="searchForm">
+          <div class="form-group mb-0">
+            <div class="input-group input-group-alternative shadow-none input-group-merge">
+              <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+              </div>
+              <input class="form-control" formControlName="term"
+                     placeholder="{{'document.users.table.search' | translate}}" type="text">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-body p-0">
+        <app-document-users-table (userAssigned)="onAssignUser($event)"
+                                  (userUnassigned)="onUnassignUser($event)"
+                                  [assignedUsers]="updatedAssignedUsers"
+                                  [availableUsers]="availableUsers"></app-document-users-table>
+      </div>
+      <div class="card-footer">
+        <app-pagination (pageChange)="pageChange.emit($event)"
+                        [pageData]="pageData"></app-pagination>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onSave()" class="btn btn-success" type="button">
+      {{'button.save' | translate}}
+    </button>
+    <button (click)="close()" class=" btn btn-link ml-auto" data-dismiss="modal" type="button">
+      {{'button.cancel' | translate}}
+    </button>
+  </div>
+</ng-template>

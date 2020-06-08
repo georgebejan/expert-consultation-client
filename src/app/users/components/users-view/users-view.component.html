@@ -4,21 +4,16 @@
       <h5 class="h3 mb-0">{{'users.table.title' | translate}}</h5>
     </div>
     <div class="table-responsive">
-      <app-users-table (filterChange)="onFilterChange($event)"
-                       [filter]="filter"
-                       [loading]="loading"
+      <app-users-table [loading]="loading"
                        [pageData]="pageData"
-                       [users]="users">
-      </app-users-table>
+                       [users]="users"></app-users-table>
     </div>
     <div class="card-footer">
       <app-pagination [pageData]="pageData"></app-pagination>
     </div>
   </div>
   <app-users-cards *ngSwitchCase="'card'"
-                   [filter]="filter"
                    [loading]="loading"
                    [pageData]="pageData"
-                   [users]="users">
-  </app-users-cards>
+                   [users]="users"></app-users-cards>
 </div>

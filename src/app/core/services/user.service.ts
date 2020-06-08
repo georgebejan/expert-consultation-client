@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserApiService } from '../http';
 import { Observable } from 'rxjs';
-import { IUser, Page, User } from '../models';
+import { IUser, Page, PageRequest, User } from '../models';
 import { select, Store } from '@ngrx/store';
 import * as fromFeature from '../store/reducers';
 import * as fromStore from '../store/selectors';
@@ -13,28 +13,24 @@ export class UserService {
               private store: Store<fromFeature.CoreState>) {
   }
 
-  public list(): Observable<Page<User>> {
-    return this.store.pipe(
-      select(fromStore.getUsersFilter),
-      take(1),
-      mergeMap(
-        filter => this.usersApiService.list(filter).pipe(map((a) => this.mapPage(a)))
-      ));
+  public list(pageRequest: PageRequest): Observable<Page<User>> {
+    return this.usersApiService.list(pageRequest)
+        .pipe(map(value => this.mapPage(value)));
   }
 
   public save(user: User): Observable<User> {
     return this.usersApiService.save(user.toJson()).pipe(
-      map((iUser: IUser) => new User(iUser))
+        map((iUser: IUser) => new User(iUser))
     );
   }
 
   public saveMultiple(): Observable<User[]> {
     return this.store.pipe(
-      select(fromStore.getImportUsers),
-      take(1),
-      mergeMap(
-        users => this.usersApiService.saveMultiple(users).pipe(map((theUsers: IUser[]) => theUsers.map(user => new User(user))))
-      ));
+        select(fromStore.getImportUsers),
+        take(1),
+        mergeMap(
+            users => this.usersApiService.saveMultiple(users).pipe(map((theUsers: IUser[]) => theUsers.map(user => new User(user))))
+        ));
   }
 
   public saveUsersExcel(usersExcel: string): Observable<IUser[]> {
