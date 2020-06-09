@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import {
-  DateAdapter,
   MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
@@ -20,12 +19,9 @@ import {
   MatSortModule,
   MatTableModule,
   MatTabsModule,
-  MatToolbarModule,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE
+  MatToolbarModule
 } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 
 const modules = [
   MatButtonModule,
@@ -36,7 +32,6 @@ const modules = [
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatMomentDateModule,
   MatNativeDateModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
@@ -54,12 +49,7 @@ const modules = [
 @NgModule({
   imports: [modules],
   exports: [modules],
-  providers: [
-    MatMomentDateModule,
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-    { provide: MAT_DATE_LOCALE, useValue: 'ro' },
-  ],
+  providers: [],
 })
 
 export class MaterialModule {

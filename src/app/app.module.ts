@@ -14,7 +14,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { JwtInterceptor } from '@app/authentication/jwt.interceptor';
 import { FileUploadModule } from 'ng2-file-upload';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthenticatedHttpInterceptor } from '@app/authentication/authenticated-http.interceptor';
 import { AuthenticationService } from '@app/core';
 import { HeaderInterceptor } from './shared/interceptors/header.interceptor';
@@ -50,7 +49,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     CoreModule,
     SharedModule,
     FileUploadModule,
-    FlexLayoutModule,
     AppRoutingModule,
     StoreModule.forRoot([], { metaReducers }),
     EffectsModule.forRoot([]),

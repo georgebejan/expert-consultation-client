@@ -37,17 +37,11 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/sass/styles.scss",
-              "src/sass/theme.scss",
               "src/assets/argon/vendor/nucleo/css/nucleo.css",
               "src/assets/argon/scss/argon.scss"
             ],
             "scripts": [
-              "node_modules/hammerjs/hammer.min.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/js-cookie/src/js.cookie.js",
-              "node_modules/jquery.scrollbar/jquery.scrollbar.min.js",
-              "node_modules/jquery-scroll-lock/dist/jquery-scrollLock.min.js"
+              "node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {
