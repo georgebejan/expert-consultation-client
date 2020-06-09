@@ -104,6 +104,9 @@
     }
   },
   "user": {
+    "invitation": {
+      "invalid": "Cod invitație invalid"
+    },
     "form": {
       "header": "Adaugă membru nou"
     },

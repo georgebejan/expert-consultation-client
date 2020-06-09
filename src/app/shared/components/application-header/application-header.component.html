@@ -16,14 +16,14 @@
         </ul>
         <ul class="navbar-nav align-items-center">
           <li class="nav-item dropdown">
-            <div class="media align-items-center">
-              <a aria-expanded="false" aria-haspopup="true" class="nav-link pr-0" data-toggle="dropdown"
-                 href="#" role="button">
+            <div class="media align-items-center" dropdown>
+              <a (click)="false" aria-expanded="false" aria-haspopup="true" class="nav-link pr-0"
+                 dropdownToggle href role="button">
                 <div class="media-body ml-2 d-lg-block">
                   <span class="mb-0 text-sm font-weight-bold text-black-50">John Snow</span>
                 </div>
               </a>
-              <div class="dropdown-menu dropdown-menu-right ">
+              <div *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
                 <a (click)="logout()" class="dropdown-item pointer">
                   <i class="ni ni-user-run"></i>
                   <span>{{'topNav.logout' | translate}}</span>

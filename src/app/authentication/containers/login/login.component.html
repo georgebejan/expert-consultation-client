@@ -27,6 +27,11 @@
             <div class="text-muted text-center mt-2 mb-3">
               <small>{{'login.enterAccount' | translate}}</small>
             </div>
+            <ng-container *ngIf="i18nError">
+              <div class="alert alert-danger">
+                {{i18nError | translate}}
+              </div>
+            </ng-container>
             <ng-container *ngIf="generalErrors">
               <div class="alert alert-danger">
                 <div *ngFor="let error of generalErrors">
@@ -82,9 +87,6 @@
         <div class="row mt-3">
           <div class="col-6">
             <small class="text-light">{{'login.forgotPassword' | translate}}</small>
-          </div>
-          <div class="col-6 text-right">
-            <a class="text-light" routerLink="/register"><small>{{'login.createAccount' | translate}}</small></a>
           </div>
         </div>
       </div>

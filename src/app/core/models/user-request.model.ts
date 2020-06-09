@@ -3,6 +3,7 @@ export class UserRequest {
   username: string;
   email: string;
   password: string;
+  invitationCode: string;
 
   fromForm(request: any) {
     this.name = request.name;

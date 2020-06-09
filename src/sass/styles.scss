@@ -1,5 +1,6 @@
 @import '../../node_modules/normalize.scss/normalize';
 @import '~@angular/material/theming';
+@import "variables";
 
 html, body {
   height: 100%;
@@ -7,4 +8,9 @@ html, body {
 
 .pointer {
   cursor: pointer;
+}
+
+.disabled-bg {
+  background-color: $lc-disabled-bg !important;
+  opacity: 1;
 }

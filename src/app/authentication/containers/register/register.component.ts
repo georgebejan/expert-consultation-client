@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserRequest } from '@app/core/models';
+import { ActivatedRoute, Data, Router } from '@angular/router';
+import { Invitation, UserRequest } from '@app/core/models';
 import { AuthenticationApiService } from '@app/core/http';
 import { Tools } from '@app/shared/utils/tools';
 import { I18nError } from '@app/core/http/errors/i18n-error';
@@ -13,12 +13,13 @@ import { I18nError } from '@app/core/http/errors/i18n-error';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  aUser: UserRequest;
-  isSubmitted = false;
-  wasValidated = false;
-  generalErrors: I18nError[];
+  public aUser: UserRequest;
+  public isSubmitted = false;
+  public wasValidated = false;
+  public generalErrors: I18nError[];
+  public invitation: Invitation;
 
-  signUpForm = new FormGroup({
+  public signUpForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -30,7 +31,13 @@ export class RegisterComponent implements OnInit {
               private authenticationApiService: AuthenticationApiService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.route.data.subscribe((data: Data) => {
+      this.invitation = data.invitation;
+      this.signUpForm.controls.email.setValue(this.invitation.email);
+      this.signUpForm.controls.email.disable();
+    });
+
     this.signUpForm.valueChanges.subscribe((aValue) => {
       this.aUser = new UserRequest();
       this.aUser.fromForm(aValue);
@@ -38,13 +45,16 @@ export class RegisterComponent implements OnInit {
     this.signUpForm.controls.email.setValue(Tools.safeGet(() => this.route.snapshot.params.email));
   }
 
-  onSubmit() {
+  public onSubmit() {
     this.isSubmitted = true;
     if (this.signUpForm.invalid) {
       return;
     }
 
     const aSignUp = this.aUser;
+    aSignUp.invitationCode = this.invitation.code;
+    aSignUp.email = this.invitation.email;
+
     this.authenticationApiService.signup(aSignUp)
         .subscribe({
           next: signup => this.router.navigate(['login']),
@@ -69,11 +79,11 @@ export class RegisterComponent implements OnInit {
         });
   }
 
-  hasErrors(control: AbstractControl) {
+  public hasErrors(control: AbstractControl) {
     return this.isSubmitted && control.errors;
   }
 
-  isValidClass(control: AbstractControl) {
+  public isValidClass(control: AbstractControl) {
     if (this.isSubmitted) {
       return control.errors ? 'is-invalid' : 'is-valid';
     }

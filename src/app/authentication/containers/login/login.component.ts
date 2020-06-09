@@ -13,13 +13,14 @@ import { AuthenticationService } from '@app/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginRequest: LoginRequest;
-  returnUrl: string;
-  wasValidated = false;
-  isSubmitted = false;
-  generalErrors: I18nError[];
+  public loginRequest: LoginRequest;
+  public returnUrl: string;
+  public wasValidated = false;
+  public isSubmitted = false;
+  public generalErrors: I18nError[];
+  public i18nError: string;
 
-  logInForm = new FormGroup({
+  public logInForm = new FormGroup({
     usernameOrEmail: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
@@ -34,18 +35,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.logInForm.valueChanges.subscribe((request) => {
       this.loginRequest = new LoginRequest();
       this.loginRequest.fromForm(request);
     });
 
-    // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
+    this.i18nError = this.route.snapshot.queryParams['error'];
   }
 
-  onSubmit() {
+  public onSubmit() {
     this.isSubmitted = true;
     if (this.logInForm.invalid) {
       return;
@@ -75,11 +75,11 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  hasErrors(control: AbstractControl) {
+  public hasErrors(control: AbstractControl) {
     return this.isSubmitted && control.errors;
   }
 
-  isValidClass(control: AbstractControl) {
+  public isValidClass(control: AbstractControl) {
     if (this.isSubmitted) {
       return control.errors ? 'is-invalid' : 'is-valid';
     }

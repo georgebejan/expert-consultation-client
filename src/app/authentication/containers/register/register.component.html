@@ -34,7 +34,7 @@
             </ng-container>
             <form [formGroup]="signUpForm" [ngClass]="wasValidated ? 'wasValidated':''" novalidate>
               <div class="form-group">
-                <div class="input-group input-group-merge  mb-3">
+                <div class="input-group input-group-alternative mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
@@ -50,7 +50,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <div class="input-group input-group-merge  mb-3">
+                <div class="input-group input-group-alternative mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                   </div>
@@ -66,13 +66,16 @@
                 </div>
               </div>
               <div class="form-group">
-                <div class="input-group input-group-merge  mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                <div class="input-group input-group-alternative mb-3 read-only">
+                  <div class="input-group-prepend disabled-bg">
+                    <span class="input-group-text disabled-bg">
+                      <i class="ni ni-email-83"></i>
+                    </span>
                   </div>
-                  <input [ngClass]="isValidClass(signUpForm.controls.email)"
-                         class="form-control" formControlName="email" name="email"
-                         placeholder="{{'register.form.email' | translate}}" required type="email">
+                  <input [ngClass]="isValidClass(signUpForm.controls.email)" class="form-control"
+                         formControlName="email" name="email"
+                         placeholder="{{'register.form.email' | translate}}"
+                         required type="email" value="{{invitation?.email}}">
                   <ng-container *ngIf="hasErrors(signUpForm.controls.email)">
                     <div *ngFor="let error of signUpForm.controls.email.errors | keyvalue"
                          class="invalid-feedback">
@@ -82,7 +85,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <div class="input-group input-group-merge">
+                <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>

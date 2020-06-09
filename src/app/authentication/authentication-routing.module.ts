@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import * as fromContainers from './containers';
+import { InvitationResolver } from './resolvers';
 
 const routes: Routes = [
   {
@@ -8,12 +9,11 @@ const routes: Routes = [
     component: fromContainers.LoginComponent,
   },
   {
-    path: 'register',
-    redirectTo: 'register/'
-  },
-  {
-    path: 'register/:email',
+    path: 'register/:code',
     component: fromContainers.RegisterComponent,
+    resolve: {
+      invitation: InvitationResolver,
+    }
   },
 ];
 
