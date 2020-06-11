@@ -1,1 +1,2 @@
-<p class="mb-0">{{alignment.identifier + ')' + '  ' + alignment.content}}</p>
+<span (click)="nodeEditButtonClick.emit(alignment)" *ngIf="isEditMode" class="pointer"><i class="fa fa-edit"></i></span>
+<span class="mb-0">{{alignment.identifier + ')' + '  ' + alignment.content}}</span>

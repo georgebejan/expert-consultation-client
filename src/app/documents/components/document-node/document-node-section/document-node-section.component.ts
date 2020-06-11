@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DocumentNode } from '@app/core';
 
 @Component({
@@ -6,5 +6,8 @@ import { DocumentNode } from '@app/core';
   templateUrl: './document-node-section.component.html',
 })
 export class DocumentNodeSectionComponent {
-  @Input() section: DocumentNode;
+  @Input() public section: DocumentNode;
+  @Input() public isEditMode: boolean;
+  @Output() public nodeEditButtonClick: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
+
 }

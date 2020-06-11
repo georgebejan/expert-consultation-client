@@ -1,2 +1,5 @@
+<span (click)="nodeEditButtonClick.emit(paragraph)" *ngIf="isEditMode" class="pointer"><i class="fa fa-edit"></i></span>
 <p class="mb-0">{{'(' + paragraph.identifier + ')' + ' ' + paragraph.content}}</p>
-<ec-document-content [documentNodes]="paragraph.children"></ec-document-content>
+<ec-document-content (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
+                     [documentNodes]="paragraph.children"
+                     [isEditMode]="isEditMode"></ec-document-content>

@@ -22,6 +22,15 @@
       <div class="card">
         <div class="card-header">
           <div class="row justify-content-end">
+            <button (click)="enableEditMode()" *ngIf="!isEditMode" class="btn btn-icon btn-outline-success"
+                    type="button">
+              <span class="btn-inner--icon"><i class="fa fa-pen fas"></i></span>
+              <span class="btn-inner--text">{{'document.edit.button' | translate}}</span>
+            </button>
+            <button *ngIf="isEditMode" class="btn btn-icon btn-outline-success" type="button">
+              <span class="btn-inner--icon"><i class="fa fa-save fas"></i></span>
+              <span class="btn-inner--text">{{'document.save.button' | translate}}</span>
+            </button>
             <button (click)="openAssignUsersModal()" class="btn btn-icon btn-outline-success" type="button">
               <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
               <span class="btn-inner--text">{{'document.members.add' | translate}}</span>
@@ -29,9 +38,16 @@
           </div>
         </div>
         <div class="card-body">
-          <h2>{{documentNode.title}}</h2>
+          <h2>
+            <span (click)="onNodeEditButtonClick(documentNode)" *ngIf="isEditMode" class="pointer">
+              <i class="fa fa-edit"></i>
+            </span>
+            {{documentNode.title}}
+          </h2>
           <p>{{documentNode.content}}</p>
-          <ec-document-content [documentNodes]="documentNode.children"></ec-document-content>
+          <ec-document-content (nodeEditButtonClick)="onNodeEditButtonClick($event)"
+                               [documentNodes]="documentNode.children"
+                               [isEditMode]="isEditMode"></ec-document-content>
         </div>
       </div>
     </div>
@@ -45,3 +61,5 @@
                          [availableUsers]="availableUsers"
                          [pageData]="usersPageData">
 </ec-document-users-modal>
+<app-document-node-edit-modal #editNodeModal
+                              (nodeSave)="documentNodeUpdate.emit($event)"></app-document-node-edit-modal>

@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import * as fromStore from '@app/core/store';
 import { CoreState } from '@app/core/store';
 import { Observable } from 'rxjs';
-import { DocumentConsolidate, PageData, PageRequest, User } from '@app/core';
+import { DocumentConsolidate, DocumentNode, PageData, PageRequest, User } from '@app/core';
 import { DocumentBreakdownStore } from './document-breakdown.store';
 import { ActivatedRoute } from '@angular/router';
 
@@ -47,5 +47,9 @@ export class DocumentBreakdownComponent implements OnInit {
   }
 
   public onUsersSearchTermChange(searchTerm: string) {
+  }
+
+  public onDocumentNodeUpdate(documentNode: DocumentNode) {
+    this.store.dispatch(new fromStore.UpdateDocumentNode(documentNode));
   }
 }

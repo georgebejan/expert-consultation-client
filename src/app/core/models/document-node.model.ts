@@ -45,6 +45,10 @@ export class DocumentNode {
     };
   }
 
+  toFormData() {
+    return this.toJson();
+  }
+
   displayedInMenu() {
     return this.documentNodeType === DocumentNodeType.ARTICLE
         || this.documentNodeType === DocumentNodeType.CHAPTER

@@ -25,7 +25,7 @@ export class DocumentsComponent {
   }
 
   public onRowClick(id: string) {
-    this.router.navigate(['documents', id, 'breakdown']);
+    this.router.navigate(['documents', id]);
   }
 
   public onPageChange(pageRequest: PageRequest) {

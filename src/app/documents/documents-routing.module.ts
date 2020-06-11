@@ -15,7 +15,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: ':id/breakdown',
+    path: ':id',
     component: fromContainers.DocumentBreakdownComponent,
     canActivate: [
       DocumentBreakdownGuard,

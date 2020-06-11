@@ -1,0 +1,22 @@
+<ng-template #template>
+  <div class="modal-header">
+    <h6 class="modal-title">
+      {{"document.edit.header" | translate}} {{"document.edit." + node.documentNodeType.toLowerCase() | translate}}
+    </h6>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="card-body">
+        <app-document-node-edit-form (nodeChange)="onNodeChange($event)" [node]="node"></app-document-node-edit-form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onSave()" class="btn btn-success" type="button">
+      {{'button.save' | translate}}
+    </button>
+    <button (click)="close()" class="btn btn-link ml-auto" data-dismiss="modal" type="button">
+      {{'button.cancel' | translate}}
+    </button>
+  </div>
+</ng-template>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base-component';
 import { DocumentNode, DocumentNodeType } from '@app/core';
 
@@ -9,5 +9,8 @@ import { DocumentNode, DocumentNodeType } from '@app/core';
 })
 export class DocumentContentComponent extends BaseComponent {
   @Input() public documentNodes: DocumentNode[];
-  documentNodeTypeEnum: typeof DocumentNodeType = DocumentNodeType;
+  @Input() public isEditMode: boolean;
+  @Output() public nodeEditButtonClick: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
+
+  public documentNodeTypeEnum: typeof DocumentNodeType = DocumentNodeType;
 }

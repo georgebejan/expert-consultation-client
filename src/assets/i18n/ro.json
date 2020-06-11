@@ -125,9 +125,29 @@
       "Error": "Eroare"
     }
   },
+  "documentNode": {
+    "form": {
+      "title": "Titlu",
+      "identifier": "Identificator",
+      "content": "Conținut"
+    }
+  },
   "document": {
     "members": {
       "add": "Adaugă membri"
+    },
+    "edit": {
+      "button": "Editează",
+      "header": "Editează",
+      "section": "secțiunea",
+      "chapter": "capitolul",
+      "article": "articolul",
+      "paragraph": "paragraful",
+      "alignment": "aliniatul",
+      "document": "documentul"
+    },
+    "save": {
+      "button": "Salvează"
     },
     "header": "Adaugă document nou",
     "details": {

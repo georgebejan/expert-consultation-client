@@ -1,12 +1,15 @@
 <div [class.bg-lighter]="isExpanded" [class.p-2]="isExpanded">
   <div [id]="article.id">
+    <span (click)="nodeEditButtonClick.emit(article)" *ngIf="isEditMode" class="pointer"><i class="fa fa-edit"></i></span>
     <strong>
       {{'document.view.section.type.article' | translate}}
       {{article.identifier}}
     </strong>
     <p>{{article.content}}</p>
   </div>
-  <ec-document-content [documentNodes]="article.children"></ec-document-content>
+  <ec-document-content (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
+                       [documentNodes]="article.children"
+                       [isEditMode]="isEditMode"></ec-document-content>
   <div class="row justify-content-between mx-0 mt-2 mb-5">
     <div>
       <span (click)="expandComments()" class="comment-link">{{'button.add-comment' | translate}}</span>

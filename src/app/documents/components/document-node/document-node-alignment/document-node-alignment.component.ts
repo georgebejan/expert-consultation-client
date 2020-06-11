@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DocumentNode } from '@app/core';
 
 @Component({
@@ -7,4 +7,7 @@ import { DocumentNode } from '@app/core';
 })
 export class DocumentNodeAlignmentComponent {
   @Input() alignment: DocumentNode;
+  @Input() isEditMode: boolean;
+  @Output() public nodeEditButtonClick: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
+
 }

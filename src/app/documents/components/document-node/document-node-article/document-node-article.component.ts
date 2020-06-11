@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DocumentNode } from '@app/core';
 import { DocumentBreakdownStore } from '@app/documents/containers/document-breakdown/document-breakdown.store';
 
@@ -9,6 +9,8 @@ import { DocumentBreakdownStore } from '@app/documents/containers/document-break
 })
 export class DocumentNodeArticleComponent implements OnInit {
   @Input() article: DocumentNode;
+  @Input() public isEditMode: boolean;
+  @Output() public nodeEditButtonClick: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
 
   public isExpanded = true;
 

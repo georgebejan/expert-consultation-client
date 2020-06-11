@@ -1,8 +1,11 @@
 <div [id]="section.id">
+  <span (click)="nodeEditButtonClick.emit(section)" *ngIf="isEditMode" class="pointer"><i class="fa fa-edit"></i></span>
   <strong>
     {{'document.view.section.type.section' | translate | uppercase }}
     {{section.identifier + ': ' + section.title}}
   </strong>
   <p>{{section.content}}</p>
 </div>
-<ec-document-content [documentNodes]="section.children"></ec-document-content>
+<ec-document-content (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
+                     [documentNodes]="section.children"
+                     [isEditMode]="isEditMode"></ec-document-content>

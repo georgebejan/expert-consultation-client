@@ -1,0 +1,26 @@
+<form [formGroup]="documentNodeForm" name="documentNodeForm">
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="title">
+      {{ 'documentNode.form.title' | translate }}
+    </label>
+    <div class="col-md-10 input-group input-group-alternative">
+      <input class="form-control" formControlName="title" id="title" name="title" type="text"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="identifier">
+      {{ 'documentNode.form.identifier' | translate }}
+    </label>
+    <div class="col-md-10 input-group input-group-alternative">
+      <input class="form-control" formControlName="identifier" id="identifier" name="identifier" type="text"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label form-control-label" for="content">
+      {{ 'documentNode.form.content' | translate }}
+    </label>
+    <div class="col-md-10 input-group input-group-alternative">
+      <textarea class="form-control" formControlName="content" id="content" rows="3"></textarea>
+    </div>
+  </div>
+</form>
