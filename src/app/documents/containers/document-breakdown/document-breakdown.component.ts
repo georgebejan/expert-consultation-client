@@ -8,7 +8,7 @@ import { DocumentBreakdownStore } from './document-breakdown.store';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-document-breakdown',
+  selector: 'ec-document-breakdown',
   templateUrl: './document-breakdown.component.html',
   styleUrls: ['./document-breakdown.component.scss'],
   providers: [DocumentBreakdownStore]

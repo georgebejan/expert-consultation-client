@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageData, User } from '@app/core';
 
 @Component({
-  selector: 'app-document-users-table',
+  selector: 'ec-document-users-table',
   templateUrl: './document-users-table.component.html',
   styleUrls: ['./document-users-table.component.scss']
 })

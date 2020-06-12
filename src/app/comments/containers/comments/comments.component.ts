@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Comment } from '@app/core';
 
 @Component({
-  selector: 'app-comments',
+  selector: 'ec-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss']
 })

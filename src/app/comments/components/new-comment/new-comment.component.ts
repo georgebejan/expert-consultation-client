@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-new-comment',
+  selector: 'ec-new-comment',
   templateUrl: './new-comment.component.html',
   styleUrls: ['./new-comment.component.scss']
 })

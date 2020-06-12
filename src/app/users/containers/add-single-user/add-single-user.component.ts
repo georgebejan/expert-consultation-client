@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { Error } from '@app/core/models/error.model';
 
 @Component({
-  selector: 'app-add-single-user',
+  selector: 'ec-add-single-user',
   templateUrl: './add-single-user.component.html',
   styleUrls: ['./add-single-user.component.scss']
 })

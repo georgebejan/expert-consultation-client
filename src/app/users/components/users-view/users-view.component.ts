@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { PageData, User } from '@app/core';
 
 @Component({
-  selector: 'app-users-view',
+  selector: 'ec-users-view',
   templateUrl: './users-view.component.html',
   styleUrls: ['./users-view.component.scss']
 })

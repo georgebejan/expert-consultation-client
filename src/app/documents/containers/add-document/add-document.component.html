@@ -3,9 +3,9 @@
     <h5 class="h3 mb-0">{{'document.header' | translate}}</h5>
   </div>
   <div class="card-body">
-    <app-document-form (save)="onSave($event)"
-                       [document]="document"
-                       [filePath]="filePath$ | async">
-    </app-document-form>
+    <ec-document-form (save)="onSave($event)"
+                      [document]="document"
+                      [filePath]="filePath$ | async">
+    </ec-document-form>
   </div>
 </div>

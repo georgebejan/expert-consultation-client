@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { PageData, PageRequest } from '@app/core';
 
 @Component({
-  selector: 'app-pagination',
+  selector: 'ec-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })

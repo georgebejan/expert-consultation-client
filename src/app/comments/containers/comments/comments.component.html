@@ -5,7 +5,7 @@
   <div class="card-body p-0">
     <div class="list-group list-group-flush">
       <div class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
-        <app-new-comment (commentAdded)="onCommentAdded($event)" [nodeId]="nodeId"></app-new-comment>
+        <ec-new-comment (commentAdded)="onCommentAdded($event)" [nodeId]="nodeId"></ec-new-comment>
       </div>
       <a *ngFor="let comment of comments$ | async"
          class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">

@@ -1,13 +1,13 @@
 <section class="page-view" id="users-page">
-  <app-users-header (activeViewChanged)="toggleActiveView($event)"
-                    (addButtonClicked)="onButtonClicked()">
-  </app-users-header>
+  <ec-users-header (activeViewChanged)="toggleActiveView($event)"
+                   (addButtonClicked)="onButtonClicked()">
+  </ec-users-header>
   <div *ngIf="(usersLoaded$ | async) === false">
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
   </div>
-  <app-users-view *ngIf="usersLoaded$ | async"
-                  [activeView]="activeView"
-                  [loading]="usersLoaded$ | async"
-                  [pageData]="usersPageData$ | async"
-                  [users]="users$ | async"></app-users-view>
+  <ec-users-view *ngIf="usersLoaded$ | async"
+                 [activeView]="activeView"
+                 [loading]="usersLoaded$ | async"
+                 [pageData]="usersPageData$ | async"
+                 [users]="users$ | async"></ec-users-view>
 </section>

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-table-sort',
+  selector: 'ec-table-sort',
   templateUrl: './table-sort.component.html',
   styleUrls: ['./table-sort.component.scss']
 })

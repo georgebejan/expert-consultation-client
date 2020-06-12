@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Interaction } from '@app/shared/utils/interaction';
 
 @Component({
-  selector: 'app-side-nav',
+  selector: 'ec-side-nav',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss']
 })

@@ -3,7 +3,7 @@ import { PageData, User } from '@app/core';
 import { BaseComponent } from '@app/shared/components/base-component';
 
 @Component({
-  selector: 'app-users-table',
+  selector: 'ec-users-table',
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.scss'],
 })

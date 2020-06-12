@@ -3,7 +3,7 @@ import { DocumentNode } from '@app/core';
 import { DocumentBreakdownStore } from '@app/documents/containers/document-breakdown/document-breakdown.store';
 
 @Component({
-  selector: 'app-document-node-article',
+  selector: 'ec-document-node-article',
   templateUrl: './document-node-article.component.html',
   styleUrls: ['./document-node-article.component.scss']
 })

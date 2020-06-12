@@ -2,13 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '@app/core/store';
-import { Router } from '@angular/router';
-import { Page, User } from '@app/core';
 import { BaseComponent } from '@app/shared/components/base-component';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-file-uploader',
+  selector: 'ec-file-uploader',
   templateUrl: './file-uploader.component.html',
   styleUrls: ['./file-uploader.component.scss']
 })
@@ -32,7 +30,7 @@ export class FileUploaderComponent extends BaseComponent {
         takeUntil(this.destroyed$)
     ).subscribe(result => {
       if (!this.isUploadStarted) {
-        return ;
+        return;
       }
       this.isUploadStarted = false;
       this.uploadFinished.emit(result);
@@ -44,9 +42,9 @@ export class FileUploaderComponent extends BaseComponent {
     const file = files.item(0);
     const url = this.url;
     this.store$.dispatch(
-      new fromStore.UploadRequestAction({
-        file, url
-      })
+        new fromStore.UploadRequestAction({
+          file, url
+        })
     );
     this.isUploadStarted = true;
 

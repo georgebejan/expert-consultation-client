@@ -4,16 +4,16 @@
       <h5 class="h3 mb-0">{{'users.table.title' | translate}}</h5>
     </div>
     <div class="table-responsive">
-      <app-users-table [loading]="loading"
-                       [pageData]="pageData"
-                       [users]="users"></app-users-table>
+      <ec-users-table [loading]="loading"
+                      [pageData]="pageData"
+                      [users]="users"></ec-users-table>
     </div>
     <div class="card-footer">
-      <app-pagination [pageData]="pageData"></app-pagination>
+      <ec-pagination [pageData]="pageData"></ec-pagination>
     </div>
   </div>
-  <app-users-cards *ngSwitchCase="'card'"
-                   [loading]="loading"
-                   [pageData]="pageData"
-                   [users]="users"></app-users-cards>
+  <ec-users-cards *ngSwitchCase="'card'"
+                  [loading]="loading"
+                  [pageData]="pageData"
+                  [users]="users"></ec-users-cards>
 </div>

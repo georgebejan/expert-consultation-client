@@ -3,12 +3,12 @@
     <h5 class="h3 mb-0">{{'documents.table.title' | translate}}</h5>
   </div>
   <div class="table-responsive">
-    <app-documents-table (rowClick)="onRowClick($event)"
-                         [documents]="documents$ | async">
-    </app-documents-table>
+    <ec-documents-table (rowClick)="onRowClick($event)"
+                        [documents]="documents$ | async">
+    </ec-documents-table>
   </div>
   <div class="card-footer">
-    <app-pagination [pageData]="documentsPageData$ | async"
-                    (pageChange)="onPageChange($event)"></app-pagination>
+    <ec-pagination [pageData]="documentsPageData$ | async"
+                   (pageChange)="onPageChange($event)"></ec-pagination>
   </div>
 </div>

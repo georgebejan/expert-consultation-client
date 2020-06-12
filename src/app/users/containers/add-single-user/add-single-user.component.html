@@ -3,10 +3,10 @@
     <h5 class="h3 mb-0">{{'user.form.header' | translate}}</h5>
   </div>
   <div class="card-body">
-    <app-user-form (cancel)="onCancel()"
-                   (save)="onSave($event)"
-                   [error]="error$ | async"
-                   [user]="user">
-    </app-user-form>
+    <ec-user-form (cancel)="onCancel()"
+                  (save)="onSave($event)"
+                  [error]="error$ | async"
+                  [user]="user">
+    </ec-user-form>
   </div>
 </div>

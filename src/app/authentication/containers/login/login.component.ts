@@ -8,7 +8,7 @@ import { LoginRequest } from '@app/core/models';
 import { AuthenticationService } from '@app/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'ec-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

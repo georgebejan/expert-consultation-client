@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-add-excel-users',
+  selector: 'ec-add-excel-users',
   templateUrl: './add-excel-users.component.html',
   styleUrls: ['./add-excel-users.component.scss']
 })

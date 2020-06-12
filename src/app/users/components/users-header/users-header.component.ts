@@ -3,7 +3,7 @@ import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-users-header',
+  selector: 'ec-users-header',
   templateUrl: './users-header.component.html',
   styleUrls: ['./users-header.component.scss']
 })

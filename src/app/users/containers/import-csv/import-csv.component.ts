@@ -5,7 +5,7 @@ import * as fromStore from '@app/core/store';
 import { PageRequest, User } from '@app/core';
 
 @Component({
-  selector: 'app-import-csv',
+  selector: 'ec-import-csv',
   templateUrl: './import-csv.component.html',
   styleUrls: ['./import-csv.component.scss']
 })

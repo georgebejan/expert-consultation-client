@@ -4,7 +4,7 @@ import { User } from '@app/core';
 import { Error } from '@app/core/models/error.model';
 
 @Component({
-  selector: 'app-user-form',
+  selector: 'ec-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })

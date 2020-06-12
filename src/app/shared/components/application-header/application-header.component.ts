@@ -4,7 +4,7 @@ import { AuthenticationApiService } from '@app/core';
 import { Interaction } from '@app/shared/utils/interaction';
 
 @Component({
-  selector: 'app-header',
+  selector: 'ec-header',
   templateUrl: './application-header.component.html',
   styleUrls: ['./application-header.component.scss']
 })

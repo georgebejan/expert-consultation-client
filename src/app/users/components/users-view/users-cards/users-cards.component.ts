@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { PageData, User } from '@app/core';
 
 @Component({
-  selector: 'app-users-cards',
+  selector: 'ec-users-cards',
   templateUrl: './users-cards.component.html',
   styleUrls: ['./users-cards.component.scss']
 })

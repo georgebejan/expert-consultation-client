@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DocumentMetadata, PageData } from '@app/core';
 
 @Component({
-  selector: 'app-documents-table',
+  selector: 'ec-documents-table',
   templateUrl: './documents-table.component.html',
   styleUrls: ['./documents-table.component.scss']
 })

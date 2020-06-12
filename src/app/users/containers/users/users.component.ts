@@ -7,7 +7,7 @@ import { select, Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-users',
+  selector: 'ec-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })

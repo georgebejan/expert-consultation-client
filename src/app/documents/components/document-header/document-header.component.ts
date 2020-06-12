@@ -3,7 +3,7 @@ import { BaseComponent } from '@app/shared/components/base-component';
 import { DocumentMetadata } from '@app/core';
 
 @Component({
-  selector: 'app-document-header',
+  selector: 'ec-document-header',
   templateUrl: './document-header.component.html',
   styleUrls: ['./document-header.component.scss']
 })

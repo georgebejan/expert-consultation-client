@@ -4,7 +4,7 @@ import { DocumentNode, DocumentNodeType } from '@app/core';
 
 
 @Component({
-  selector: 'app-document-menu',
+  selector: 'ec-document-menu',
   templateUrl: './document-menu.component.html',
   styleUrls: ['./document-menu.component.scss']
 })

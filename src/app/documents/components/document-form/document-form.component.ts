@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DocumentMetadata, DocumentType } from '@app/core/models';
 
 @Component({
-  selector: 'app-document-form',
+  selector: 'ec-document-form',
   templateUrl: './document-form.component.html',
   styleUrls: ['./document-form.component.scss']
 })

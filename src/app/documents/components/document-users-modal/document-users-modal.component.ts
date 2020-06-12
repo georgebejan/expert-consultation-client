@@ -6,7 +6,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-document-users-modal',
+  selector: 'ec-document-users-modal',
   templateUrl: 'document-users-modal.component.html',
 })
 export class DocumentUsersModalComponent implements OnChanges {

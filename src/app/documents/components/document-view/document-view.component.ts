@@ -5,7 +5,7 @@ import { DocumentUsersModalComponent } from '@app/documents/components/document-
 
 
 @Component({
-  selector: 'app-document-view',
+  selector: 'ec-document-view',
   templateUrl: './document-view.component.html',
   styleUrls: ['./document-view.component.scss']
 })

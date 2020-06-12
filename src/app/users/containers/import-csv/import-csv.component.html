@@ -1,5 +1,5 @@
 <section class="page-view import-csv-page">
   <h1>{{"users.add.fromCsv" | translate}}</h1>
-  <app-file-uploader [url]="'/users/extract'" (uploadFinished)="onCsvUploaded($event)"></app-file-uploader>
-  <app-imported-users-table [importedUsers]="importedUsers$ | async"></app-imported-users-table>
+  <ec-file-uploader [url]="'/users/extract'" (uploadFinished)="onCsvUploaded($event)"></ec-file-uploader>
+  <ec-imported-users-table [importedUsers]="importedUsers$ | async"></ec-imported-users-table>
 </section>

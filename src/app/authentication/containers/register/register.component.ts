@@ -8,7 +8,7 @@ import { Tools } from '@app/shared/utils/tools';
 import { I18nError } from '@app/core/http/errors/i18n-error';
 
 @Component({
-  selector: 'app-register',
+  selector: 'ec-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })

@@ -5,16 +5,16 @@
       {{'document.details.header' | translate}}
     </div>
     <div class="card-body">
-      <app-document-metadata [assignedUsers]="document.assignedUsers"
-                             [metadata]="documentMetadata">
-      </app-document-metadata>
+      <ec-document-metadata [assignedUsers]="document.assignedUsers"
+                            [metadata]="documentMetadata">
+      </ec-document-metadata>
     </div>
   </div>
   <div class="row">
     <div class="col-md-2">
       <div class="card">
         <div class="card-body">
-          <app-document-menu [documentNodes]="documentNode.children"></app-document-menu>
+          <ec-document-menu [documentNodes]="documentNode.children"></ec-document-menu>
         </div>
       </div>
     </div>
@@ -31,17 +31,17 @@
         <div class="card-body">
           <h2>{{documentNode.title}}</h2>
           <p>{{documentNode.content}}</p>
-          <app-document-content [documentNodes]="documentNode.children"></app-document-content>
+          <ec-document-content [documentNodes]="documentNode.children"></ec-document-content>
         </div>
       </div>
     </div>
   </div>
 </div>
-<app-document-users-modal #assignUsersModal
-                          (assignUsers)="assignUsers.emit($event)"
-                          (pageChange)="usersPageChange.emit($event)"
-                          (searchTermChange)="usersSearchTermChange.emit($event)"
-                          [assignedUsers]="document.assignedUsers"
-                          [availableUsers]="availableUsers"
-                          [pageData]="usersPageData">
-</app-document-users-modal>
+<ec-document-users-modal #assignUsersModal
+                         (assignUsers)="assignUsers.emit($event)"
+                         (pageChange)="usersPageChange.emit($event)"
+                         (searchTermChange)="usersSearchTermChange.emit($event)"
+                         [assignedUsers]="document.assignedUsers"
+                         [availableUsers]="availableUsers"
+                         [pageData]="usersPageData">
+</ec-document-users-modal>

@@ -14,7 +14,7 @@ export interface UserFormValue {
 }
 
 @Component({
-  selector: 'app-imported-users-table-row',
+  selector: 'ec-imported-users-table-row',
   templateUrl: './imported-users-table-row.component.html',
   styleUrls: ['./imported-users-table-row.component.scss']
 })

@@ -5,7 +5,7 @@ import { CoreState } from '@app/core/store';
 import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'app-add-user',
+  selector: 'ec-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss']
 })

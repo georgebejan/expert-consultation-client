@@ -22,14 +22,14 @@
         </form>
       </div>
       <div class="card-body p-0">
-        <app-document-users-table (userAssigned)="onAssignUser($event)"
-                                  (userUnassigned)="onUnassignUser($event)"
-                                  [assignedUsers]="updatedAssignedUsers"
-                                  [availableUsers]="availableUsers"></app-document-users-table>
+        <ec-document-users-table (userAssigned)="onAssignUser($event)"
+                                 (userUnassigned)="onUnassignUser($event)"
+                                 [assignedUsers]="updatedAssignedUsers"
+                                 [availableUsers]="availableUsers"></ec-document-users-table>
       </div>
       <div class="card-footer">
-        <app-pagination (pageChange)="pageChange.emit($event)"
-                        [pageData]="pageData"></app-pagination>
+        <ec-pagination (pageChange)="pageChange.emit($event)"
+                       [pageData]="pageData"></ec-pagination>
       </div>
     </div>
   </div>
