@@ -88,6 +88,7 @@
     },
     "add": {
       "title": "Adaugă membri",
+      "manual": "Manual",
       "subTitle": "Vrei să adaugi membri individual?",
       "subTitle.single": "Adaugă un membru nou.",
       "fromCsv": "Importă un fișier .csv",

@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { UserApiService } from '../http';
 import { Observable } from 'rxjs';
 import { IUser, Page, PageRequest, User } from '../models';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as fromFeature from '../store/reducers';
-import * as fromStore from '../store/selectors';
-import { map, mergeMap, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -24,13 +23,10 @@ export class UserService {
     );
   }
 
-  public saveMultiple(): Observable<User[]> {
-    return this.store.pipe(
-        select(fromStore.getImportUsers),
-        take(1),
-        mergeMap(
-            users => this.usersApiService.saveMultiple(users).pipe(map((theUsers: IUser[]) => theUsers.map(user => new User(user))))
-        ));
+  public saveMultiple(users: User[]): Observable<User[]> {
+    const iUsers = users.map(user => user.toJson());
+    return this.usersApiService.saveMultiple(iUsers)
+        .pipe(map((theUsers: IUser[]) => theUsers.map(user => new User(user))));
   }
 
   public saveUsersExcel(usersExcel: string): Observable<IUser[]> {

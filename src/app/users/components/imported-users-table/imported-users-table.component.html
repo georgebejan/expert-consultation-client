@@ -1,0 +1,45 @@
+<div *ngIf="importedUsers.length > 0" class="table-responsive">
+  <form [formGroup]="usersTableForm">
+    <table class="table align-items-center table-flush">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">{{'users.table.column.lastName' | translate}}</th>
+        <th scope="col">{{'users.table.column.firstName' | translate}}</th>
+        <th scope="col">{{'users.table.column.email' | translate}}</th>
+        <th scope="col">{{'users.table.column.phoneNumber' | translate}}</th>
+        <th scope="col">{{'users.table.column.district' | translate}}</th>
+        <th scope="col">{{'users.table.column.organisation' | translate}}</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody class="list">
+      <ng-container *ngFor="let group of getFormControls; let index=index" formArrayName="users">
+        <tr *ngIf="isEditMode(group)" [formGroupName]="index">
+          <td><input class="form-control" formControlName="lastName"/></td>
+          <td><input class="form-control" formControlName="firstName"/></td>
+          <td><input class="form-control" formControlName="email"/></td>
+          <td><input class="form-control" formControlName="phoneNumber"/></td>
+          <td><input class="form-control" formControlName="district"/></td>
+          <td><input class="form-control" formControlName="organisation"/></td>
+          <td>
+            <span class="pointer mx-2"><i (click)="deleteUser(index)" class="fa fa-trash"></i></span>
+            <span class="pointer mx-2"><i (click)="finishRow(group)" class="fa fa-check"></i></span>
+          </td>
+        </tr>
+        <tr *ngIf="!isEditMode(group)" [formGroupName]="index">
+          <td>{{getValue(group, 'lastName')}}</td>
+          <td>{{getValue(group, 'firstName')}}</td>
+          <td>{{getValue(group, 'email')}}</td>
+          <td>{{getValue(group, 'phoneNumber')}}</td>
+          <td>{{getValue(group, 'district')}}</td>
+          <td>{{getValue(group, 'organisation')}}</td>
+          <td>
+            <span class="pointer mx-2"><i (click)="deleteUser(index)" class="fa fa-trash"></i></span>
+            <span class="pointer mx-2"><i (click)="editRow(group)" class="fa fa-edit"></i></span>
+          </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </form>
+</div>

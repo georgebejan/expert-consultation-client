@@ -1,13 +1,16 @@
 import { UsersComponent } from '@app/users/containers/users/users.component';
-import { AddUserComponent } from '@app/users/containers/add-user/add-user.component';
-import { AddSingleUserComponent } from '@app/users/containers/add-single-user/add-single-user.component';
-import { ImportCsvComponent } from '@app/users/containers/import-csv/import-csv.component';
+import { AddUsersCsvComponent } from './add-users-csv/add-users-csv.component';
+import { AddUsersExcelComponent } from './add-users-excel/add-users-excel.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 export const components: any[] = [
   UsersComponent,
   AddUserComponent,
-  AddSingleUserComponent,
-  ImportCsvComponent
+  AddUsersCsvComponent,
+  AddUsersExcelComponent,
 ];
 
 export * from './users/users.component';
+export * from './add-users-csv/add-users-csv.component';
+export * from './add-users-excel/add-users-excel.component';
+export * from './add-user/add-user.component';

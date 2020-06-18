@@ -1,7 +1,6 @@
 <div class=text-input-component>
-  <span> {{"users.add.excel" | translate}}</span>
-  <form>
-    <textarea name="message" [(ngModel)]="textValue" rows="10" cols="70"></textarea><br>
-    <button mat-raised-button (click)="submitExcel()">{{"button.save" | translate}}</button>
+  <h5> {{"users.add.excel" | translate}}</h5>
+  <form [formGroup]="excelForm">
+    <textarea cols="70" formControlName="data" name="message" rows="10"></textarea>
   </form>
 </div>

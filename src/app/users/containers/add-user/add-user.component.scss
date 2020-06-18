@@ -1,35 +1,6 @@
-@import 'variables';
-@import 'mixins';
+@import "variables.scss";
 
-.header {
-  background: $legal-consult-grey-background;
-  padding: $legal-consult-padding-md;
-  margin: $legal-consult-margin-md 0;
-}
-
-.column {
-  @include flex-column();
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.radio-button {
-  margin: $legal-consult-margin-sm 0;
-}
-
-.add-users-page {
-  @include flex-column();
-  display: inline-flex;
-  margin-left: 7%;
-}
-
-.confirm-button {
-  @include flat-button();
-  background-color: $legal-consult-green;
-}
-
-.button-wrapper {
-  margin-top: $legal-consult-margin-lg;
+#add-single-user-page {
+  display: flex;
+  margin: 0 $legal-consult-margin-xl;
 }

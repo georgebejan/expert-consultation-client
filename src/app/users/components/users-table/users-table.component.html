@@ -1,22 +1,25 @@
-<table class="table align-items-center table-flush">
-  <thead class="thead-light">
-  <tr>
-    <th scope="col">{{'users.table.column.lastName' | translate}}</th>
-    <th scope="col">{{'users.table.column.firstName' | translate}}</th>
-    <th scope="col">{{'users.table.column.email' | translate}}</th>
-    <th scope="col">{{'users.table.column.phoneNumber' | translate}}</th>
-    <th scope="col">{{'users.table.column.district' | translate}}</th>
-    <th scope="col">{{'users.table.column.organisation' | translate}}</th>
-  </tr>
-  </thead>
-  <tbody class="list">
-  <tr *ngFor="let user of users">
-    <td>{{ user.lastName }}</td>
-    <td>{{ user.firstName }}</td>
-    <td>{{ user.email }}</td>
-    <td>{{ user.phoneNumber }}</td>
-    <td>{{ user.district }}</td>
-    <td>{{ user.organisation }}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table align-items-center table-flush">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">{{'users.table.column.lastName' | translate}}</th>
+      <th scope="col">{{'users.table.column.firstName' | translate}}</th>
+      <th scope="col">{{'users.table.column.email' | translate}}</th>
+      <th scope="col">{{'users.table.column.phoneNumber' | translate}}</th>
+      <th scope="col">{{'users.table.column.district' | translate}}</th>
+      <th scope="col">{{'users.table.column.organisation' | translate}}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody class="list">
+    <tr *ngFor="let user of users">
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phoneNumber }}</td>
+      <td>{{ user.district }}</td>
+      <td>{{ user.organisation }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

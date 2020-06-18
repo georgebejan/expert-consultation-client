@@ -31,30 +31,6 @@ export function reducer(state = initialState, action: fromImportUsers.ImportUser
         entities
       };
     }
-    case fromImportUsers.ImportUserActionTypes.UpdateImportedUser: {
-      const theUser: User = action.payload as User;
-      const entities = {
-        ...state.entities,
-        [theUser.email]: theUser,
-      };
-
-      return {
-        ...state,
-        entities,
-      } as ImportUserState;
-    }
-    case fromImportUsers.ImportUserActionTypes.DeleteImportedUser: {
-      const theUserEmail: string = action.payload as string;
-      const entities = {
-        ...state.entities,
-      };
-      delete entities[theUserEmail];
-
-      return {
-        ...state,
-        entities,
-      } as ImportUserState;
-    }
     case fromImportUsers.ImportUserActionTypes.ImportedUsersSaveFailed: {
       const error: Error = action.payload as Error;
 

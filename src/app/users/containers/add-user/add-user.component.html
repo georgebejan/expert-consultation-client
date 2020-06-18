@@ -1,24 +1,12 @@
-<section class="add-users-page">
-  <h1>{{"users.add.title" | translate}}</h1>
-  <span class="header">
-    {{"users.add.subTitle" | translate}}
-    <u (click)="redirectToAddSingleUser()" class="cursor-pointer">{{"users.add.subTitle.single" | translate}}</u>
-  </span>
-  <div *ngIf="!optionSelected">
-    <mat-radio-group class="column">
-      <mat-radio-button class="radio-button" value="1" (click)="selectOption1()">
-        {{"users.add.fromCsv" | translate}}
-      </mat-radio-button>
-      <mat-radio-button class="radio-button" value="2" (click)="selectOption2()">
-        {{"users.add.fromExcel" | translate}}
-      </mat-radio-button>
-    </mat-radio-group>
-    <div class="button-wrapper">
-      <button [disabled]="!(csv || excel)" class="confirm-button" mat-flat-button (click)="userOptionSelected()">
-        {{ 'button.confirm' | translate }}
-      </button>
-    </div>
+<div class="card">
+  <div class="card-header">
+    <h5 class="h3 mb-0">{{'user.form.header' | translate}}</h5>
   </div>
-  <ec-add-excel-users *ngIf="excel && optionSelected"
-                      (save)="save($event)"></ec-add-excel-users>
-</section>
+  <div class="card-body">
+    <ec-user-form (cancel)="onCancel()"
+                  (save)="onSave($event)"
+                  [error]="error$ | async"
+                  [user]="user">
+    </ec-user-form>
+  </div>
+</div>

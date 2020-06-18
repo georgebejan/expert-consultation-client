@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PageData, User } from '@app/core';
+import { PageData, PageRequest, User } from '@app/core';
 import * as fromStore from '@app/core/store';
 import { CoreState } from '@app/core/store';
 import { select, Store } from '@ngrx/store';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'ec-users',
@@ -14,18 +13,12 @@ import { Router } from '@angular/router';
 export class UsersComponent {
   public users$: Observable<User[]> = this.store.pipe(select(fromStore.getUsers));
   public usersPageData$: Observable<PageData> = this.store.pipe(select(fromStore.getUsersPageData));
-  public activeView = 'list';
   public usersLoaded$: Observable<boolean> = this.store.pipe(select(fromStore.getUsersLoaded));
 
-  constructor(private store: Store<CoreState>,
-              private router: Router) {
+  constructor(private store: Store<CoreState>) {
   }
 
-  public onButtonClicked() {
-    this.router.navigate(['/users/add']);
-  }
-
-  public toggleActiveView(event) {
-    this.activeView = event;
+  public onPageChange(pageRequest: PageRequest) {
+    this.store.dispatch(new fromStore.LoadUsers(pageRequest));
   }
 }
