@@ -16,7 +16,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './authentication/authentication.module#AuthenticationModule',
+        loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule),
       }
     ]
   },
@@ -26,15 +26,15 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
       },
       {
         path: 'users',
-        loadChildren: './users/users.module#UsersModule',
+        loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
       },
       {
         path: 'documents',
-        loadChildren: './documents/documents.module#DocumentsModule',
+        loadChildren: () => import('./documents/documents.module').then(m => m.DocumentsModule),
       },
     ]
   },
