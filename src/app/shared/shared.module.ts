@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from '../material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import * as fromComponents from './components';
 import * as fromContainers from './containers';
@@ -18,7 +17,6 @@ const modules = [
   CommonModule,
   FormsModule,
   HttpClientModule,
-  MaterialModule,
   ReactiveFormsModule,
   RouterModule,
   TranslateModule,
