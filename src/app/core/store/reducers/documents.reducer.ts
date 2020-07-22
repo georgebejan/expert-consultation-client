@@ -126,6 +126,21 @@ export function reducer(state = initialState,
   }
 }
 
+function getUpdatedNode(currentNode: IDocumentNode, updatedNode: IDocumentNode): IDocumentNode {
+  const node = updatedNode.id === currentNode.id ? updatedNode : currentNode;
+  if (updatedNode.id === currentNode.id) {
+    return {
+      ...updatedNode,
+      children: [...currentNode.children]
+    };
+  } else {
+    return {
+      ...node,
+      children: node.children.map(child => getUpdatedNode(child, updatedNode))
+    };
+  }
+}
+
 export const getDocumentsEntities = (state: DocumentsState) => state.entities;
 export const getDocumentsLoading = (state: DocumentsState) => state.loading;
 export const getDocumentsLoaded = (state: DocumentsState) => state.loaded;

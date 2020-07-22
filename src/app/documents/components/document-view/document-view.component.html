@@ -10,7 +10,7 @@
       </ec-document-metadata>
     </div>
   </div>
-  <div class="row" *ngIf="document.documentNode as documentNode">
+  <div *ngIf="document.documentNode as documentNode" class="row">
     <div class="col-md-2">
       <div class="card">
         <div class="card-body">
@@ -61,5 +61,5 @@
                          [availableUsers]="availableUsers"
                          [pageData]="usersPageData">
 </ec-document-users-modal>
-<app-document-node-edit-modal #editNodeModal
-                              (nodeSave)="documentNodeUpdate.emit($event)"></app-document-node-edit-modal>
+<ec-document-node-edit-modal #editNodeModal
+                             (nodeSave)="documentNodeUpdate.emit($event)"></ec-document-node-edit-modal>

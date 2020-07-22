@@ -3,7 +3,7 @@ import { DocumentNode } from '@app/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-document-node-edit-form',
+  selector: 'ec-document-node-edit-form',
   templateUrl: './document-node-edit-form.component.html',
 })
 export class DocumentNodeEditFormComponent implements OnInit {

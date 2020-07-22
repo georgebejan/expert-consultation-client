@@ -1,21 +1,26 @@
 <ng-template [ngIf]="documentNodes.length > 0">
   <div *ngFor="let documentNode of documentNodes">
     <div [ngSwitch]="documentNode.documentNodeType">
-      <div *ngSwitchCase="documentNodeTypeEnum.CHAPTER">
-        <ec-document-node-chapter [chapter]="documentNode"></ec-document-node-chapter>
-      </div>
-      <div *ngSwitchCase=" documentNodeTypeEnum.SECTION">
-        <ec-document-node-section [section]="documentNode"></ec-document-node-section>
-      </div>
-      <div *ngSwitchCase=" documentNodeTypeEnum.ARTICLE">
-        <ec-document-node-article [article]="documentNode"></ec-document-node-article>
-      </div>
-      <div *ngSwitchCase="documentNodeTypeEnum.PARAGRAPH">
-        <ec-document-node-paragraph [paragraph]="documentNode"></ec-document-node-paragraph>
-      </div>
-      <div *ngSwitchCase="documentNodeTypeEnum.ALIGNMENT">
-        <ec-document-node-alignment [alignment]="documentNode"></ec-document-node-alignment>
-      </div>
+      <ec-document-node-chapter (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
+                                *ngSwitchCase="documentNodeTypeEnum.CHAPTER"
+                                [chapter]="documentNode"
+                                [isEditMode]="isEditMode"></ec-document-node-chapter>
+      <ec-document-node-section (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
+                                *ngSwitchCase=" documentNodeTypeEnum.SECTION"
+                                [isEditMode]="isEditMode"
+                                [section]="documentNode"></ec-document-node-section>
+      <ec-document-node-article (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
+                                *ngSwitchCase=" documentNodeTypeEnum.ARTICLE"
+                                [article]="documentNode"
+                                [isEditMode]="isEditMode"></ec-document-node-article>
+      <ec-document-node-paragraph (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
+                                  *ngSwitchCase="documentNodeTypeEnum.PARAGRAPH"
+                                  [isEditMode]="isEditMode"
+                                  [paragraph]="documentNode"></ec-document-node-paragraph>
+      <ec-document-node-alignment (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
+                                  *ngSwitchCase="documentNodeTypeEnum.ALIGNMENT"
+                                  [alignment]="documentNode"
+                                  [isEditMode]="isEditMode"></ec-document-node-alignment>
     </div>
   </div>
 </ng-template>

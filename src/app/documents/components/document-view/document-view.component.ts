@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { BaseComponent } from '@app/shared/components/base-component';
-import { DocumentConsolidate, PageData, PageRequest, User } from '@app/core';
+import { DocumentConsolidate, DocumentMetadata, DocumentNode, PageData, PageRequest, User } from '@app/core';
 import { DocumentUsersModalComponent } from '@app/documents/components/document-users-modal/document-users-modal.component';
 import { DocumentNodeEditModalComponent } from '@app/documents/components/document-node-edit-modal/document-node-edit-modal.component';
 

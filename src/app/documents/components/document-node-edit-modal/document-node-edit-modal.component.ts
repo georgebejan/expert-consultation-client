@@ -3,7 +3,7 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { DocumentNode } from '@app/core/models';
 
 @Component({
-  selector: 'app-document-node-edit-modal',
+  selector: 'ec-document-node-edit-modal',
   templateUrl: './document-node-edit-modal.component.html',
 })
 export class DocumentNodeEditModalComponent {
