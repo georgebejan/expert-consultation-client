@@ -52,9 +52,8 @@ export class DocumentsEffect {
   @Effect({dispatch: false})
   saveDocumentSuccess$ = this.actions$.pipe(
       ofType(documentsActions.DocumentsActionTypes.SaveDocumentSuccess),
-      map((action: documentsActions.SaveDocumentSuccess) => action.payload),
       take(1),
-      tap((id: string) => this.router.navigate(['documents', id, 'users'])),
+      tap(() => this.router.navigate(['documents'])),
   );
 
   @Effect()
