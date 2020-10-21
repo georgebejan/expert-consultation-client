@@ -19,9 +19,9 @@
           <small> {{comment.lastEditDateTime | date}} </small></div>
         <p class="text-sm mb-2">{{comment.text}}</p>
         <div *ngIf="!areRepliesExpanded(comment.id)" class="row justify-content-end">
-          <span (click)="expandReplies(comment.id)" class="btn-link">
+          <button (click)="expandReplies(comment.id)" class="btn btn-link">
             {{'comments.answer' | translate}}
-          </span>
+          </button>
         </div>
         <div *ngIf="areRepliesExpanded(comment.id)" class="replies">
           <ec-replies [nodeId]="nodeId"
