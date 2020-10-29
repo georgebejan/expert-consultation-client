@@ -43,9 +43,9 @@ jobs:
 
       - name: Create cloudfront invalidation
         if: github.ref == 'refs/heads/develop'
-        uses: awact/cloudfront-action@master
+        uses: muratiger/invalidate-cloudfront-and-wait-for-completion-action@master
         env:
-          SOURCE_PATH: './*'
+          SOURCE_PATH: '/*'
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
