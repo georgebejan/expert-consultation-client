@@ -231,5 +231,17 @@
   },
   "topNav": {
     "logout": "Deconectare"
+  },
+  "dashboard": {
+    "pendingComments": {
+      "title": "Comentarii care necesită aprobare",
+      "table": {
+        "content": "Conținut",
+        "author": "Autor"
+      },
+      "approve": "Acceptă",
+      "reject": "Respinge",
+      "none": "Nu aveți comentarii pentru aprobare"
+    }
   }
 }

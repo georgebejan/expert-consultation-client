@@ -1,3 +1,6 @@
-<section id="home-page">
-  {{ page }}
-</section>
+<ec-pending-comments (pageChanged)="onPendingCommentsPageChanged($event)"
+                     (commentApproved)="onPendingCommentApproved($event)"
+                     (commentRejected)="onPendingCommentRejected($event)"
+                     [comments]="pendingComments$ | async"
+                     [isLoading]="pendingCommentsLoading$ | async"
+                     [pageData]="pendingCommentsPageData$ | async"></ec-pending-comments>
