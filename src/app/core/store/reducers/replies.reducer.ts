@@ -1,9 +1,12 @@
-import { PageData } from '../../models';
-import { RepliesAction, RepliesActionTypes } from '@app/core/store/actions/replies.action';
+import { IPageData, PageData } from '../../models';
+import { RepliesAction, RepliesActionTypes } from '../actions/replies.action';
 import { CommentsState } from './comments.reducer';
 
 const initialState: CommentsState = {
-  entities: {}
+  entities: {},
+  pending: [],
+  loading: false,
+  pageData: {pageable: {}} as IPageData,
 };
 
 export function reducer(state = initialState, action: RepliesAction): CommentsState {

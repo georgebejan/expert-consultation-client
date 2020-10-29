@@ -11,10 +11,16 @@ export interface CommentsEntry {
 
 export interface CommentsState {
   entities: { [id: string]: CommentsEntry };
+  pending: IComment[];
+  pageData: IPageData;
+  loading: boolean;
 }
 
 const initialState: CommentsState = {
-  entities: {}
+  entities: {},
+  pending: [],
+  loading: false,
+  pageData: {pageable: {}} as IPageData,
 };
 
 export function reducer(state = initialState, action: fromComments.CommentsAction): CommentsState {
@@ -70,25 +76,45 @@ export function reducer(state = initialState, action: fromComments.CommentsActio
       };
     }
 
-    case fromComments.CommentsActionTypes.AddCommentSuccess: {
-      const nodeId = action.nodeId;
-      const comment = action.comment;
-      const currentNodeState = state[nodeId];
-      if (!!currentNodeState) {
-        const updatedEntities = [...currentNodeState.entities, comment.toJson()];
+    case fromComments.CommentsActionTypes.LoadPendingComments: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
 
-        const updatedNodeState = {
-          ...currentNodeState,
-          entities: updatedEntities
-        };
+    case fromComments.CommentsActionTypes.LoadPendingCommentsSuccess: {
+      const commentsPage = action.commentsPage;
+      const comments = commentsPage.content;
+      const pageData = new PageData();
+      pageData.fromPage(commentsPage);
 
-        return {
-          ...state,
-          [nodeId]: updatedNodeState
-        };
-      } else {
-        return state;
-      }
+      return {
+        ...state,
+        loading: false,
+        pending: comments,
+        pageData,
+      };
+    }
+
+    case fromComments.CommentsActionTypes.ApprovePendingCommentSuccess: {
+      const approvedComment = action.comment;
+      const pendingComments = state.pending.filter(pendingComment => pendingComment.id !== approvedComment.id);
+
+      return {
+        ...state,
+        pending: pendingComments
+      };
+    }
+
+    case fromComments.CommentsActionTypes.RejectPendingCommentSuccess: {
+      const rejectedComment = action.comment;
+      const pendingComments = state.pending.filter(pendingComment => pendingComment.id !== rejectedComment.id);
+
+      return {
+        ...state,
+        pending: pendingComments
+      };
     }
 
     default: {

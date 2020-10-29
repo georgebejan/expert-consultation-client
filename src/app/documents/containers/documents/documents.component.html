@@ -2,7 +2,12 @@
   <div class="card-header">
     <h5 class="h3 mb-0">{{'documents.table.title' | translate}}</h5>
   </div>
-  <div class="table-responsive">
+  <div class="d-flex justify-content-center" *ngIf="documentLoading$|async">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="(documentLoading$|async)===false" class="table-responsive">
     <ec-documents-table (rowClick)="onRowClick($event)"
                         [documents]="documents$ | async">
     </ec-documents-table>

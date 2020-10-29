@@ -15,6 +15,7 @@ export class DocumentsComponent {
   public documents$: Observable<DocumentMetadata[]> = this.store.pipe(select(fromStore.getDocuments));
   public documentsPageData$: Observable<PageData> = this.store.pipe(select(fromStore.getDocumentsPageData));
   public documentsLoaded$: Observable<boolean> = this.store.pipe(select(fromStore.getDocumentsLoaded));
+  public documentLoading$: Observable<boolean> = this.store.pipe(select(fromStore.getDocumentsLoading));
 
   constructor(private store: Store<CoreState>,
               private router: Router) {
