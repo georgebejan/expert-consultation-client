@@ -12,10 +12,10 @@ export class DocumentBreakdownGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    const documentId = route.params['id'];
-    this.store.dispatch(new fromStore.LoadDocumentConsolidate(documentId));
+    const documentMetadataId = route.params['metadataId'];
+    this.store.dispatch(new fromStore.LoadDocumentConsolidate(documentMetadataId));
 
-    return this.store.pipe(select(fromStore.getDocumentsLoaded))
+    return this.store.pipe(select(fromStore.getDocumentsMetadataLoaded))
         .pipe(
             filter(loaded => loaded),
             take(1)

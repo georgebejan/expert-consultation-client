@@ -57,6 +57,15 @@
     "add": {
       "title": "Adaugă document"
     },
+    "consultation": {
+      "time": "Perioadă consultare",
+      "startDate": "dată început",
+      "deadline": "deadline consultare",
+      "excluded": "Nu intră in consultare",
+      "add": {
+        "title": "Adaugă deadline"
+      }
+    },
     "table": {
       "title": "Documente",
       "type": "documente",

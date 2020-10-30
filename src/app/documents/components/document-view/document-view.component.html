@@ -35,6 +35,10 @@
               <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
               <span class="btn-inner--text">{{'document.members.add' | translate}}</span>
             </button>
+            <button (click)="openDeadlineModal()" class="btn btn-icon btn-outline-success" type="button">
+              <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+              <span class="btn-inner--text">{{'documents.consultation.add.title' | translate}}</span>
+            </button>
           </div>
         </div>
         <div class="card-body">
@@ -63,3 +67,9 @@
 </ec-document-users-modal>
 <ec-document-node-edit-modal #editNodeModal
                              (nodeSave)="documentNodeUpdate.emit($event)"></ec-document-node-edit-modal>
+<ec-document-deadline-modal #deadlineModal
+                            (saveDates)="saveDates.emit($event)"
+                            [startDate]="document.documentConfiguration.consultationStartDate"
+                            [consultationDeadline]="document.documentConfiguration.consultationDeadline"
+                            [excludedFromConsultation]="document.documentConfiguration.excludedFromConsultation">
+</ec-document-deadline-modal>

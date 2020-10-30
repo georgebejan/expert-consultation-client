@@ -9,12 +9,12 @@
   </tr>
   </thead>
   <tbody class="list">
-  <tr *ngFor="let document of documents">
+  <tr *ngFor="let documentMetadata of documentsMetadata">
     <td><i class="fa fa-angle-right"></i></td>
-    <td (click)="rowClick.emit(document.id)" class="pointer">{{ document.documentTitle }}</td>
-    <td>{{ document.dateOfDevelopment | date }}</td>
-    <td>{{ document.documentType }}</td>
-    <td>{{ document.documentInitializer }}</td>
+    <td (click)="rowClick.emit(documentMetadata.id)" class="pointer">{{ documentMetadata.documentTitle }}</td>
+    <td>{{ documentMetadata.dateOfDevelopment | date }}</td>
+    <td>{{ documentMetadata.documentType }}</td>
+    <td>{{ documentMetadata.documentInitializer }}</td>
   </tr>
   </tbody>
 </table>

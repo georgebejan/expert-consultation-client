@@ -38,6 +38,15 @@
     "add": {
       "title": "Add a document"
     },
+    "consultation": {
+      "time": "Consultation period",
+      "startDate": "starting date",
+      "deadline": "deadline",
+      "excluded": "Not included in consultation",
+      "add": {
+        "title": "Add deadline"
+      }
+    },
     "table": {
       "type": "documents",
       "sort": {

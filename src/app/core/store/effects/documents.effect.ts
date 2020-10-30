@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as documentsActions from '../actions';
 import { catchError, concatMap, map, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 import { DocumentsService } from '../../services';
-import { Error, Page, User } from '@app/core';
+import { DocumentConsultationData, Error, Page, User } from '@app/core';
 import { of } from 'rxjs';
 import { DocumentConsolidate, DocumentMetadata } from '../../models/';
 import { CoreState } from '@app/core/store';
@@ -43,7 +43,7 @@ export class DocumentsEffect {
       map((action: documentsActions.SaveDocument) => action.payload),
       concatMap((document: DocumentMetadata) => {
         return this.documentsService.save(document).pipe(
-            map((id: string) => new documentsActions.SaveDocumentSuccess(id)),
+            map((metadataId: string) => new documentsActions.SaveDocumentSuccess(metadataId)),
             catchError(error => of(new documentsActions.SaveDocumentFail(this.mapError(error))))
         );
       })
@@ -81,6 +81,31 @@ export class DocumentsEffect {
       })
   );
 
+  @Effect()
+  saveDocumentConsultationData$ = this.actions$.pipe(
+      ofType(documentsActions.DocumentsActionTypes.SaveDocumentConsultationData),
+      concatMap((action: documentsActions.SaveDocumentConsultationData) => {
+        return this.documentsService.saveDocumentConsultationData(action.documentId, action.documentConsultationData).pipe(
+            mergeMap(() => [
+              new documentsActions.SaveDocumentConsultationDataSuccess(),
+              new documentsActions.GetDocumentConsultationData(action.documentId)
+            ]),
+            catchError(error => of(new documentsActions.SaveDocumentConsultationDataFail(this.mapError(error))))
+        );
+      })
+  );
+
+  @Effect()
+  getDocumentConsultationData$ = this.actions$.pipe(
+      ofType(documentsActions.DocumentsActionTypes.GetDocumentConsultationData),
+      concatMap((action: documentsActions.GetDocumentConsultationData) => {
+        return this.documentsService.getDocumentConsultationData(action.documentId).pipe(
+            map((documentConsultationData: DocumentConsultationData) =>
+                new documentsActions.GetDocumentConsultationDataSuccess(documentConsultationData)),
+            catchError(error => of(new documentsActions.GetDocumentConsultationDataFail(this.mapError(error))))
+        );
+      })
+  );
 
   constructor(private store$: Store<CoreState>,
               private actions$: Actions,

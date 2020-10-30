@@ -3,16 +3,16 @@ import * as fromFeature from '../reducers';
 import * as fromDocuments from '../reducers/documents.reducer';
 import { DocumentConsolidate, DocumentMetadata, IDocumentConsolidate, IDocumentMetadata, IPageData, PageData } from '../../models';
 
-const getDocumentsState = createSelector(fromFeature.getCoreState, (state: fromFeature.CoreState) => state.documents);
+const getDocumentsMetadataState = createSelector(fromFeature.getCoreState, (state: fromFeature.CoreState) => state.documentsMetadata);
 
-const getDocumentsAsInterfaces = createSelector(getDocumentsState, fromDocuments.getDocumentsEntities);
-const getDocumentConsolidateAsInterface = createSelector(getDocumentsState, fromDocuments.getDocumentEntity);
+const getDocumentsMetadataAsInterfaces = createSelector(getDocumentsMetadataState, fromDocuments.getDocumentsEntities);
+const getDocumentConsolidateAsInterface = createSelector(getDocumentsMetadataState, fromDocuments.getDocumentEntity);
 
-export const getDocumentsEntities = createSelector(getDocumentsAsInterfaces,
+export const getDocumentsMetadataEntities = createSelector(getDocumentsMetadataAsInterfaces,
     (documents: { [id: string]: IDocumentMetadata }) => {
       const documentsEntities = {};
 
-      Object.keys(documents).map(key => {
+      Object.keys(documents).forEach(key => {
         documentsEntities[key] = new DocumentMetadata(documents[key]);
       });
 
@@ -20,7 +20,7 @@ export const getDocumentsEntities = createSelector(getDocumentsAsInterfaces,
     }
 );
 
-export const getDocumentsPageDataAsInterface = createSelector(getDocumentsState, fromDocuments.getDocumentsPageData);
+export const getDocumentsPageDataAsInterface = createSelector(getDocumentsMetadataState, fromDocuments.getDocumentsPageData);
 export const getDocumentsPageData = createSelector(getDocumentsPageDataAsInterface,
     (iPageData: IPageData) => {
       const pageData = new PageData();
@@ -28,11 +28,11 @@ export const getDocumentsPageData = createSelector(getDocumentsPageDataAsInterfa
       return pageData;
     });
 
-export const getDocuments = createSelector(getDocumentsEntities,
+export const getDocumentsMetadata = createSelector(getDocumentsMetadataEntities,
     (entities: { [id: number]: DocumentMetadata }) => Object.keys(entities).map(id => entities[id])
 );
-export const getDocumentsLoaded = createSelector(getDocumentsState, fromDocuments.getDocumentsLoaded);
-export const getDocumentsLoading = createSelector(getDocumentsState, fromDocuments.getDocumentsLoading);
+export const getDocumentsMetadataLoaded = createSelector(getDocumentsMetadataState, fromDocuments.getDocumentsLoaded);
+export const getDocumentsMetadataLoading = createSelector(getDocumentsMetadataState, fromDocuments.getDocumentsLoading);
 export const getDocumentConsolidate = createSelector(getDocumentConsolidateAsInterface,
     (documentConsolidate: IDocumentConsolidate) => new DocumentConsolidate(documentConsolidate));
 export const getDocumentMetadata = createSelector(getDocumentConsolidate,

@@ -95,6 +95,19 @@ export function reducer(state = initialState,
         entity: updatedDocument
       };
     }
+    case fromDocuments.DocumentsActionTypes.GetDocumentConsultationDataSuccess: {
+      const updatedDocument = {
+        ...state.entity,
+        startDate: action.payload.startDate,
+        consultationDeadline: action.payload.consultationDeadline,
+        excludedFromConsultation: action.payload.excludedFromConsultation
+      };
+
+      return {
+        ...state,
+        entity: updatedDocument
+      };
+    }
     case fromDocuments.DocumentsActionTypes.IncrementDocumentNodeCommentCount: {
       const incrementFn = (document: IDocumentNode) => ({
         ...document,

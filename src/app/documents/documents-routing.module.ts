@@ -19,7 +19,7 @@ const routes: Routes = [
     component: fromContainers.AddDocumentComponent,
   },
   {
-    path: ':id',
+    path: ':metadataId',
     component: fromContainers.DocumentBreakdownComponent,
     canActivate: [
       DocumentBreakdownGuard,

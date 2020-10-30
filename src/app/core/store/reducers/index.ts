@@ -14,14 +14,14 @@ export interface CoreState {
   users: fromUsers.UserState;
   fileUpload: fromFileUpload.FileUploadState;
   importUsers: fromImportUsers.ImportUserState;
-  documents: fromDocuments.DocumentsState;
+  documentsMetadata: fromDocuments.DocumentsState;
   comments: fromComments.CommentsState;
   replies: fromComments.CommentsState;
 }
 
 export const reducers: ActionReducerMap<CoreState> = {
   users: fromUsers.reducer,
-  documents: fromDocuments.reducer,
+  documentsMetadata: fromDocuments.reducer,
   fileUpload: fromFileUpload.reducer,
   importUsers: fromImportUsers.reducer,
   comments: fromComments.reducer,

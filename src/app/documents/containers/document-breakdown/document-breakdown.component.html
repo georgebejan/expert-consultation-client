@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-body">
     <ec-document-view (assignUsers)="onAssignUsers($event)"
+                      (saveDates)="onSaveDates($event)"
                       (assignedUsersModalOpen)="loadUsers()"
                       (documentNodeUpdate)="onDocumentNodeUpdate($event)"
                       (usersPageChange)="onUsersPageChange($event)"

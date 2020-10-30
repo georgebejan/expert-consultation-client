@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IDocumentConsolidate, IDocumentMetadata, IUser, Page } from '../models/';
+import { DocumentConsultationData, IDocumentConsolidate, IDocumentConsultationData, IDocumentMetadata, IUser, Page } from '../models/';
 import { environment } from '@env/environment';
 import { PageRequest } from '@app/core/models/page-request.model';
 
@@ -37,5 +37,13 @@ export class DocumentsApiService {
 
   public saveAssignedUsers(documentId: string, userIds: string[]): Observable<void> {
     return this.http.post<void>(`${this.url}/${documentId}/users`, {userIds});
+  }
+
+  public saveDocumentConsultationData(documentId: string, documentConsultationData: DocumentConsultationData): Observable<void> {
+    return this.http.post<void>(`${this.url}/${documentId}/consultation`, documentConsultationData);
+  }
+
+  public getConsultationData(documentId: string): Observable<IDocumentConsultationData> {
+    return this.http.get<IDocumentConsultationData>(`${this.url}/${documentId}/consultation`);
   }
 }

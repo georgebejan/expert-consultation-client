@@ -8,7 +8,7 @@ import { DocumentMetadata, PageData } from '@app/core';
   styleUrls: ['./documents-table.component.scss']
 })
 export class DocumentsTableComponent extends BaseComponent {
-  @Input() documents: DocumentMetadata[];
+  @Input() documentsMetadata: DocumentMetadata[];
   @Input() pageData: PageData;
   @Output() rowClick: EventEmitter<string> = new EventEmitter<string>();
 }

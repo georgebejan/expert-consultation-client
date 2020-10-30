@@ -21,7 +21,7 @@ export class DocumentsGuard implements CanActivate {
   }
 
   private checkStore(): Observable<boolean> {
-    return this.store.pipe(select(fromStore.getDocumentsLoaded))
+    return this.store.pipe(select(fromStore.getDocumentsMetadataLoaded))
         .pipe(
             tap((loaded) => {
               this.store.dispatch(new fromStore.LoadDocuments(new PageRequest()));

@@ -1,0 +1,54 @@
+<ng-template #template>
+  <div class="modal-header">
+    <h6 class="modal-title">
+      {{'documents.consultation.add.title' | translate}}
+    </h6>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="deadlineForm">
+      <h3 class="h4 text-success font-weight-bold mb-4"> {{'documents.consultation.time' | translate}}</h3>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+          </div>
+          <input [bsConfig]="{ isAnimated: true, adaptivePosition: true, containerClass: 'theme-default' }"
+                 bsDatepicker
+                 class="form-control"
+                 formControlName="startDate"
+                 placeholder="{{'documents.consultation.startDate' | translate}}"
+                 type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+          </div>
+          <input [bsConfig]="{ isAnimated: true, adaptivePosition: true, containerClass: 'theme-default' }"
+                 bsDatepicker
+                 class="form-control"
+                 formControlName="consultationDeadline"
+                 placeholder="{{'documents.consultation.deadline' | translate}}"
+                 type="text">
+        </div>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input class="custom-control-input" id="customCheck1" type="checkbox"
+               formControlName="excludedFromConsultation">
+        <label class="custom-control-label" for="customCheck1">
+          <span>{{'documents.consultation.excluded' | translate}}</span>
+        </label>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onSave()" class="btn btn-success" type="button">
+      {{'button.save' | translate}}
+    </button>
+    <button (click)="close()" class=" btn btn-link ml-auto" data-dismiss="modal" type="button">
+      {{'button.cancel' | translate}}
+    </button>
+  </div>
+</ng-template>

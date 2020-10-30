@@ -13,6 +13,7 @@ import { DocumentNodeAlignmentComponent } from './document-node/document-node-al
 import { DocumentUsersModalComponent } from './document-users-modal/document-users-modal.component';
 import { DocumentNodeEditModalComponent } from './document-node-edit-modal/document-node-edit-modal.component';
 import { DocumentNodeEditFormComponent } from './document-node-edit-form/document-node-edit-form.component';
+import { DocumentDeadlineModalComponent } from '@app/documents/components/document-deadline-modal/document-deadline-modal.component';
 
 export const components: any[] = [
   DocumentsTableComponent,
@@ -30,4 +31,5 @@ export const components: any[] = [
   DocumentUsersModalComponent,
   DocumentNodeEditModalComponent,
   DocumentNodeEditFormComponent,
+  DocumentDeadlineModalComponent
 ];

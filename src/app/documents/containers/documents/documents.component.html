@@ -9,7 +9,7 @@
   </div>
   <div *ngIf="(documentLoading$|async)===false" class="table-responsive">
     <ec-documents-table (rowClick)="onRowClick($event)"
-                        [documents]="documents$ | async">
+                        [documentsMetadata]="documentsMetadata$ | async">
     </ec-documents-table>
   </div>
   <div class="card-footer">
