@@ -19,6 +19,7 @@
             <div class="media align-items-center" dropdown>
               <a (click)="false" aria-expanded="false" aria-haspopup="true" class="nav-link pr-0"
                  dropdownToggle href role="button">
+                <i class="ni ni-user"></i>
                 <div class="media-body ml-2 d-lg-block">
                   <span class="mb-0 text-sm font-weight-bold text-black-50"
                         *ngIf="currentUser$|async as currentUser">{{currentUser.fullName}}</span>

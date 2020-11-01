@@ -20,7 +20,7 @@
 // Nav links
 
 .nav-link {
-    color: $nav-link-color;
+    color: $nav-link-color !important;
 
     &:hover {
         color: $nav-link-hover-color;

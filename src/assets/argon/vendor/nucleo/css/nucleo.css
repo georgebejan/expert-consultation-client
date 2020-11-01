@@ -524,6 +524,10 @@ License - nucleoapp.com/license/
     content: "\ea5a";
 }
 
+.ni-user::before {
+  content: "\ea4e";
+}
+
 .ni-user-run::before {
     content: "\ea5b";
 }
