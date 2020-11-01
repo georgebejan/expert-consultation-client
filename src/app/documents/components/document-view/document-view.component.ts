@@ -54,6 +54,10 @@ export class DocumentViewComponent extends BaseComponent implements OnInit, OnCh
     this.isEditMode = true;
   }
 
+  public disableEditMode() {
+    this.isEditMode = false;
+  }
+
   public onNodeEditButtonClick(node: DocumentNode) {
     this.editNodeModal.open(node);
   }

@@ -25,11 +25,11 @@
             <button (click)="enableEditMode()" *ngIf="!isEditMode" class="btn btn-icon btn-outline-success"
                     type="button">
               <span class="btn-inner--icon"><i class="fa fa-pen fas"></i></span>
-              <span class="btn-inner--text">{{'document.edit.button' | translate}}</span>
+              <span class="btn-inner--text">{{'document.edit.button.begin' | translate}}</span>
             </button>
-            <button *ngIf="isEditMode" class="btn btn-icon btn-outline-success" type="button">
+            <button (click)="disableEditMode()" *ngIf="isEditMode" class="btn btn-icon btn-outline-success" type="button">
               <span class="btn-inner--icon"><i class="fa fa-save fas"></i></span>
-              <span class="btn-inner--text">{{'document.save.button' | translate}}</span>
+              <span class="btn-inner--text">{{'document.edit.button.end' | translate}}</span>
             </button>
             <button (click)="openAssignUsersModal()" class="btn btn-icon btn-outline-success" type="button">
               <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>

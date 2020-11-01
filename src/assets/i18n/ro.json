@@ -148,7 +148,10 @@
       "add": "Adaugă membri"
     },
     "edit": {
-      "button": "Editează",
+      "button": {
+        "begin": "Editează",
+        "end": "Ascunde Editare"
+      },
       "header": "Editează",
       "section": "secțiunea",
       "chapter": "capitolul",
@@ -156,9 +159,6 @@
       "paragraph": "paragraful",
       "alignment": "aliniatul",
       "document": "documentul"
-    },
-    "save": {
-      "button": "Salvează"
     },
     "header": "Adaugă document nou",
     "details": {

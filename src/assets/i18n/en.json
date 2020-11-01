@@ -122,6 +122,12 @@
       "release": "Release date",
       "receiving": "Receive date",
       "file": "Upload file"
+    },
+    "edit": {
+      "button": {
+        "begin": "Edit",
+        "end": "Disable edit mode"
+      }
     }
   },
   "table": {
