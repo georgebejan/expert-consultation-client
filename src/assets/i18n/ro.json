@@ -246,7 +246,10 @@
       "title": "Comentarii care necesită aprobare",
       "table": {
         "content": "Conținut",
-        "author": "Autor"
+        "author": "Autor",
+        "documentTitle": "Titlul documentului",
+        "nodeTitle": "Titlul nodului",
+        "nodeContent": "Conținutul nodului"
       },
       "approve": "Acceptă",
       "reject": "Respinge",

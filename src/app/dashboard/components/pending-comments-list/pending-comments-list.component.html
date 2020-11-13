@@ -14,6 +14,9 @@
         <tr>
           <th scope="col">{{'dashboard.pendingComments.table.content' | translate}}</th>
           <th scope="col">{{'dashboard.pendingComments.table.author' | translate}}</th>
+          <th scope="col">{{'dashboard.pendingComments.table.documentTitle' | translate}}</th>
+          <th scope="col">{{'dashboard.pendingComments.table.nodeTitle' | translate}}</th>
+          <th scope="col">{{'dashboard.pendingComments.table.nodeContent' | translate}}</th>
           <th scope="col"></th>
         </tr>
         </thead>
@@ -23,6 +26,9 @@
             <div class="comment-text">{{comment.text}}</div>
           </td>
           <td>{{comment.user}}</td>
+          <td>{{comment.documentTitle}}</td>
+          <td>{{comment.nodeTitle}}</td>
+          <td>{{comment.nodeContent}}</td>
           <td>
             <button (click)="approve(comment)" class="btn btn-success">
               {{'dashboard.pendingComments.approve' | translate}}

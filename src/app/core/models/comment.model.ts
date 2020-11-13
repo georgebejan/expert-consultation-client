@@ -3,6 +3,9 @@ export interface IComment {
   text: string;
   user: string;
   lastEditDateTime: Date;
+  nodeTitle: string;
+  nodeContent: string;
+  documentTitle: string;
 }
 
 export class Comment {
@@ -10,6 +13,9 @@ export class Comment {
   text: string;
   user: string;
   lastEditDateTime: Date;
+  nodeTitle: string;
+  nodeContent: string;
+  documentTitle: string;
 
   constructor(data?: IComment) {
     if (data) {
@@ -22,6 +28,9 @@ export class Comment {
     this.text = data.text;
     this.user = data.user;
     this.lastEditDateTime = data.lastEditDateTime;
+    this.nodeTitle = data.nodeTitle;
+    this.nodeContent = data.nodeContent;
+    this.documentTitle = data.documentTitle;
   }
 
   toJson(): IComment {
@@ -29,7 +38,10 @@ export class Comment {
       id: this.id,
       text: this.text,
       user: this.user,
-      lastEditDateTime: this.lastEditDateTime
+      lastEditDateTime: this.lastEditDateTime,
+      nodeTitle: this.nodeTitle,
+      nodeContent: this.nodeContent,
+      documentTitle: this.documentTitle
     };
   }
 }

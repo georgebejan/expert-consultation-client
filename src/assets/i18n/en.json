@@ -143,5 +143,12 @@
     "consultation": "Consultation",
     "archive": "Archive",
     "members": "Members"
+  },
+  "dashboard": {
+    "pendingComments": {
+      "documentTitle": "Document title",
+      "nodeTitle": "Node title",
+      "nodeContent": "Node content"
+    }
   }
 }
