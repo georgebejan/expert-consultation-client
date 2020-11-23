@@ -92,7 +92,8 @@
         "email": "Email",
         "phoneNumber": "Telefon",
         "district": "Județ",
-        "organisation": "Organizație"
+        "organisation": "Organizație",
+        "specialization": "Specializare"
       }
     },
     "card": {

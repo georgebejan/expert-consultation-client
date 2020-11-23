@@ -48,4 +48,11 @@ export class UserApiService {
             catchError(aError => observableThrowError(aError))
         );
   }
+
+  public getUserSpecializations(): Observable<string[]> {
+    return this.http.get<any>(`${environment.api_url}/users/specializations`)
+        .pipe(
+            catchError(aError => observableThrowError(aError))
+        );
+  }
 }

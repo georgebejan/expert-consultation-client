@@ -6,7 +6,8 @@
     <ec-user-form (cancel)="onCancel()"
                   (save)="onSave($event)"
                   [error]="error$ | async"
-                  [user]="user">
+                  [user]="user"
+                  [userSpecializations]="availableSpecializations$ | async">
     </ec-user-form>
   </div>
 </div>

@@ -8,6 +8,7 @@
       <th scope="col">{{'users.table.column.phoneNumber' | translate}}</th>
       <th scope="col">{{'users.table.column.district' | translate}}</th>
       <th scope="col">{{'users.table.column.organisation' | translate}}</th>
+      <th scope="col">{{'users.table.column.specialization' | translate}}</th>
       <th></th>
     </tr>
     </thead>
@@ -19,6 +20,7 @@
       <td>{{ user.phoneNumber }}</td>
       <td>{{ user.district }}</td>
       <td>{{ user.organisation }}</td>
+      <td>{{ user.specialization | titlecase }}</td>
     </tr>
     </tbody>
   </table>

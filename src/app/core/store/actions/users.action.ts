@@ -13,7 +13,10 @@ export enum UserActionTypes {
   SaveUserExcelFail = '[Users] Save Users Excel Fail',
   LoadCurrentUser = '[Current User] Load Current User',
   LoadCurrentUserSuccess = '[Current User] Load Current User Success',
-  LoadCurrentUserFail = '[Current User] Load Current User Fail'
+  LoadCurrentUserFail = '[Current User] Load Current User Fail',
+  LoadUserSpecializations = '[User] Load User Specializations',
+  LoadUserSpecializationsSuccess = '[User] Load Current User Success',
+  LoadUserSpecializationsFail = '[User] Load Current User Fail'
 }
 
 export class LoadCurrentUser implements Action {
@@ -97,6 +100,27 @@ export class SaveUserExcelFail implements Action {
   readonly type: string = UserActionTypes.SaveUserExcelFail;
 
   constructor(public payload: Error) {
+  }
+}
+
+export class LoadUserSpecializations implements Action {
+  readonly type: string = UserActionTypes.LoadUserSpecializations;
+
+  constructor() {
+  }
+}
+
+export class LoadUserSpecializationsSuccess implements Action {
+  readonly type: string = UserActionTypes.LoadUserSpecializationsSuccess;
+
+  constructor(public payload: string[]) {
+  }
+}
+
+export class LoadUserSpecializationsFail implements Action {
+  readonly type: string = UserActionTypes.LoadCurrentUserSuccess;
+
+  constructor(public payload: any) {
   }
 }
 

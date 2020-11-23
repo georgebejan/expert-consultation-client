@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User, UserService } from '@app/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -12,9 +12,10 @@ import { Error } from '@app/core/models/error.model';
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss']
 })
-export class AddUserComponent {
+export class AddUserComponent implements OnInit {
   public user: User = new User();
   public error$: Observable<Error> = this.store.pipe(select(fromStore.getUsersErrors));
+  public availableSpecializations$: Observable<string[]> = this.store.pipe(select(fromStore.getUserSpecializations));
 
   constructor(private router: Router,
               private usersService: UserService,
@@ -27,5 +28,9 @@ export class AddUserComponent {
 
   public onSave(user: User) {
     this.store.dispatch(new fromStore.SaveUser(user));
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(new fromStore.LoadUserSpecializations());
   }
 }

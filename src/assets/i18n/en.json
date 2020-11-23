@@ -71,7 +71,8 @@
         "email": "Email",
         "phoneNumber": "Phone number",
         "district": "District",
-        "organisation": "Organisation"
+        "organisation": "Organisation",
+        "specialization": "Specialization"
       }
     },
     "card": {

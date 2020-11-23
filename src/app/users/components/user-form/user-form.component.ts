@@ -13,6 +13,8 @@ export class UserFormComponent implements OnInit, OnChanges {
   public user: User;
   @Input()
   public error: Error;
+  @Input()
+  public userSpecializations: string[];
   @Output()
   public save: EventEmitter<User> = new EventEmitter();
   @Output()
@@ -25,6 +27,7 @@ export class UserFormComponent implements OnInit, OnChanges {
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10}')]),
     district: new FormControl('', [Validators.required, Validators.max(40)]),
     organisation: new FormControl('', [Validators.required, Validators.max(40)]),
+    specialization: new FormControl('', [])
   });
 
   ngOnInit(): void {

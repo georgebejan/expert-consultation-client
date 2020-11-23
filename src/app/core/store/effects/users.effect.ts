@@ -73,6 +73,18 @@ export class UsersEffects {
       })
   );
 
+  @Effect()
+  loadUserSpecializations$ = this.actions$.pipe(
+      ofType(usersActions.UserActionTypes.LoadUserSpecializations),
+      switchMap(() => {
+        return this.usersService.getUserSpecializations()
+            .pipe(
+                map((specializations: string[]) => new usersActions.LoadUserSpecializationsSuccess(specializations)),
+                catchError(error => of(new usersActions.LoadUserSpecializationsFail(error)))
+            );
+      })
+  );
+
   constructor(private actions$: Actions,
               private usersService: UserService,
               private router: Router) {

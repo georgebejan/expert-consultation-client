@@ -17,6 +17,7 @@ export interface IUser {
   district: string;
   organisation: string;
   role: UserType;
+  specialization: string;
 }
 
 export class User {
@@ -30,6 +31,7 @@ export class User {
   district: string;
   organisation: string;
   role: UserType;
+  specialization: string;
 
   constructor(aData?: IUser) {
     this.role = UserType.CONTRIBUTOR;
@@ -47,6 +49,7 @@ export class User {
     this.district = json.district;
     this.organisation = json.organisation;
     this.role = json.role ? json.role : this.role;
+    this.specialization = json.specialization;
   }
 
   toJson(): IUser {
@@ -59,6 +62,7 @@ export class User {
       district: this.district,
       organisation: this.organisation,
       role: this.role,
+      specialization: this.specialization
     } as IUser;
   }
 

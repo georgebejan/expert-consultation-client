@@ -9,6 +9,7 @@ export interface UserState {
   pageData: IPageData;
   error: Error;
   currentUser: ICurrentUser;
+  userSpecializations: string[];
 }
 
 export const initialState: UserState = {
@@ -18,7 +19,8 @@ export const initialState: UserState = {
   shouldReload: true,
   pageData: {pageable: {}} as IPageData,
   error: {} as Error,
-  currentUser: {} as ICurrentUser
+  currentUser: {} as ICurrentUser,
+  userSpecializations: []
 };
 
 export function reducer(state = initialState, action: fromUsers.UsersAction): UserState {
@@ -82,6 +84,20 @@ export function reducer(state = initialState, action: fromUsers.UsersAction): Us
       };
     }
 
+    case fromUsers.UserActionTypes.LoadUserSpecializationsSuccess: {
+      return {
+        ...state,
+        userSpecializations: action.payload
+      };
+    }
+
+    case fromUsers.UserActionTypes.LoadUserSpecializationsFail: {
+      return {
+        ...state,
+        error: action.payload
+      };
+    }
+
     default: {
       return {
         ...state,
@@ -97,3 +113,4 @@ export const getUsersShouldReload = (state: UserState) => state.shouldReload;
 export const getUsersPageData = (state: UserState) => state.pageData;
 export const getUsersErrors = (state: UserState) => state.error;
 export const getCurrentUser = (state: UserState) => state.currentUser;
+export const getUserSpecializations = (state: UserState) => state.userSpecializations;

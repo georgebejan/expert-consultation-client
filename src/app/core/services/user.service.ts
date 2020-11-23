@@ -40,6 +40,10 @@ export class UserService {
         );
   }
 
+  public getUserSpecializations(): Observable<string[]> {
+    return this.usersApiService.getUserSpecializations();
+  }
+
   private fromResponse(userResponse: IUser): User {
     return new User(userResponse);
   }

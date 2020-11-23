@@ -11,7 +11,7 @@ export const getUsersEntities = createSelector(getUsersEntitiesAsInterfaces,
       const userEntities: { [id: number]: User } = {};
       const userInterfaces = {...users};
 
-      Object.keys(userInterfaces).map(key => {
+      Object.keys(userInterfaces).forEach(key => {
         userEntities[key] = new User(userInterfaces[key]);
       });
 
@@ -38,3 +38,5 @@ export const getUsersPageData = createSelector(getUsersPageDataEntityAsInterface
 export const getUsersErrors = createSelector(getUsersState, fromUsers.getUsersErrors);
 
 export const getCurrentUser = createSelector(getUsersState, fromUsers.getCurrentUser);
+
+export const getUserSpecializations = createSelector(getUsersState, fromUsers.getUserSpecializations);
