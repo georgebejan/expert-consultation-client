@@ -8,7 +8,7 @@ export interface IComment {
   documentTitle: string;
 }
 
-export class Comment {
+export class Comment implements IComment {
   id: string;
   text: string;
   user: string;

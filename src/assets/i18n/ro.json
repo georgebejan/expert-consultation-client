@@ -29,6 +29,10 @@
       "singular": "comentariu"
     }
   },
+  "votes": {
+    "voteUp": "Pro",
+    "voteDown": "Contra"
+  },
   "login": {
     "welcome": "Bine ai venit",
     "enterAccount": "Intră în cont",
