@@ -30,8 +30,8 @@
     }
   },
   "votes": {
-    "voteUp": "Pro",
-    "voteDown": "Contra"
+    "voteUp": "pro",
+    "voteDown": "contra"
   },
   "login": {
     "welcome": "Bine ai venit",

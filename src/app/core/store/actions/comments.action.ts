@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Comment, Page, PageRequest } from '../../models';
+import { IVote, IVoteCount } from '@app/core/models/vote.model';
 
 export enum CommentsActionTypes {
   LoadComments = '[Comments] Load Comments',
@@ -13,10 +14,12 @@ export enum CommentsActionTypes {
   ApprovePendingCommentFail = '[Comments] Approve pending comment fail',
   RejectPendingComment = '[Comments] Reject pending comment',
   RejectPendingCommentSuccess = '[Comments] Reject pending comment success',
-  RejectPendingCommentFail = '[Comments] Reject pending comment fao;',
+  RejectPendingCommentFail = '[Comments] Reject pending comment fail',
   AddComment = '[Comments] Add comment',
   AddCommentSuccess = '[Comments] Add comment success',
   AddCommentFail = '[Comments] Add comment fail',
+  UpdateCommentVote = '[Comments] Update comment vote',
+  UpdateCommentVoteCountSuccess = '[Comments] Update comment vote count success',
 }
 
 export class LoadComments implements Action {
@@ -124,6 +127,20 @@ export class RejectPendingCommentFail implements Action {
   }
 }
 
+export class UpdateCommentVote implements Action {
+  readonly type = CommentsActionTypes.UpdateCommentVote;
+
+  constructor(public nodeId: string, public vote: IVote) {
+  }
+}
+
+export class UpdateCommentVoteCountSuccess implements Action {
+  readonly type = CommentsActionTypes.UpdateCommentVoteCountSuccess;
+
+  constructor(public nodeId: string, public commentId: string, public voteCount: IVoteCount) {
+  }
+}
+
 export type CommentsAction =
     | LoadComments
     | LoadCommentsSuccess
@@ -139,4 +156,6 @@ export type CommentsAction =
     | ApprovePendingCommentFail
     | RejectPendingComment
     | RejectPendingCommentSuccess
-    | RejectPendingCommentFail;
+    | RejectPendingCommentFail
+    | UpdateCommentVote
+    | UpdateCommentVoteCountSuccess;

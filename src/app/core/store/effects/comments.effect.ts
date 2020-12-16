@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CoreState } from '@app/core/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { CommentsService } from '../../services';
 import {
@@ -19,11 +18,15 @@ import {
   ApprovePendingCommentSuccess,
   RejectPendingComment,
   RejectPendingCommentFail,
-  RejectPendingCommentSuccess
+  RejectPendingCommentSuccess,
+  UpdateCommentVote,
+  UpdateCommentVoteCountSuccess
 } from '../actions/comments.action';
 import { IncrementDocumentNodeCommentCount } from '../actions/documents.action';
-import { catchError, concatMap, map, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { catchError, concatMap, map, mergeMap, switchMap } from 'rxjs/operators';
+import { EMPTY, of } from 'rxjs';
+import { CoreState } from '@app/core/store/reducers';
+import { VoteApiService } from '@app/core/http';
 
 @Injectable()
 export class CommentsEffect {
@@ -50,6 +53,22 @@ export class CommentsEffect {
   saveCommentSuccess$ = this.actions$.pipe(
       ofType(CommentsActionTypes.AddCommentSuccess),
       map((action: AddComment) => new IncrementDocumentNodeCommentCount(action.nodeId)),
+  );
+
+  @Effect()
+  updateCommentVote$ = this.actions$.pipe(
+      ofType(CommentsActionTypes.UpdateCommentVote),
+      mergeMap(({nodeId, vote}: UpdateCommentVote) => {
+        const vote$ = (vote.id)
+          ? this.voteApiService.updateVote(vote.id, vote.commentId, vote.vote)
+          : this.voteApiService.createVote(vote.commentId, vote.vote);
+        return vote$.pipe(
+            switchMap(() => this.voteApiService.getVotes(vote.commentId).pipe(
+                map(voteCount => new UpdateCommentVoteCountSuccess(nodeId, vote.commentId, voteCount))
+            )),
+            catchError(() => EMPTY)
+        );
+      })
   );
 
   @Effect()
@@ -83,6 +102,7 @@ export class CommentsEffect {
 
   constructor(private store$: Store<CoreState>,
               private actions$: Actions,
-              private commentsService: CommentsService) {
+              private commentsService: CommentsService,
+              private voteApiService: VoteApiService) {
   }
 }

@@ -1,14 +1,18 @@
+import { IVote, IVoteCount } from '@app/core/models/vote.model';
+
 export interface IComment {
   id: string;
   text: string;
   user: string;
   lastEditDateTime: Date;
-  nodeTitle: string;
-  nodeContent: string;
-  documentTitle: string;
+  nodeTitle?: string;
+  nodeContent?: string;
+  documentTitle?: string;
+  voteCount?: IVoteCount;
+  myVote?: IVote;
 }
 
-export class Comment implements IComment {
+export class Comment {
   id: string;
   text: string;
   user: string;
@@ -16,6 +20,8 @@ export class Comment implements IComment {
   nodeTitle: string;
   nodeContent: string;
   documentTitle: string;
+  voteCount?: IVoteCount;
+  myVote?: IVote;
 
   constructor(data?: IComment) {
     if (data) {
@@ -31,6 +37,8 @@ export class Comment implements IComment {
     this.nodeTitle = data.nodeTitle;
     this.nodeContent = data.nodeContent;
     this.documentTitle = data.documentTitle;
+    this.voteCount = data.voteCount;
+    this.myVote = data.myVote;
   }
 
   toJson(): IComment {
@@ -41,7 +49,9 @@ export class Comment implements IComment {
       lastEditDateTime: this.lastEditDateTime,
       nodeTitle: this.nodeTitle,
       nodeContent: this.nodeContent,
-      documentTitle: this.documentTitle
+      documentTitle: this.documentTitle,
+      voteCount: this.voteCount,
+      myVote: this.myVote,
     };
   }
 }
