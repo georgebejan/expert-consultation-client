@@ -23,8 +23,7 @@ export class CommentsComponent extends BaseComponent implements OnInit {
   public VoteType = VoteType;
 
   constructor(private store: Store<CoreState>,
-              private commentsStore: CommentsStore,
-              private voteApiService: VoteApiService) {
+              private commentsStore: CommentsStore) {
     super();
   }
 
