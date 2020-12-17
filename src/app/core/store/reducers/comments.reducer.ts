@@ -10,14 +10,13 @@ export interface CommentsEntry {
 }
 
 export interface CommentsState {
-  entities: { [id: string]: CommentsEntry };
+  [nodeId: string]: CommentsEntry | any;
   pending: IComment[];
   pageData: IPageData;
   loading: boolean;
 }
 
 const initialState: CommentsState = {
-  entities: {},
   pending: [],
   loading: false,
   pageData: {pageable: {}} as IPageData,
@@ -117,10 +116,30 @@ export function reducer(state = initialState, action: fromComments.CommentsActio
       };
     }
 
+    case fromComments.CommentsActionTypes.UpdateCommentVote: {
+      const {nodeId, vote} = action;
+      return updateCommentPropsByNodeAndCommentId(state, nodeId, vote.commentId, {myVote: vote});
+    }
+
+    case fromComments.CommentsActionTypes.UpdateCommentVoteCountSuccess: {
+      const {nodeId, commentId, voteCount} = action;
+      return updateCommentPropsByNodeAndCommentId(state, nodeId, commentId, {voteCount});
+    }
+
     default: {
       return state;
     }
   }
+}
+
+function updateCommentPropsByNodeAndCommentId(state: CommentsState, nodeId: string, commentId: string, commentProps: any) {
+  const oldComments = state[nodeId] && (state[nodeId] as CommentsEntry).entities;
+  const index = oldComments && oldComments.findIndex(c => c.id === commentId);
+  const updatedComment: IComment = (index !== -1) && {...oldComments[index], ...commentProps};
+  const newComments = [...oldComments.slice(0, index), updatedComment, ...oldComments.slice(index + 1)];
+  return updatedComment
+      ? {...state, [nodeId]: {...state[nodeId], entities: newComments}}
+      : state;
 }
 
 export const getCommentsEntitiesByDocumentNode = (state: CommentsState, nodeId: string) =>

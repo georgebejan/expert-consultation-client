@@ -1,9 +1,21 @@
 {
   "required": "Mandatory field.",
+  "shouldMatch": "Passwords must match.",
   "pattern": "Invalid phone number",
   "phoneNumber": "Invalid phone number.",
   "validation.Resource.not.found": "Resource was not found.",
   "register": {
+    "form": {
+      "fullName": "Full name",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password"
+    },
+    "createButton": "Sign up",
+    "header": "Sign up for a new account",
+    "toLoginMessage": "Sign in?",
+    "toLoginAction": "Connect",
     "Success": "User registered successfully.",
     "Duplicate.username": "The username is already used.",
     "Duplicate.email": "The email is already used."
@@ -16,6 +28,10 @@
       "plural": "comments",
       "singular": "comment"
     }
+  },
+  "votes": {
+    "voteUp": "pro",
+    "voteDown": "against"
   },
   "login": {
     "label": {

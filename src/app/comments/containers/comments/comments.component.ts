@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { getCommentsEntitiesByNodeId, LoadReplies, AddComment } from '@app/core/store';
-import { CoreState } from '@app/core/store';
+import { AddComment, CoreState, getCommentsEntitiesByNodeId, LoadReplies, UpdateCommentVote } from '@app/core/store';
 import { Observable } from 'rxjs';
 import { Comment } from '@app/core';
 import { CommentsStore } from '@app/comments/containers/comments/comments.store';
 import { BaseComponent } from '@app/shared/components/base-component';
 import { takeUntil } from 'rxjs/operators';
+import { IVote, VoteType } from '@app/core/models/vote.model';
 
 @Component({
   selector: 'ec-comments',
@@ -19,6 +19,7 @@ export class CommentsComponent extends BaseComponent implements OnInit {
   @Output() public commentsCollapsed: EventEmitter<void> = new EventEmitter<void>();
 
   public comments$: Observable<Comment[]>;
+  public VoteType = VoteType;
 
   constructor(private store: Store<CoreState>,
               private commentsStore: CommentsStore) {
@@ -34,6 +35,16 @@ export class CommentsComponent extends BaseComponent implements OnInit {
 
   onCommentAdded(comment: string) {
     this.store.dispatch(new AddComment(this.nodeId, comment));
+  }
+
+  onVote(comment: Comment, voteType: VoteType) {
+    const newType = (comment.myVote && comment.myVote.vote === voteType) ? VoteType.ABSTAIN : voteType;
+    const vote: IVote = {
+      id: comment.myVote && comment.myVote.id,
+      commentId: comment.id,
+      vote: newType
+    };
+    this.store.dispatch(new UpdateCommentVote(this.nodeId, vote));
   }
 
   areRepliesExpanded(commentId: string) {

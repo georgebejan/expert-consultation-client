@@ -11,7 +11,7 @@ const getCommentsAsInterfaces = (nodeId) => createSelector(getCommentsState,
 
 export const getCommentsEntitiesByNodeId = (nodeId) => createSelector(
     getCommentsAsInterfaces(nodeId),
-    comments => comments.map(comment => new Comment(comment)));
+    (comments): Comment[] => comments.map(comment => new Comment(comment)));
 
 export const getPendingComments = createSelector(getCommentsState,
     (state: fromFeature.CommentsState) => state.pending.map(comment => new Comment(comment)));

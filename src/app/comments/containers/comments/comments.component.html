@@ -16,12 +16,24 @@
               <h5 class="mb-1">{{comment.user}}</h5>
             </div>
           </div>
-          <small> {{comment.lastEditDateTime | date}} </small></div>
+          <small> {{comment.lastEditDateTime | date}} </small>
+        </div>
         <p class="text-sm mb-2">{{comment.text}}</p>
-        <div *ngIf="!areRepliesExpanded(comment.id)" class="row justify-content-end">
-          <button (click)="expandReplies(comment.id)" class="btn btn-link">
-            {{'comments.answer' | translate}}
-          </button>
+        <div *ngIf="!areRepliesExpanded(comment.id)" class="d-flex justify-content-between text-sm">
+          <div>
+            <a [routerLink]="" (click)="onVote(comment, VoteType.UP)" class="active">
+              {{comment.voteCount && comment.voteCount[VoteType.UP] || 0}} {{'votes.voteUp' | translate}}
+              <i class="ni ni-bold-up" [ngClass]="{'text-success': comment.myVote?.vote === VoteType.UP}"></i>
+            </a>
+            &middot;
+            <a [routerLink]="" (click)="onVote(comment, VoteType.DOWN)">
+              {{comment.voteCount && comment.voteCount[VoteType.DOWN] || 0}} {{'votes.voteDown' | translate}}
+              <i class="ni ni-bold-down" [ngClass]="{'text-success': comment.myVote?.vote === VoteType.DOWN}"></i>
+            </a>
+          </div>
+          <a [routerLink]="" (click)="expandReplies(comment.id)">
+            <i class="ni ni-curved-next"></i> {{'comments.answer' | translate}}
+          </a>
         </div>
         <div *ngIf="areRepliesExpanded(comment.id)" class="replies">
           <ec-replies [nodeId]="nodeId"
