@@ -7,7 +7,6 @@ import { CommentsStore } from '@app/comments/containers/comments/comments.store'
 import { BaseComponent } from '@app/shared/components/base-component';
 import { takeUntil } from 'rxjs/operators';
 import { IVote, VoteType } from '@app/core/models/vote.model';
-import { VoteApiService } from '@app/core/http/vote-api.service';
 
 @Component({
   selector: 'ec-comments',
