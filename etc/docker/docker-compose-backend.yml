@@ -1,34 +1,29 @@
 version: '3.7'
 
 services:
-  mysql:
-    container_name: mysql
-    image: mysql:5.7
+  postgres:
+    container_name: postgres
+    image: postgres:13.1
     restart: always
     environment:
-      MYSQL_DATABASE: 'legalconsultation'
-      MYSQL_ROOT_PASSWORD: 'root'
+      POSTGRES_DB: 'legalconsultation'
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
     expose:
-      - "3306"
-    volumes:
-      - mysql-vol:/var/lib/mysql
-  mailhog:
-    container_name: mailhog
-    image: mailhog/mailhog
+      - '5432'
     ports:
-      - "1025:1025"
-      - "8025:8025"
+      - '5432:5432'
+    volumes:
+      - postgres-vol:/var/lib/postgresql/data
   expert-consultation-api:
     container_name: expert-consultation-api
     image: code4romania/expert-consultation-api
     environment:
-      - MYSQL_DB_URL=mysql
-      - MYSQL_DB_USERNAME=root
-      - MYSQL_DB_PASSWORD=root
+      - MYSQL_DB_URL=postgres
       - SPRING_PROFILE=dev
     ports:
       - '8080:8080'
     depends_on:
-      - mysql
+      - postgres
 volumes:
-  mysql-vol:
+  postgres-vol:
