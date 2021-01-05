@@ -8,10 +8,12 @@ export class DocumentConfiguration {
   consultationStartDate: Date;
   consultationDeadline: Date;
   excludedFromConsultation: boolean;
+  inConsultation: boolean;
 
   constructor(data: IDocumentConfiguration) {
     if (data) {
       this.fromJson(data);
+      this.inConsultation = this.isDocumentInConsultation();
     }
   }
 
@@ -31,5 +33,15 @@ export class DocumentConfiguration {
       consultationDeadline: this.consultationDeadline,
       excludedFromConsultation: this.excludedFromConsultation
     };
+  }
+
+  private isDocumentInConsultation(): boolean {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayAtStartOfDay = today.getTime();
+
+    const consultationStartDate = this.consultationStartDate.getTime();
+    const consultationEndDate = this.consultationDeadline.getTime();
+    return consultationStartDate <= todayAtStartOfDay && todayAtStartOfDay <= consultationEndDate;
   }
 }

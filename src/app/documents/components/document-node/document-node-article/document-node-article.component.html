@@ -13,14 +13,19 @@
                        [isEditMode]="isEditMode"></ec-document-content>
   <div *ngIf="!isEditMode" class="row justify-content-between mx-0 mt-2 mb-5">
     <div>
-      <button (click)="expandComments()" class="btn btn-link">{{'button.add-comment' | translate}}</button>
+      <button (click)="expandComments()" *ngIf="isInConsultation" class="btn btn-link">
+        {{'button.add-comment' | translate}}
+      </button>
     </div>
     <div>
-      <button (click)="expandComments()" *ngIf="article.numberOfComments != 1" class="btn btn-link">
+      <button (click)="expandComments()" *ngIf="article.numberOfComments > 1" class="btn btn-link">
         {{article.numberOfComments}} {{'comments.number.plural' | translate}}
       </button>
       <button (click)="expandComments()" *ngIf="article.numberOfComments == 1" class="btn btn-link">
         {{article.numberOfComments}} {{'comments.number.singular' | translate}}
+      </button>
+      <button *ngIf="article.numberOfComments == 0" class="btn btn-link">
+        {{article.numberOfComments}} {{'comments.number.plural' | translate}}
       </button>
     </div>
   </div>

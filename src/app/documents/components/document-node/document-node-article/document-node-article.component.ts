@@ -9,6 +9,7 @@ import { DocumentBreakdownStore } from '@app/documents/containers/document-break
 })
 export class DocumentNodeArticleComponent implements OnInit {
   @Input() article: DocumentNode;
+  @Input() public isInConsultation: boolean;
   @Input() public isEditMode: boolean;
   @Output() public nodeEditButtonClick: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
 

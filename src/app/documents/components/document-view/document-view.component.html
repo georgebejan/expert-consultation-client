@@ -51,6 +51,7 @@
           <p>{{documentNode.content}}</p>
           <ec-document-content (nodeEditButtonClick)="onNodeEditButtonClick($event)"
                                [documentNodes]="documentNode.children"
+                               [isInConsultation]="document.documentConfiguration.inConsultation"
                                [isEditMode]="isEditMode"></ec-document-content>
         </div>
       </div>

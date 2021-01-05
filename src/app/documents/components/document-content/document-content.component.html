@@ -12,7 +12,8 @@
       <ec-document-node-article (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
                                 *ngSwitchCase=" documentNodeTypeEnum.ARTICLE"
                                 [article]="documentNode"
-                                [isEditMode]="isEditMode"></ec-document-node-article>
+                                [isEditMode]="isEditMode"
+                                [isInConsultation]="isInConsultation"></ec-document-node-article>
       <ec-document-node-paragraph (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
                                   *ngSwitchCase="documentNodeTypeEnum.PARAGRAPH"
                                   [isEditMode]="isEditMode"

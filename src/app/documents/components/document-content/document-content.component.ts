@@ -9,6 +9,7 @@ import { DocumentNode, DocumentNodeType } from '@app/core';
 })
 export class DocumentContentComponent extends BaseComponent {
   @Input() public documentNodes: DocumentNode[];
+  @Input() public isInConsultation: boolean;
   @Input() public isEditMode: boolean;
   @Output() public nodeEditButtonClick: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
 

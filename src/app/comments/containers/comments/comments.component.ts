@@ -16,6 +16,7 @@ import { IVote, VoteType } from '@app/core/models/vote.model';
 })
 export class CommentsComponent extends BaseComponent implements OnInit {
   @Input() public nodeId: string;
+  @Input() public isInConsultation: boolean;
   @Output() public commentsCollapsed: EventEmitter<void> = new EventEmitter<void>();
 
   public comments$: Observable<Comment[]>;

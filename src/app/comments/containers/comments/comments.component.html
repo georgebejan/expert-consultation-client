@@ -4,7 +4,8 @@
   </div>
   <div class="card-body p-0">
     <div class="list-group list-group-flush">
-      <div class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
+      <div *ngIf="isInConsultation"
+           class="list-group-item list-group-item-action flex-column align-items-start py-4 px-4">
         <ec-new-comment (commentAdded)="onCommentAdded($event)" [nodeId]="nodeId"></ec-new-comment>
       </div>
       <a *ngFor="let comment of comments$ | async"
@@ -19,7 +20,7 @@
           <small> {{comment.lastEditDateTime | date}} </small>
         </div>
         <p class="text-sm mb-2">{{comment.text}}</p>
-        <div *ngIf="!areRepliesExpanded(comment.id)" class="d-flex justify-content-between text-sm">
+        <div *ngIf="!areRepliesExpanded(comment.id) && isInConsultation" class="d-flex justify-content-between text-sm">
           <div>
             <a [routerLink]="" (click)="onVote(comment, VoteType.UP)" class="active">
               {{comment.voteCount && comment.voteCount[VoteType.UP] || 0}} {{'votes.voteUp' | translate}}
@@ -36,9 +37,9 @@
           </a>
         </div>
         <div *ngIf="areRepliesExpanded(comment.id)" class="replies">
-          <ec-replies [nodeId]="nodeId"
+          <ec-replies (repliesCollapsed)="onRepliesCollapsed(comment.id)"
                       [commentId]="comment.id"
-                      (repliesCollapsed)="onRepliesCollapsed(comment.id)">
+                      [nodeId]="nodeId">
           </ec-replies>
         </div>
       </a>
