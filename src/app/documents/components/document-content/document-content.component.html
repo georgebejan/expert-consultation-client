@@ -4,10 +4,12 @@
       <ec-document-node-chapter (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
                                 *ngSwitchCase="documentNodeTypeEnum.CHAPTER"
                                 [chapter]="documentNode"
+                                [isInConsultation]="isInConsultation"
                                 [isEditMode]="isEditMode"></ec-document-node-chapter>
       <ec-document-node-section (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
                                 *ngSwitchCase=" documentNodeTypeEnum.SECTION"
                                 [isEditMode]="isEditMode"
+                                [isInConsultation]="isInConsultation"
                                 [section]="documentNode"></ec-document-node-section>
       <ec-document-node-article (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
                                 *ngSwitchCase=" documentNodeTypeEnum.ARTICLE"
