@@ -8,6 +8,6 @@ import { DocumentNode } from '@app/core';
 export class DocumentNodeSectionComponent {
   @Input() public section: DocumentNode;
   @Input() public isEditMode: boolean;
+  @Input() public isInConsultation: boolean;
   @Output() public nodeEditButtonClick: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
-
 }

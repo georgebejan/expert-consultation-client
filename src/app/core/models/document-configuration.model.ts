@@ -40,8 +40,8 @@ export class DocumentConfiguration {
     today.setHours(0, 0, 0, 0);
     const todayAtStartOfDay = today.getTime();
 
-    const consultationStartDate = this.consultationStartDate.getTime();
-    const consultationEndDate = this.consultationDeadline.getTime();
+    const consultationStartDate = this.consultationStartDate ? this.consultationStartDate.getTime() : null;
+    const consultationEndDate = this.consultationDeadline ? this.consultationDeadline.getTime() : null;
     return consultationStartDate <= todayAtStartOfDay && todayAtStartOfDay <= consultationEndDate;
   }
 }

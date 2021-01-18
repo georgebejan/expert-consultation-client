@@ -29,6 +29,9 @@
       </button>
     </div>
   </div>
-  <ec-comments (commentsCollapsed)="collapseComments()" *ngIf=isExpanded [nodeId]="article.id">
+  <ec-comments
+    *ngIf=isExpanded [nodeId]="article.id"
+    (commentsCollapsed)="collapseComments()"
+    [isInConsultation]="isInConsultation">
   </ec-comments>
 </div>

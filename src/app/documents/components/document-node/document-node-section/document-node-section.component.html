@@ -8,4 +8,5 @@
 </div>
 <ec-document-content (nodeEditButtonClick)="nodeEditButtonClick.emit($event)"
                      [documentNodes]="section.children"
+                     [isInConsultation]="isInConsultation"
                      [isEditMode]="isEditMode"></ec-document-content>
